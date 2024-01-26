@@ -1,6 +1,6 @@
 import { Box, ScrollView } from "@gluestack-ui/themed";
 
-import { Highlights, HorizontalList } from "./components";
+import { Highlights, HorizontalList, HorizontalListLarger } from "./components";
 import { useWindowDimensions } from "react-native";
 
 const fakeList = [
@@ -23,6 +23,16 @@ export default function Home() {
       <ScrollView>
 
         <Highlights height={height / 1.7} />
+
+        <HorizontalListLarger
+          title="Continue Watching"
+          list={[
+            { ...fakeList[0], duration: 20 },
+            { ...fakeList[2], duration: 90 },
+            { ...fakeList[7], duration: 30 },
+            { ...fakeList[4], duration: 60 },
+          ]}
+        />
 
         <HorizontalList title="Today's Selection" list={fakeList} />
 
