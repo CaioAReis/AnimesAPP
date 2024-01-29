@@ -1,3 +1,4 @@
 import AnimeCard from "./AnimeCard";
+import CardLarger from "./CardLarger";
 
-export { AnimeCard };
+export { AnimeCard, CardLarger };

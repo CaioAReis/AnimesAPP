@@ -1,6 +1,7 @@
 import { Box, HStack, Heading, ScrollView } from "@gluestack-ui/themed";
 
-import CardLarger, { CardLargerProps } from "./CardLarger";
+import { CardLarger } from "../../../../components";
+import { CardLargerProps } from "../../../../components/CardLarger";
 
 interface HorizontalListLargerProps {
   title: string,
