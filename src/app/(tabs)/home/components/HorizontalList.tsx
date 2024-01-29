@@ -14,8 +14,8 @@ export default function HorizontalList({ title, list }: HorizontalListProps) {
     <Box>
       <Heading ml={20} my={15}>{title}</Heading>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <HStack>
-          <Box w={20} />
+        <HStack space="md">
+          <Box w={10} />
 
           {list?.map((item, i) => (
             <AnimeCard
@@ -26,6 +26,7 @@ export default function HorizontalList({ title, list }: HorizontalListProps) {
             />
           ))}
 
+          <Box w={10} />
         </HStack>
       </ScrollView>
     </Box>

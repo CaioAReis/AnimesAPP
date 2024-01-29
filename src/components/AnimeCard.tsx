@@ -9,7 +9,7 @@ export interface AnimeCardProps {
 export default function AnimeCard({ image, title, description }: AnimeCardProps) {
 
   return (
-    <Box w="$32" mr={20}>
+    <Box w="$32">
       <Image
         h="$48"
         w="$full"
