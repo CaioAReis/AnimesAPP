@@ -1,4 +1,5 @@
-import { Box, HStack, Heading, ScrollView } from "@gluestack-ui/themed";
+import { FlatList } from "react-native";
+import { Box, Heading } from "@gluestack-ui/themed";
 
 import { CardLarger } from "../../../../components";
 import { CardLargerProps } from "../../../../components/CardLarger";
@@ -15,23 +16,23 @@ export default function HorizontalListLarger({ title, list }: HorizontalListLarg
       <Box>
         <Heading ml={20} my={15}>{title}</Heading>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <HStack space="md">
-            <Box w={10} />
-
-            {list?.map((item, i) => (
-              <CardLarger
-                key={i}
-                image={item?.image}
-                title={item?.title}
-                duration={item?.duration}
-                description={item?.description}
-              />
-            ))}
-
-            <Box w={10} />
-          </HStack>
-        </ScrollView>
+        <FlatList
+          horizontal
+          data={list}
+          maxToRenderPerBatch={1}
+          ListHeaderComponent={<Box w={20} />}
+          ListFooterComponent={<Box w={20} />}
+          ItemSeparatorComponent={() => <Box w={10} />}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <CardLarger
+              image={item?.image}
+              title={item?.title}
+              duration={item?.duration}
+              description={item?.description}
+            />
+          )}
+        />
       </Box>
     )
   );
