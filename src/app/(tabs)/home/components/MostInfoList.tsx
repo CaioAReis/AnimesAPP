@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MostInfoCard, { MostInfoCardProps } from "./MostInfoCard";
-import { Box, HStack, Heading, ScrollView } from "@gluestack-ui/themed";
-import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions } from "react-native";
+import { Box, HStack, Heading } from "@gluestack-ui/themed";
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions } from "react-native";
 
 interface MostInfoListProps {
   title: string,
@@ -26,22 +26,21 @@ export default function MostInfoList({ title, list }: MostInfoListProps) {
       </Heading>
 
       <Box>
-        <ScrollView
+        <FlatList
           horizontal
+          data={list}
           pagingEnabled
+          onMomentumScrollEnd={onChangeStep}
           showsHorizontalScrollIndicator={false}
-          onMomentumScrollEnd={e => onChangeStep(e)}
-        >
-          {list.map((item, i) => (
+          renderItem={({ item }) => (
             <MostInfoCard
-              key={i}
               title={item?.title}
               image={item?.image}
               categories={item?.categories}
               description={item?.description}
             />
-          ))}
-        </ScrollView>
+          )}
+        />
 
         <HStack alignItems="center" justifyContent="center" space="sm">
           {list?.map((item, i) => (

@@ -55,7 +55,12 @@ export default function Home() {
     <Box flex={1}>
       <ScrollView>
 
-        <Highlights height={height / 1.7} />
+        <Highlights
+          height={height / 1.7}
+          title="Demon Slayer: Kimetsu no Yaiba"
+          description="Action, Demons, Historical, Shounen, Supernatural"
+          image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.enjpg.com%2Fimg%2F2020%2Fdemon-slayer-desktop-8.jpg&f=1&nofb=1&ipt=4aca62af7b0a9a9be0549fb295ab0f8150c2a63652208498a3bfb572f97de0c4&ipo=images"
+        />
 
         <HorizontalListLarger title="Continue Watching" list={listLarger} />
 

@@ -3,28 +3,34 @@ import { Heart, Play, Share } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 interface HighlightsProps {
+  image: string,
+  title: string,
   height: number,
+  description: string,
 }
 
-export default function Highlights({ height }: HighlightsProps) {
+export default function Highlights({ height, image, title, description }: HighlightsProps) {
 
   return (
     <Box h={height} justifyContent="flex-end">
       <Image
-        alt="demon slayer"
-        source={{ uri: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.enjpg.com%2Fimg%2F2020%2Fdemon-slayer-desktop-8.jpg&f=1&nofb=1&ipt=4aca62af7b0a9a9be0549fb295ab0f8150c2a63652208498a3bfb572f97de0c4&ipo=images" }}
+        alt={title}
         h="$full" w="$full"
         position="absolute"
+        source={{ uri: image }}
       />
-      <LinearGradient colors={["transparent", "white"]} style={{ position: "absolute", height: "100%", width: "100%" }}>
-      </LinearGradient>
+
+      <LinearGradient
+        colors={["transparent", "white"]}
+        style={{ position: "absolute", height: "100%", width: "100%" }}
+      />
 
       <Box px={20}>
         <Heading fontSize="$4xl" lineHeight="$4xl">
-          Demon Slayer: Kimetsu no Yaiba
+          {title}
         </Heading>
 
-        <Text fontSize="$sm">Action, Demons, Historical, Shounen, Supernatural</Text>
+        <Text fontSize="$sm">{description}</Text>
 
         <HStack my={8}>
           <Button bg="$red500">
