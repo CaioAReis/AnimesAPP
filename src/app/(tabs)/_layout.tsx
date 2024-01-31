@@ -26,6 +26,7 @@ export default function TabsApp() {
       initialRouteName="home/index"
       sceneContainerStyle={{ backgroundColor: "white" }}
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         headerShown: false,
         freezeOnBlur: true,
         tabBarShowLabel: false,

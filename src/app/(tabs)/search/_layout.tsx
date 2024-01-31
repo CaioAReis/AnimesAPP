@@ -40,7 +40,7 @@ const fakeList = [
 ];
 
 export default function Search() {
-  const [list] = useState<AnimeCardProps[]>(fakeList);
+  const [list, setList] = useState<AnimeCardProps[]>([]);
 
   return (
     <Box flex={1}>
@@ -75,6 +75,7 @@ export default function Search() {
                 title={item?.title}
                 colors={item?.colors}
                 IconCard={item?.icon}
+                onPress={() => setList(fakeList)}
               />
             ))}
           </HStack>
