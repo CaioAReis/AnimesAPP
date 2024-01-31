@@ -2,14 +2,9 @@ import { Heart, Play } from "lucide-react-native";
 import { useWindowDimensions } from "react-native";
 import { Box, Button, ButtonIcon, HStack, Heading, Image, Text } from "@gluestack-ui/themed";
 
-export interface MostInfoCardProps {
-  title: string, 
-  image: string, 
-  categories: string, 
-  description: string,
-}
+import { MostInfoCardProps } from "../types";
 
-export default function MostInfoCard({ title, image, categories, description }: MostInfoCardProps) {
+export function MostInfoCard({ title, image, categories, description }: MostInfoCardProps) {
   const { width } = useWindowDimensions();
 
   return (

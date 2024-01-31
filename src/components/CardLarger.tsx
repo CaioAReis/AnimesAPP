@@ -1,14 +1,9 @@
 import { useWindowDimensions } from "react-native";
 import { Box, Heading, Image, Progress, ProgressFilledTrack, Text, VStack } from "@gluestack-ui/themed";
 
-export interface CardLargerProps {
-  image: string,
-  title: string,
-  duration: number,
-  description?: string,
-}
+import { CardLargerProps } from "../types";
 
-export default function CardLarger({ image, title, description, duration }: CardLargerProps) {
+export function CardLarger({ image, title, description, duration }: CardLargerProps) {
   const { width } = useWindowDimensions();
 
   return (

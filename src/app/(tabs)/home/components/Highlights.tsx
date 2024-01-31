@@ -1,15 +1,10 @@
-import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text } from "@gluestack-ui/themed";
-import { Heart, Play, Share } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Heart, Play, Share } from "lucide-react-native";
+import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text } from "@gluestack-ui/themed";
 
-interface HighlightsProps {
-  image: string,
-  title: string,
-  height: number,
-  description: string,
-}
+import { HighlightsProps } from "../types";
 
-export default function Highlights({ height, image, title, description }: HighlightsProps) {
+export function Highlights({ height, image, title, description }: HighlightsProps) {
 
   return (
     <Box h={height} justifyContent="flex-end">

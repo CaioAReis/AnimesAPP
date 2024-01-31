@@ -1,15 +1,10 @@
 import { FlatList } from "react-native";
 import { Box, Heading } from "@gluestack-ui/themed";
 
+import { HorizontalListProps } from "../types";
 import { AnimeCard } from "../../../../components";
-import { AnimeCardProps } from "../../../../components/AnimeCard";
 
-export interface HorizontalListProps {
-  title: string,
-  list: AnimeCardProps[],
-}
-
-export default function HorizontalList({ title, list }: HorizontalListProps) {
+export function HorizontalList({ title, list }: HorizontalListProps) {
 
   return (
     <Box>

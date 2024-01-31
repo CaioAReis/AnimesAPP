@@ -1,14 +1,11 @@
 import { useState } from "react";
-import MostInfoCard, { MostInfoCardProps } from "./MostInfoCard";
 import { Box, HStack, Heading } from "@gluestack-ui/themed";
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions } from "react-native";
 
-interface MostInfoListProps {
-  title: string,
-  list: MostInfoCardProps[],
-}
+import { MostInfoListProps } from "../types";
+import { MostInfoCard } from "./MostInfoCard";
 
-export default function MostInfoList({ title, list }: MostInfoListProps) {
+export function MostInfoList({ title, list }: MostInfoListProps) {
   const { width } = useWindowDimensions();
   const [currentStep, setCurrentStep] = useState(0);
 
