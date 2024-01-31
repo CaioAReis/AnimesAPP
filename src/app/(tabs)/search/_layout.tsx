@@ -56,7 +56,7 @@ export default function Search() {
           data={list}
           numColumns={3}
           ListFooterComponent={<Box h={60} />}
-          columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 20, justifyContent: "space-evenly" }}
+          columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
           renderItem={({ item }) => (
             <AnimeCard
               width="30%"
