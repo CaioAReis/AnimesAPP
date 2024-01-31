@@ -5,6 +5,7 @@ import { Center, HStack, Heading, Icon, Text, VStack, Box } from "@gluestack-ui/
 
 import { AnimeCardProps } from "../../../types";
 import { AnimeCard } from "../../../components";
+
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },
   { title: "Pokemon", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.BFjVbmISl5oYX3iupstWKAHaKi%26pid%3DApi&f=1&ipt=6adc91cf4e62a28733b4b40e07c160a71b057090128960dd9215fd97d64c4ba9&ipo=images" },
@@ -31,21 +32,20 @@ export default function Library() {
     <FlatList
       data={list}
       numColumns={3}
-      // contentContainerStyle={{ flex: 1 }}
       ListFooterComponent={<Box h={60} />}
       columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
       ListHeaderComponent={(
         <HStack alignItems="center" mx={20} my={10}>
           <Icon as={Heart} size="xl" mr={10} />
-          <Heading>Favoritos</Heading>
+          <Heading>Favorites</Heading>
         </HStack>
       )}
       ListEmptyComponent={(
         <Center flex={1}>
           <VStack alignItems="center" space="lg">
             <Icon as={Heart} size={"40" as "xl"} />
-            <Heading>Nada por aqui!</Heading>
-            <Text>Sua lista de favoritos ainda está vazia!</Text>
+            <Heading>Nothing here</Heading>
+            <Text>Your favorites list is still empty!</Text>
           </VStack>
         </Center>
       )}
