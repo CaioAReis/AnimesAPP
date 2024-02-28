@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, Redirect,  } from "expo-router";
 import { SvgUri } from "react-native-svg";
 import { useWindowDimensions } from "react-native";
 import { UserRoundCog } from "lucide-react-native";
@@ -9,6 +9,8 @@ export default function Start() {
   const { width } = useWindowDimensions();
   const [showAction, setShowAction] = useState(false);
   const handleToggle = () => setShowAction(!showAction);
+
+  return <Redirect href="/stack/AnimeDetails" />;
 
   return (
     <Center flex={1}>
