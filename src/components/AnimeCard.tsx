@@ -10,6 +10,7 @@ export function AnimeCard({ image, title, description, height, width }: AnimeCar
         w="$full"
         alt={title}
         rounded="$lg"
+        bgColor="$blueGray200"
         source={{ uri: image }}
         h={height as "$48" ?? "$48"}
       />

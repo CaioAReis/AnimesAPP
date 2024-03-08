@@ -10,7 +10,7 @@ export default function Start() {
   const [showAction, setShowAction] = useState(false);
   const handleToggle = () => setShowAction(!showAction);
 
-  return <Redirect href="/stack/AnimeDetails" />;
+  // return <Redirect href="/stack/AnimeDetails" />;
 
   return (
     <Center flex={1}>
