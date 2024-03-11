@@ -1,10 +1,10 @@
+import { FlatList } from "react-native";
 import { ChevronDownIcon } from "lucide-react-native";
 import {
   Box,
   Icon,
   Select,
   HStack,
-  ScrollView,
   SelectItem,
   SelectInput,
   SelectPortal,
@@ -13,20 +13,61 @@ import {
   SelectBackdrop,
   SelectDragIndicator,
   SelectDragIndicatorWrapper,
-  FlatList,
 } from "@gluestack-ui/themed";
 
 import { AnimeInfo, CoverHeader, EpisodeCard } from "./components";
 
-const list = ["", "", "", "", ""];
+const list = [
+  {
+    thumb: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.38iq2AFFIP_d8Hylw5gCsQHaEK%26pid%3DApi&f=1&ipt=5e48657ff26505c0401e774ecb99d80143f1fee31c20ffd136cdb2152be6bcd3&ipo=images",
+    title: "The other side of sea",
+    watched: true,
+    episodeMin: 24,
+  },
+
+  {
+    thumb: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.38iq2AFFIP_d8Hylw5gCsQHaEK%26pid%3DApi&f=1&ipt=5e48657ff26505c0401e774ecb99d80143f1fee31c20ffd136cdb2152be6bcd3&ipo=images",
+    title: "The other side of sea",
+    watched: false,
+    episodeMin: 24,
+  },
+
+  {
+    thumb: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.38iq2AFFIP_d8Hylw5gCsQHaEK%26pid%3DApi&f=1&ipt=5e48657ff26505c0401e774ecb99d80143f1fee31c20ffd136cdb2152be6bcd3&ipo=images",
+    title: "The other side of sea",
+    watched: false,
+    episodeMin: 24,
+  },
+
+  {
+    thumb: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.38iq2AFFIP_d8Hylw5gCsQHaEK%26pid%3DApi&f=1&ipt=5e48657ff26505c0401e774ecb99d80143f1fee31c20ffd136cdb2152be6bcd3&ipo=images",
+    title: "The other side of sea",
+    watched: false,
+    episodeMin: 24,
+  },
+
+  {
+    thumb: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.38iq2AFFIP_d8Hylw5gCsQHaEK%26pid%3DApi&f=1&ipt=5e48657ff26505c0401e774ecb99d80143f1fee31c20ffd136cdb2152be6bcd3&ipo=images",
+    title: "The other side of sea",
+    watched: false,
+    episodeMin: 24,
+  },
+];
 
 export default function AnimeDetails() {
 
   return (
     <FlatList
       data={list}
-      
-      renderItem={() => <EpisodeCard />}
+      renderItem={({ item, index }) => (
+        <EpisodeCard
+          title={item.title}
+          thumb={item.thumb}
+          episode={index + 1}
+          watched={item.watched}
+          episodeMin={item.episodeMin}
+        />
+      )}
 
       ItemSeparatorComponent={() => <Box h={15} />}
 
@@ -47,7 +88,7 @@ export default function AnimeDetails() {
 
           <HStack m={20} justifyContent="space-between">
             <Select w="$full" defaultValue="Season 01">
-              <SelectTrigger variant="outline" size="lg" >
+              <SelectTrigger variant="underlined" size="lg">
                 <SelectInput placeholder="Select option" />
                 <Icon as={ChevronDownIcon} mr={8} />
               </SelectTrigger>

@@ -3,6 +3,7 @@ import { useWindowDimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { ArrowLeft, Heart, Play, Share } from "lucide-react-native";
 import { Button, ButtonIcon, HStack, Icon, ImageBackground } from "@gluestack-ui/themed";
+import { useCallback } from "react";
 
 interface CoverHeaderProps {
   imageCover: string,
@@ -11,6 +12,14 @@ interface CoverHeaderProps {
 
 export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
   const { width, height } = useWindowDimensions();
+
+  const onShare = useCallback(() => {
+    alert("Compartilhar");
+  }, []);
+
+  const onFavorite = useCallback(() => {
+    alert("Favoritar");
+  }, []);
 
   return (
     <ImageBackground
@@ -38,7 +47,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             <Button
               w={40} h={40}
               rounded="$full"
-              onPress={onPlay}
+              onPress={onShare}
               bgColor="$textDark900"
             >
               <ButtonIcon as={Share} size="md" color="white" />
@@ -47,7 +56,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             <Button
               w={40} h={40}
               rounded="$full"
-              onPress={onPlay}
+              onPress={onFavorite}
               bgColor="$textDark900"
             >
               <ButtonIcon as={Heart} size="xl" color="white" />

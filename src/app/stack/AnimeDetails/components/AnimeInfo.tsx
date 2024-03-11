@@ -1,5 +1,6 @@
 import { Star } from "lucide-react-native";
 import { HStack, VStack, Heading, Icon, Text } from "@gluestack-ui/themed";
+import { Rating } from "./Rating";
 
 interface AnimeInfoProps {
   year?: number,
@@ -22,15 +23,19 @@ export function AnimeInfo({ title, summary, rating, year, categories }: AnimeInf
       )}
 
       {rating && (
-        <HStack mt={8} space="md" alignItems="center">
-          <Text>{rating}</Text>
-          <HStack space="xs">
-            <Icon as={Star} color="$orange400" fill="$orange400" />
-            <Icon as={Star} color="$orange400" fill="$orange400" />
-            <Icon as={Star} color="$orange400" fill="$orange400" />
-            <Icon as={Star} color="$orange400" fill="$orange400" />
-            <Icon as={Star} color="$orange400" />
+        <HStack alignItems="center" justifyContent="space-between">
+          <HStack space="md" alignItems="center">
+            <Text>{rating}</Text>
+            <HStack space="xs">
+              <Icon as={Star} color="$orange400" fill="$orange400" />
+              <Icon as={Star} color="$orange400" fill="$orange400" />
+              <Icon as={Star} color="$orange400" fill="$orange400" />
+              <Icon as={Star} color="$orange400" fill="$orange400" />
+              <Icon as={Star} color="$orange400" />
+            </HStack>
           </HStack>
+
+          <Rating />
         </HStack>
       )}
 
