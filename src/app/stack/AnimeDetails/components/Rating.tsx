@@ -16,7 +16,6 @@ import {
   ActionsheetDragIndicatorWrapper,
 } from "@gluestack-ui/themed";
 
-
 export function Rating() {
   const [rating, setRating] = useState(0);
   const [isOpen, setIsOpen] = useState(false);

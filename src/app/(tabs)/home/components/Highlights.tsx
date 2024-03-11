@@ -28,17 +28,17 @@ export function Highlights({ height, image, title, description }: HighlightsProp
 
         <Text fontSize="$sm">{description}</Text>
 
-        <HStack my={8}>
-          <Button bg="$red500" onPress={() => router.push("/stack/AnimeDetails")}>
+        <HStack my={8} space="md">
+          <Button rounded="$full" bg="$red500" onPress={() => router.push("/stack/AnimeDetails")}>
             <ButtonText>PLAY</ButtonText>
             <ButtonIcon as={Play} ml={8} />
           </Button>
 
-          <Button px={15} bg="$black" mx={10}>
+          <Button rounded="$full" w={40} h={40} bg="$black">
             <ButtonIcon as={Heart} />
           </Button>
 
-          <Button px={15} bg="$black">
+          <Button rounded="$full" w={40} h={40} bg="$black">
             <ButtonIcon as={Share} />
           </Button>
         </HStack>
