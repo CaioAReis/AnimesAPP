@@ -8,6 +8,8 @@ export default function StackApp() {
 
       <Stack.Screen name="AnimeDetails" />
 
+      <Stack.Screen name="SelectProfile" />
+
     </Stack>
   );
 }
