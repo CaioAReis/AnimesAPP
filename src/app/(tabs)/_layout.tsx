@@ -1,6 +1,5 @@
 import { Tabs } from "expo-router";
-import { BlurView } from "expo-blur";
-import { Center, Icon } from "@gluestack-ui/themed";
+import { Center, Icon, useToken } from "@gluestack-ui/themed";
 import { Heart, Home, LucideIcon, Search, UserRound } from "lucide-react-native";
 
 interface TabButtonProps {
@@ -11,38 +10,39 @@ interface TabButtonProps {
 }
 
 const TabButton = ({ color, icon }: TabButtonProps) => (
-  <BlurView intensity={100} style={{ width: "100%", height: "100%" }}>
-    <Center h="$full" w="$full">
-      <Icon as={icon} color={color} />
-    </Center>
-  </BlurView>
+  <Center>
+    <Icon as={icon} color={color} />
+  </Center>
 );
 
 export default function TabsApp() {
+  const tintColor = useToken("colors", "red500");
+  const activeBGColor = useToken("colors", "red200");
 
   return (
     <Tabs
       backBehavior="none"
-      initialRouteName="home/index"
+      initialRouteName="home"
       sceneContainerStyle={{ backgroundColor: "white" }}
       screenOptions={{
-        tabBarHideOnKeyboard: true,
         headerShown: false,
         freezeOnBlur: true,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          elevation: 0,
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-        },
+        tabBarHideOnKeyboard: true,
+        tabBarActiveTintColor: tintColor,
+        tabBarActiveBackgroundColor: activeBGColor,
+        tabBarStyle: { elevation: 0, height: 45 },
+        tabBarLabelStyle: { bottom: 6 },
       }}
     >
-
       <Tabs.Screen
         name="home"
         options={{
+          lazy: true,
           title: "INÍCIO",
-          tabBarIcon: ({ color }) => <TabButton icon={Home} color={color} />,
+          freezeOnBlur: true,
+          // unmountOnBlur: true,
+          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Home} color={color} />,
         }}
       />
 
@@ -50,26 +50,29 @@ export default function TabsApp() {
         name="search"
         options={{
           title: "PESQUISAR",
-          tabBarIcon: ({ color }) => <TabButton icon={Search} color={color} />,
+          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Search} color={color} />,
         }}
       />
 
       <Tabs.Screen
         name="library"
         options={{
+          lazy: true,
           title: "SALVOS",
-          tabBarIcon: ({ color }) => <TabButton icon={Heart} color={color} />,
+          freezeOnBlur: true,
+          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Heart} color={color} />,
         }}
       />
 
       <Tabs.Screen
         name="account"
         options={{
+          lazy: true,
           title: "PERFIL",
-          tabBarIcon: ({ color }) => <TabButton icon={UserRound} color={color} />,
+          freezeOnBlur: true,
+          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={UserRound} color={color} />,
         }}
       />
-
     </Tabs>
   );
 }
