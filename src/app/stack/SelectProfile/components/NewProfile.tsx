@@ -1,6 +1,31 @@
-import { AvatarImage } from "@gluestack-ui/themed";
-import { Avatar, AvatarFallbackText } from "@gluestack-ui/themed";
-import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetItem, ActionsheetItemText, Box, Heading } from "@gluestack-ui/themed";
+import { AlertCircleIcon, SmilePlus } from "lucide-react-native";
+import {
+  Box,
+  Icon,
+  Text,
+  Input,
+  Button,
+  Switch,
+  HStack,
+  Avatar,
+  Heading,
+  ButtonText,
+  InputField,
+  AvatarImage,
+  FormControl,
+  Actionsheet,
+  FormControlError,
+  FormControlLabel,
+  AvatarFallbackText,
+  ActionsheetContent,
+  ActionsheetBackdrop,
+  FormControlErrorText,
+  FormControlLabelText,
+  KeyboardAvoidingView,
+  FormControlErrorIcon,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+} from "@gluestack-ui/themed";
 
 interface NewProfileProps {
   isOpen: boolean,
@@ -8,6 +33,13 @@ interface NewProfileProps {
 }
 
 export function NewProfile({ isOpen, onClose }: NewProfileProps) {
+
+  const onSubmit = () => {
+
+    alert("CREATE A NEW PROFILE");
+    onClose();
+
+  };
 
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose} zIndex={999}>
@@ -17,35 +49,65 @@ export function NewProfile({ isOpen, onClose }: NewProfileProps) {
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
 
-        <Box mt={10}>
-          <Heading>Novo Perfil</Heading>
+        <KeyboardAvoidingView w="$full" behavior="height">
+          <Box px={20} mt={10} w="$full">
+            <Heading>New Profile</Heading>
 
-          <Avatar bgColor="$amber600" size="xl" borderRadius="$full">
-            <AvatarFallbackText>{"CAIO"}</AvatarFallbackText>
-            <AvatarImage
-              alt={`${"CAIO"}'s profile`}
-              source={{ uri: "https://api.dicebear.com/7.x/bottts-neutral/png?seed=CA" }}
-            />
-          </Avatar>
+            <Avatar my={20} alignSelf="center" bgColor="$amber600" size="xl" borderRadius="$full">
+              <AvatarFallbackText>{"CAIO"}</AvatarFallbackText>
+              <AvatarImage
+                alt={`${"CAIO"}'s profile`}
+                source={{ uri: "https://api.dicebear.com/7.x/bottts-neutral/png?seed=C" }}
+              />
+            </Avatar>
 
-        </Box>
+            <FormControl
+              w="$full"
+              size="md"
+              alignSelf="center"
+              isDisabled={false}
+              isInvalid={false}
+              isReadOnly={false}
+              isRequired={false}
+            >
+              <FormControlLabel mb="$1">
+                <FormControlLabelText>Name</FormControlLabelText>
+              </FormControlLabel>
+              <Input size="lg">
+                <InputField placeholder="Full name" />
+              </Input>
 
-        <ActionsheetItem onPress={onClose}>
-          <ActionsheetItemText>Delete</ActionsheetItemText>
-        </ActionsheetItem>
-        <ActionsheetItem onPress={onClose}>
-          <ActionsheetItemText>Share</ActionsheetItemText>
-        </ActionsheetItem>
-        <ActionsheetItem onPress={onClose}>
-          <ActionsheetItemText>Play</ActionsheetItemText>
-        </ActionsheetItem>
-        <ActionsheetItem onPress={onClose}>
-          <ActionsheetItemText>Favourite</ActionsheetItemText>
-        </ActionsheetItem>
-        <ActionsheetItem onPress={onClose}>
-          <ActionsheetItemText>Cancel</ActionsheetItemText>
-        </ActionsheetItem>
+              <FormControlError>
+                <FormControlErrorIcon as={AlertCircleIcon} />
+                <FormControlErrorText>
+                  At least 6 characters are required.
+                </FormControlErrorText>
+              </FormControlError>
+            </FormControl>
 
+            <HStack justifyContent="flex-end" space="md" my={10} alignItems="center">
+              <Text>Is a child?</Text>
+              <Switch
+                size="lg"
+                defaultValue={true}
+                thumbColor="$green400"
+                trackColor={{
+                  true: "$green300",
+                  false: "$backgroundLight200"
+                }}
+              />
+            </HStack>
+
+            <Button rounded="$full" mt={20} bgColor="$red500" onPress={onSubmit}>
+              <ButtonText mx={10}>Create new profile</ButtonText>
+              <Icon as={SmilePlus} size="lg" color="$white" />
+            </Button>
+
+            <Button variant="link" mt={20} onPress={onClose}>
+              <ButtonText mx={20}>Cancel</ButtonText>
+            </Button>
+          </Box>
+        </KeyboardAvoidingView>
       </ActionsheetContent>
     </Actionsheet>
   );

@@ -6,8 +6,8 @@ import { Button, ButtonText, Center, Heading, Icon, Text, VStack } from "@gluest
 import { NewProfile, ProfileCard } from "./components";
 
 export default function SelectProfile() {
-  const [showAction, setShowAction] = useState(false);
   const onToggle = () => setShowAction(!showAction);
+  const [showAction, setShowAction] = useState(false);
 
   return (
     <Center flex={1}>
@@ -34,7 +34,7 @@ export default function SelectProfile() {
         </VStack>
       </VStack>
 
-      <Button onPress={onToggle} my={20} w="80%" bgColor="$red500" borderRadius="$full" size="xl">
+      <Button onPress={onToggle} my={20} w="80%" bgColor="$red500" borderRadius="$full">
         <ButtonText color="white" mx={20}>New Profile</ButtonText>
         <Icon as={UserRoundCog} color="$white" />
       </Button>
