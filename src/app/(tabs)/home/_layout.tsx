@@ -67,13 +67,13 @@ export default function Home() {
 
         <HorizontalList title="Today's Selection" list={fakeList} />
 
-        <HorizontalList title="Coming Soon" list={fakeList} />
+        <HorizontalList title="Top 10 of the week" showPosition list={fakeList} />
 
         <MostInfoList title="For you" list={forYou} />
 
         <HorizontalList title="Recommendeds" list={fakeList} />
 
-        <HorizontalList title="Trendings" list={fakeList} />
+        <HorizontalList title="Coming Soon" list={fakeList} />
 
         <Box h={50} />
 

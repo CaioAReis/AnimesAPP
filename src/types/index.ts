@@ -4,6 +4,7 @@ interface AnimeCardProps {
   description?: string,
   width?: string | number,
   height?: string | number,
+  showPosition?: number | null,
 }
 
 interface CardLargerProps {
@@ -14,6 +15,6 @@ interface CardLargerProps {
 }
 
 export {
-  AnimeCardProps, 
+  AnimeCardProps,
   CardLargerProps,
 };

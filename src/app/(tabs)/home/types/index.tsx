@@ -14,6 +14,7 @@ interface MostInfoListProps {
 
 interface HorizontalListProps {
   title: string,
+  showPosition?: boolean,
   list: AnimeCardProps[],
 }
 
@@ -23,16 +24,16 @@ interface HorizontalListLargerProps {
 }
 
 interface MostInfoCardProps {
-  title: string, 
-  image: string, 
-  categories: string, 
+  title: string,
+  image: string,
+  categories: string,
   description: string,
 }
 
 export {
-  HighlightsProps, 
-  MostInfoCardProps, 
+  HighlightsProps,
+  MostInfoCardProps,
   MostInfoListProps,
-  HorizontalListProps, 
-  HorizontalListLargerProps, 
+  HorizontalListProps,
+  HorizontalListLargerProps,
 };

@@ -1,10 +1,10 @@
 import { FlatList } from "react-native";
 import { Box, Heading } from "@gluestack-ui/themed";
 
+import { AnimeCard } from "./";
 import { HorizontalListProps } from "../app/(tabs)/home/types";
-import { AnimeCard } from ".";
 
-export function HorizontalList({ title, list }: HorizontalListProps) {
+export function HorizontalList({ title, list, showPosition }: HorizontalListProps) {
 
   return (
     <Box>
@@ -17,12 +17,13 @@ export function HorizontalList({ title, list }: HorizontalListProps) {
         ListHeaderComponent={<Box w={20} />}
         ListFooterComponent={<Box w={20} />}
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Box w={10} />}
-        renderItem={({ item }) => (
+        ItemSeparatorComponent={() => <Box w={showPosition ? 20 : 10} />}
+        renderItem={({ item, index }) => (
           <AnimeCard
             title={item.title}
             image={item?.image}
             description={item?.description}
+            showPosition={showPosition ? index + 1 : null}
           />
         )}
       />
