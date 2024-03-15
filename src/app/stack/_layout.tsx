@@ -10,6 +10,8 @@ export default function StackApp() {
 
       <Stack.Screen name="SelectProfile" />
 
+      <Stack.Screen name="SignIn" />
+
     </Stack>
   );
 }
