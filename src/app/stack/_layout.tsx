@@ -12,6 +12,9 @@ export default function StackApp() {
 
       <Stack.Screen name="SignIn" />
 
+      <Stack.Screen name="SignUp" />
+
+
     </Stack>
   );
 }

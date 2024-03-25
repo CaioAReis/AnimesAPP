@@ -1,3 +1,4 @@
+import { Link, router } from "expo-router";
 import { KeyboardAvoidingView } from "react-native";
 import { AlertCircleIcon, ArrowLeft, EyeOff, Lock, LogIn, Mail } from "lucide-react-native";
 import { Box, Button, Heading, Text, ButtonText, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlLabel, FormControlLabelText, HStack, Icon, Input, InputField, InputIcon, InputSlot, VStack, ScrollView } from "@gluestack-ui/themed";
@@ -6,7 +7,7 @@ export default function SignIn() {
 
   return (
     <ScrollView px={20}>
-      <Button onPress={() => alert("VOLTAR")} my={40} variant="link" size="xl" w="$10" rounded="$full">
+      <Button onPress={() => router.back()} my={40} variant="link" size="xl" w="$10" rounded="$full">
         <Icon as={ArrowLeft} size={"40" as "xl"} />
       </Button>
 
@@ -82,9 +83,11 @@ export default function SignIn() {
 
             <HStack>
               <Text>First time here?</Text>
-              <Button variant="link" h="auto">
-                <ButtonText color="$red500"> Sign up.</ButtonText>
-              </Button>
+              <Link href="stack/SignUp" asChild>
+                <Button variant="link" h="auto">
+                  <ButtonText color="$red500"> Sign up</ButtonText>
+                </Button>
+              </Link>
             </HStack>
           </VStack>
         </VStack>
