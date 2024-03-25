@@ -1,8 +1,7 @@
-import { KeyboardAvoidingView } from "react-native";
-import { AlertCircleIcon, ArrowLeft, EyeOff, Lock, LogIn, Mail } from "lucide-react-native";
-import { Box, Button, Heading, Text, ButtonText, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlLabel, FormControlLabelText, HStack, Icon, Input, InputField, InputIcon, InputSlot, VStack, ScrollView } from "@gluestack-ui/themed";
+import { AlertCircleIcon, ArrowLeft, EyeOff, LogIn, Mail } from "lucide-react-native";
+import { Box, Button, ButtonText, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlLabel, FormControlLabelText, HStack, Heading, Icon, Input, InputField, InputIcon, InputSlot, KeyboardAvoidingView, ScrollView, Text, VStack } from "@gluestack-ui/themed";
 
-export default function SignIn() {
+export default function SignUp() {
 
   return (
     <ScrollView px={20}>
@@ -11,8 +10,8 @@ export default function SignIn() {
       </Button>
 
       <Box my={20}>
-        <Heading fontSize="$3xl" lineHeight="$3xl">Hello</Heading>
-        <Heading fontSize="$3xl" lineHeight="$3xl">Log in to continue</Heading>
+        <Heading fontSize="$3xl" lineHeight="$3xl">Create</Heading>
+        <Heading fontSize="$3xl" lineHeight="$3xl">New Account</Heading>
       </Box>
 
       <KeyboardAvoidingView behavior="padding">
