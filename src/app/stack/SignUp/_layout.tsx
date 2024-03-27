@@ -12,7 +12,7 @@ export default function SignUp() {
 
       <Box my={20}>
         <Heading fontSize="$3xl" lineHeight="$3xl">Create</Heading>
-        <Heading fontSize="$3xl" lineHeight="$3xl">New Account</Heading>
+        <Heading color="$orange400" fontSize="$3xl" lineHeight="$3xl">New Account</Heading>
       </Box>
 
       <KeyboardAvoidingView behavior="padding">
@@ -102,7 +102,7 @@ export default function SignUp() {
           </FormControl>
 
           <VStack space="md" alignItems="center" mt={20}>
-            <Button elevation={4} mt={20} w="80%" bgColor="$red500" borderRadius="$full">
+            <Button elevation={4} mt={20} w="80%" bgColor="$orange400" borderRadius="$full">
               <ButtonText color="white" mx={20}>Create Account</ButtonText>
               <Icon as={UserRoundPlus} color="$white" />
             </Button>
@@ -111,7 +111,7 @@ export default function SignUp() {
               <Text>Already have an account?</Text>
               <Link href="stack/SignIn" asChild>
                 <Button variant="link" h="auto">
-                  <ButtonText color="$red500"> Log in</ButtonText>
+                  <ButtonText color="$orange400"> Log in</ButtonText>
                 </Button>
               </Link>
             </HStack>
