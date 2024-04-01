@@ -1,7 +1,7 @@
 import { useWindowDimensions } from "react-native";
 import { Box, Heading, Image, Progress, ProgressFilledTrack, Text, VStack } from "@gluestack-ui/themed";
 
-import { CardLargerProps } from "../types";
+import { CardLargerProps } from "../config/types";
 
 export function CardLarger({ image, title, description, duration }: CardLargerProps) {
   const { width } = useWindowDimensions();
@@ -27,7 +27,7 @@ export function CardLarger({ image, title, description, duration }: CardLargerPr
 
         {duration && (
           <Progress w="$full" size="xs" value={duration}>
-            <ProgressFilledTrack bgColor="$red500" />
+            <ProgressFilledTrack bgColor="$orange400" />
           </Progress>
         )}
       </Box>

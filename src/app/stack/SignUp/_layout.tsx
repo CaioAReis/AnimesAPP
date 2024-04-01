@@ -4,6 +4,10 @@ import { Box, Button, ButtonText, FormControl, FormControlError, FormControlErro
 
 export default function SignUp() {
 
+  const onSubmit = () => {
+    router.push("stack/SelectProfile");
+  };
+
   return (
     <ScrollView px={20}>
       <Button onPress={() => router.back()} my={40} variant="link" size="xl" w="$10" rounded="$full">
@@ -102,7 +106,7 @@ export default function SignUp() {
           </FormControl>
 
           <VStack space="md" alignItems="center" mt={20}>
-            <Button elevation={4} mt={20} w="80%" bgColor="$orange400" borderRadius="$full">
+            <Button onPress={onSubmit} elevation={4} mt={20} w="80%" bgColor="$orange400" borderRadius="$full">
               <ButtonText color="white" mx={20}>Create Account</ButtonText>
               <Icon as={UserRoundPlus} color="$white" />
             </Button>

@@ -1,20 +1,16 @@
-import { useState } from "react";
-import { Box, HStack, Heading } from "@gluestack-ui/themed";
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions } from "react-native";
+import { useRef } from "react";
+import { Box, HStack, Heading, useToken } from "@gluestack-ui/themed";
+import { Animated, FlatList, useWindowDimensions } from "react-native";
 
 import { MostInfoListProps } from "../types";
 import { MostInfoCard } from "./MostInfoCard";
 
 export function MostInfoList({ title, list }: MostInfoListProps) {
   const { width } = useWindowDimensions();
-  const [currentStep, setCurrentStep] = useState(0);
+  const translate = useRef(new Animated.Value(0)).current;
 
-  const onChangeStep = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    setCurrentStep(parseInt(e.nativeEvent.contentOffset.x / (width - 40) + ""));
-  };
-
-  const stepWidth = (i: number) => currentStep === i ? 20 : 10;
-  const stepColor = (i: number) => currentStep === i ? "$red500" : "$black";
+  const x = useToken("colors", "backgroundLight300");
+  const y = useToken("colors", "orange400");
 
   return (
     <Box>
@@ -27,8 +23,8 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
           horizontal
           data={list}
           pagingEnabled
-          onMomentumScrollEnd={onChangeStep}
           showsHorizontalScrollIndicator={false}
+          onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: translate } } }], { useNativeDriver: false })}
           renderItem={({ item }) => (
             <MostInfoCard
               title={item?.title}
@@ -40,15 +36,32 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
         />
 
         <HStack alignItems="center" justifyContent="center" space="sm">
-          {list?.map((item, i) => (
-            <Box
-              h={6}
-              key={i}
-              rounded="$full"
-              w={stepWidth(i)}
-              bgColor={stepColor(i)}
-            />
-          ))}
+          {list?.map((item, i) => {
+
+            const widthSeg = translate.interpolate({
+              inputRange: [width * (i - 1), width * i, width * (i + 1)],
+              outputRange: [6, 20, 6],
+              extrapolate: "clamp",
+            });
+
+            const colorSeg = translate.interpolate({
+              inputRange: [width * (i - 1), width * i, width * (i + 1)],
+              outputRange: [x, y, x],
+              extrapolate: "clamp",
+            });
+
+            return (
+              <Animated.View
+                key={i}
+                style={{
+                  height: 6,
+                  width: widthSeg,
+                  borderRadius: 3,
+                  backgroundColor: colorSeg,
+                }}
+              />
+            );
+          })}
         </HStack>
       </Box>
     </Box>

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { SvgUri } from "react-native-svg";
 import { UserRoundCog } from "lucide-react-native";
-import { Button, ButtonText, Center, Heading, Icon, Text, VStack } from "@gluestack-ui/themed";
+import { Button, ButtonText, Center, Heading, Icon, Image, Text, VStack } from "@gluestack-ui/themed";
 
 import { NewProfile, ProfileCard } from "./components";
 
@@ -13,10 +12,12 @@ export default function SelectProfile() {
     <Center flex={1}>
       <VStack space="lg" w="$full" flex={1}>
         <Center mt={40}>
-          <SvgUri
-            width={150}
+          <Image
+            width={200}
             height={80}
-            uri="https://img.logoipsum.com/289.svg"
+            alt="Logo app"
+            resizeMode="contain"
+            source={require("../../../../assets/images/logo_dark.png")}
           />
         </Center>
 
@@ -34,7 +35,7 @@ export default function SelectProfile() {
         </VStack>
       </VStack>
 
-      <Button onPress={onToggle} my={20} w="80%" bgColor="$red500" borderRadius="$full">
+      <Button onPress={onToggle} my={20} w="80%" bgColor="$orange400" borderRadius="$full">
         <ButtonText color="white" mx={20}>New Profile</ButtonText>
         <Icon as={UserRoundCog} color="$white" />
       </Button>

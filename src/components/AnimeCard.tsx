@@ -1,11 +1,11 @@
 import { Box, Heading, Image, Text, useToken } from "@gluestack-ui/themed";
 import { Text as TextSVG } from "react-native-svg";
 
-import { AnimeCardProps } from "../types";
 import { Svg } from "react-native-svg";
+import { AnimeCardProps } from "../config/types";
 
 export function AnimeCard({ image, title, description, showPosition, height, width }: AnimeCardProps) {
-  const primaryColor = useToken("colors", "red600");
+  const primaryColor = useToken("colors", "orange500");
 
   return (
     <Box w={width as "$32" ?? "$32"} ml={showPosition && 20}>

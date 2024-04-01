@@ -98,7 +98,7 @@ export function NewProfile({ isOpen, onClose }: NewProfileProps) {
               />
             </HStack>
 
-            <Button rounded="$full" mt={20} bgColor="$red500" onPress={onSubmit}>
+            <Button rounded="$full" mt={20} bgColor="$orange400" onPress={onSubmit}>
               <ButtonText mx={10}>Create new profile</ButtonText>
               <Icon as={SmilePlus} size="lg" color="$white" />
             </Button>

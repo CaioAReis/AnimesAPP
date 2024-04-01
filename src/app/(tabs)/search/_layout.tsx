@@ -4,8 +4,8 @@ import { Box, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@
 import { BookHeart, Castle, Flower, Ghost, Laugh, Milestone, Palmtree, School2, Search as SearchICON, Speech, Swords } from "lucide-react-native";
 
 import { CategoryCard } from "./components";
-import { AnimeCardProps } from "../../../types";
 import { AnimeCard } from "../../../components";
+import { AnimeCardProps } from "../../../config/types";
 
 const categories = [
   { title: "Aventura", icon: Palmtree, colors: ["$red500", "$red200", "$red400"] },

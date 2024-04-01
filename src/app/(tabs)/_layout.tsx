@@ -16,8 +16,8 @@ const TabButton = ({ color, icon }: TabButtonProps) => (
 );
 
 export default function TabsApp() {
-  const tintColor = useToken("colors", "red500");
-  const activeBGColor = useToken("colors", "red200");
+  const tintColor = useToken("colors", "orange400");
+  const activeBGColor = useToken("colors", "orange100");
 
   return (
     <Tabs
