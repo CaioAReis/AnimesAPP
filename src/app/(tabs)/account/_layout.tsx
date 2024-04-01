@@ -59,7 +59,7 @@ export default function Account() {
           </HStack>
 
           <HStack alignItems="center">
-            <Avatar bgColor="$red500" size="xl" borderRadius="$full">
+            <Avatar bgColor="$orange400" size="xl" borderRadius="$full">
               <AvatarFallbackText>Caio AReis</AvatarFallbackText>
               <AvatarImage alt="User" source={{ uri: "http://source.unsplash.com/random/200x200?man" }} />
             </Avatar>

@@ -68,7 +68,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             rounded="$full"
             borderWidth={4}
             onPress={onPlay}
-            bgColor="$red500"
+            bgColor="$orange400"
             borderColor="white"
           >
             <Icon as={Play} size="xl" color="white" />

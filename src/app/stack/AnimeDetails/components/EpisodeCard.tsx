@@ -26,9 +26,9 @@ export function EpisodeCard({ thumb, title, episode, episodeMin, watched }: Epis
           </Text>
 
           <HStack alignItems="center" justifyContent="space-between">
-            <Text fontSize="$xs" lineHeight="$sm" color="$red500">{episodeMin} min</Text>
+            <Text fontSize="$xs" lineHeight="$sm" color="$orange500">{episodeMin} min</Text>
 
-            {watched && <Icon as={Eye} color="$red500" fill="$red100" size="lg" />}
+            {watched && <Icon as={Eye} color="$orange500" fill="$red100" size="lg" />}
           </HStack>
         </VStack>
       </Box>
