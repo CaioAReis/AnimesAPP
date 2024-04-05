@@ -1,22 +1,29 @@
-import { LinearGradient as ExpoLinearGradient } from "expo-linear-gradient";
-import { Heading, Icon, LinearGradient, Pressable } from "@gluestack-ui/themed";
+import { useWindowDimensions } from "react-native";
+import { Heading, Box, Icon, Pressable } from "@gluestack-ui/themed";
 
 import { CategoryCardProps } from "../types";
 
-export function CategoryCard({ title, colors, IconCard, onPress }: CategoryCardProps) {
+export function CategoryCard({ title, IconCard, onPress }: CategoryCardProps) {
+  const { width } = useWindowDimensions();
 
   return (
-    <Pressable onPress={onPress} w="46%" rounded="$lg" overflow="hidden">
-      <LinearGradient
-        p={8}
-        alignItems="flex-end"
-        as={ExpoLinearGradient}
-        start={[0, 0]} end={[1, 1]}
-        colors={colors ?? ["$backgroundDark500", "transparent"]}
+    <Box alignItems="center" justifyContent="center">
+      <Pressable
+        w={width / 4.5}
+        h={width / 4.5}
+        rounded="$full"
+        borderWidth={1}
+        onPress={onPress}
+        overflow="hidden"
+        alignItems="center"
+        bgColor="$orange100"
+        justifyContent="center"
+        borderColor="$orange400"
       >
-        <Icon as={IconCard} size={"50" as "lg"} />
-        <Heading fontSize="$lg" w="$full">{title}</Heading>
-      </LinearGradient>
-    </Pressable>
+        <Icon color="$orange400" as={IconCard} size={"40" as "lg"} />
+      </Pressable>
+
+      <Heading color="$orange400" size="sm" mt={6}>{title}</Heading>
+    </Box>
   );
 }

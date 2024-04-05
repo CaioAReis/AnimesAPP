@@ -35,7 +35,7 @@ export default function Library() {
       ListFooterComponent={<Box h={60} />}
       columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
       ListHeaderComponent={(
-        <HStack alignItems="center" mx={20} my={10}>
+        <HStack alignItems="center" mx={20} my={25}>
           <Icon as={Heart} size="xl" mr={10} />
           <Heading>Favorites</Heading>
         </HStack>

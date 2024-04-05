@@ -1,23 +1,25 @@
 import { useState } from "react";
 import { FlatList } from "react-native";
 import { Box, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
-import { BookHeart, Castle, Flower, Ghost, Laugh, Milestone, Palmtree, School2, Search as SearchICON, Speech, Swords } from "lucide-react-native";
+import { Axe, BookHeart, Castle, Drama, Footprints, Landmark, Laugh, Palmtree, Rocket, Search as SearchICON, Sofa, Swords, Trophy } from "lucide-react-native";
 
 import { CategoryCard } from "./components";
 import { AnimeCard } from "../../../components";
 import { AnimeCardProps } from "../../../config/types";
 
 const categories = [
-  { title: "Aventura", icon: Palmtree, colors: ["$red500", "$red200", "$red400"] },
-  { title: "Ação", icon: Swords, colors: ["$purple500", "$purple200", "$purple400"] },
-  { title: "Comédia", icon: Laugh, colors: ["$blue500", "$blue200", "$blue400"] },
-  { title: "Dublado", icon: Speech, colors: ["$yellow500", "$yellow200", "$yellow400"] },
-  { title: "Drama", icon: Flower, colors: ["$pink500", "$pink200", "$pink400"] },
-  { title: "Escolar", icon: School2, colors: ["$green500", "$green200", "$green400"] },
-  { title: "Fantasia", icon: Castle, colors: ["$cyan500", "$cyan200", "$cyan400"] },
-  { title: "Romance", icon: BookHeart, colors: ["$amber500", "$amber200", "$amber400"] },
-  { title: "Sobrenatural", icon: Ghost, colors: ["$fuchsia500", "$fuchsia200", "$fuchsia400"] },
-  { title: "Shounen", icon: Milestone, colors: ["$indigo500", "$indigo200", "$indigo400"] },
+  { title: "Adventure", icon: Palmtree },
+  { title: "Action", icon: Swords },
+  { title: "Comedy", icon: Laugh },
+  { title: "Fantasy", icon: Castle },
+  { title: "Drama", icon: Drama },
+  { title: "Family", icon: Sofa },
+  { title: "Mystery", icon: Footprints },
+  { title: "History", icon: Landmark },
+  { title: "Romance", icon: BookHeart },
+  { title: "Sport", icon: Trophy },
+  { title: "Sci-fi", icon: Rocket },
+  { title: "Thriller", icon: Axe },
 ];
 
 const fakeList = [
@@ -68,12 +70,11 @@ export default function Search() {
       ) : (
         <Box>
           <Heading mx={20} fontSize="$2xl">Categorias</Heading>
-          <HStack mt={20} px={20} space="lg" justifyContent="center" flexWrap="wrap">
+          <HStack mt={20} px={20} space="4xl" justifyContent="center" flexWrap="wrap">
             {categories?.map((item, i) => (
               <CategoryCard
                 key={i}
                 title={item?.title}
-                colors={item?.colors}
                 IconCard={item?.icon}
                 onPress={() => setList(fakeList)}
               />
