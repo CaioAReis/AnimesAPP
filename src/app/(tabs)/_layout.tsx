@@ -9,9 +9,13 @@ interface TabButtonProps {
   focused?: boolean,
 }
 
-const TabButton = ({ color, icon }: TabButtonProps) => (
+const TabButton = ({ color, icon, focused, }: TabButtonProps) => (
   <Center>
-    <Icon as={icon} color={color} />
+    <Icon
+      as={icon}
+      color={focused ? "$orange600" : color}
+      fill={focused ? "$orange300" : "transparent"}
+    />
   </Center>
 );
 
@@ -29,10 +33,10 @@ export default function TabsApp() {
         freezeOnBlur: true,
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
-        tabBarActiveTintColor: tintColor,
-        tabBarActiveBackgroundColor: activeBGColor,
-        tabBarStyle: { elevation: 0, height: 45 },
         tabBarLabelStyle: { bottom: 6 },
+        tabBarActiveTintColor: tintColor,
+        tabBarStyle: { elevation: 0, height: 45 },
+        tabBarActiveBackgroundColor: activeBGColor,
       }}
     >
       <Tabs.Screen
@@ -41,7 +45,6 @@ export default function TabsApp() {
           lazy: true,
           title: "INÍCIO",
           freezeOnBlur: true,
-          // unmountOnBlur: true,
           tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Home} color={color} />,
         }}
       />
