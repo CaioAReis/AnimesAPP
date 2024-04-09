@@ -1,9 +1,10 @@
 import { Moon, Settings } from "lucide-react-native";
-import { Divider, HStack, Heading, ScrollView } from "@gluestack-ui/themed";
+import { Divider, HStack, Heading, Image, ScrollView } from "@gluestack-ui/themed";
 import { Avatar, AvatarFallbackText, AvatarImage, Box, Button, ButtonIcon, Text, VStack } from "@gluestack-ui/themed";
 
-import { HorizontalList } from "../../../components";
+import { Notifications } from "./components";
 import { MostInfoList } from "../home/components";
+import { HorizontalList } from "../../../components";
 
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },
@@ -48,14 +49,25 @@ export default function Account() {
     <Box flex={1}>
       <ScrollView>
         <VStack px={20} py={10}>
-          <HStack alignSelf="flex-end" space="md">
-            <Button w="$10" rounded="$full" bgColor="transparent">
-              <ButtonIcon as={Moon} size="xl" color="$backgroundDark800" />
-            </Button>
+          <HStack my={20} alignItems="center" justifyContent="space-between">
+            <Image
+              alt="Logo app"
+              w="40%" h="$10"
+              resizeMode="contain"
+              source={require("../../../../assets/images/logo_dark.png")}
+            />
 
-            <Button w="$10" rounded="$full" bgColor="transparent">
-              <ButtonIcon as={Settings} size="xl" color="$backgroundDark800" />
-            </Button>
+            <HStack alignSelf="flex-end" space="md">
+              <Button w="$10" rounded="$full" bgColor="transparent">
+                <ButtonIcon as={Moon} size="xl" color="$backgroundDark800" />
+              </Button>
+
+              <Notifications />
+
+              <Button w="$10" rounded="$full" bgColor="transparent">
+                <ButtonIcon as={Settings} size="xl" color="$backgroundDark800" />
+              </Button>
+            </HStack>
           </HStack>
 
           <HStack alignItems="center">
