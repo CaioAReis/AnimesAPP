@@ -1,8 +1,7 @@
-import { Moon, Settings } from "lucide-react-native";
 import { Divider, HStack, Heading, Image, ScrollView } from "@gluestack-ui/themed";
-import { Avatar, AvatarFallbackText, AvatarImage, Box, Button, ButtonIcon, Text, VStack } from "@gluestack-ui/themed";
+import { Avatar, AvatarFallbackText, AvatarImage, Box, Text, VStack } from "@gluestack-ui/themed";
 
-import { Notifications } from "./components";
+import { Notifications, Settings, ThemeButton } from "./components";
 import { MostInfoList } from "../home/components";
 import { HorizontalList } from "../../../components";
 
@@ -58,15 +57,12 @@ export default function Account() {
             />
 
             <HStack alignSelf="flex-end" space="md">
-              <Button w="$10" rounded="$full" bgColor="transparent">
-                <ButtonIcon as={Moon} size="xl" color="$backgroundDark800" />
-              </Button>
+              <ThemeButton />
 
               <Notifications />
 
-              <Button w="$10" rounded="$full" bgColor="transparent">
-                <ButtonIcon as={Settings} size="xl" color="$backgroundDark800" />
-              </Button>
+              <Settings />
+
             </HStack>
           </HStack>
 
@@ -78,6 +74,7 @@ export default function Account() {
 
             <VStack ml={10} flex={1}>
               <Heading>Caio AReis</Heading>
+              <Text color="$textDark500" mb={4} fontSize="$sm">Caio@mail.com</Text>
               <Text fontSize="$sm" lineHeight="$sm">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               </Text>

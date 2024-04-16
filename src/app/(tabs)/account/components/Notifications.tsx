@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Bell } from "lucide-react-native";
 import {
   Button,
@@ -24,8 +24,8 @@ const notifications = [
 export function Notifications() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpenNotifications = () => setIsOpen(true);
-  const handleCloseNotifications = () => setIsOpen(false);
+  const handleOpenNotifications = useCallback(() => setIsOpen(true), []);
+  const handleCloseNotifications = useCallback(() => setIsOpen(false), []);
 
   return (
     <>
