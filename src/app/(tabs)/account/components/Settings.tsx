@@ -3,12 +3,27 @@ import { Info, LogOut, Settings as SettingsIcon, User2, UserX2 } from "lucide-re
 import { Actionsheet, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack } from "@gluestack-ui/themed";
 
 import { MenuItem } from "./MenuItem";
+import { Dialog } from "../../../../components";
+import { ButtonText } from "@gluestack-ui/themed";
 
 export function Settings() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isOpenLogout, setIsOpenLogout] = useState(false);
+  const [isOpenDeleteProfile, setIsOpenDeleteProfile] = useState(false);
+
   const handleOpen = useCallback(() => setIsOpen(true), []);
   const handleClose = useCallback(() => setIsOpen(false), []);
+
+  const handleLogOut = useCallback(() => {
+    setIsOpenLogout(false);
+    alert("Sair do app");
+  }, []);
+
+  const handleDeleteProfile = useCallback(() => {
+    setIsOpenDeleteProfile(false);
+    alert("Deletar Perfil do usuário");
+  }, []);
 
   return (
     <>
@@ -49,6 +64,7 @@ export function Settings() {
                 description="Will delete this account's profile"
                 onPress={() => {
                   handleClose();
+                  setIsOpenDeleteProfile(true);
                 }}
               />
 
@@ -58,6 +74,7 @@ export function Settings() {
                 color="$red400"
                 onPress={() => {
                   handleClose();
+                  setIsOpenLogout(true);
                 }}
               />
 
@@ -65,6 +82,46 @@ export function Settings() {
           </ActionsheetScrollView>
         </ActionsheetContent>
       </Actionsheet>
+
+      <Dialog
+        isOpen={isOpenLogout}
+        onClose={() => setIsOpenLogout(false)}
+
+        title="Are you leaving?"
+        description="Are you sure want to log out?"
+
+        Button={
+          <Button
+            size="sm"
+            bg="$error400"
+            rounded="$full"
+            action="negative"
+            onPress={handleLogOut}
+          >
+            <ButtonText>Yes</ButtonText>
+          </Button>
+        }
+      />
+
+      <Dialog
+        isOpen={isOpenDeleteProfile}
+        onClose={() => setIsOpenDeleteProfile(false)}
+
+        title="Delete profile?"
+        description="Are you sure you want to delete your profile?"
+
+        Button={
+          <Button
+            size="sm"
+            bg="$error400"
+            rounded="$full"
+            action="negative"
+            onPress={handleDeleteProfile}
+          >
+            <ButtonText>Yes</ButtonText>
+          </Button>
+        }
+      />
     </>
   );
 }
