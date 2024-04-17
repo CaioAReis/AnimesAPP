@@ -41,7 +41,7 @@ export default function Library() {
         </HStack>
       )}
       ListEmptyComponent={(
-        <Center flex={1}>
+        <Center flex={1} mt="40%">
           <VStack alignItems="center" space="lg">
             <Icon as={Heart} size={"40" as "xl"} />
             <Heading>Nothing here</Heading>
