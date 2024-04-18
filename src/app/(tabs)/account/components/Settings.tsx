@@ -1,14 +1,16 @@
 import { useCallback, useState } from "react";
 import { Info, LogOut, Settings as SettingsIcon, User2, UserX2 } from "lucide-react-native";
-import { Actionsheet, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack } from "@gluestack-ui/themed";
+import { Actionsheet, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack, Modal, ModalBackdrop, ModalContent, ModalHeader, Heading, ModalCloseButton, Icon, CloseIcon, ModalBody, Text, ModalFooter } from "@gluestack-ui/themed";
 
 import { MenuItem } from "./MenuItem";
 import { Dialog } from "../../../../components";
 import { ButtonText } from "@gluestack-ui/themed";
+import { Image } from "@gluestack-ui/themed";
 
 export function Settings() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isOpenAbout, setIsOpenAbout] = useState(false);
   const [isOpenLogout, setIsOpenLogout] = useState(false);
   const [isOpenDeleteProfile, setIsOpenDeleteProfile] = useState(false);
 
@@ -55,6 +57,7 @@ export function Settings() {
                 title="About the APP"
                 onPress={() => {
                   handleClose();
+                  setIsOpenAbout(true);
                 }}
               />
 
@@ -122,6 +125,52 @@ export function Settings() {
           </Button>
         }
       />
+
+      <Modal
+        isOpen={isOpenAbout}
+        onClose={() => setIsOpenAbout(false)}
+      // finalFocusRef={ref}
+      >
+        <ModalBackdrop />
+        <ModalContent>
+          <ModalHeader>
+            <Heading size="lg">About</Heading>
+            <ModalCloseButton>
+              <Icon as={CloseIcon} />
+            </ModalCloseButton>
+          </ModalHeader>
+          <ModalBody>
+            <Image
+              alt="Logo app"
+              w={200} h={100}
+              alignSelf="center"
+              resizeMode="contain"
+              source={require("../../../../../assets/images/logo_dark.png")}
+            />
+
+            <Text>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,
+              when an unknown printer took a galley of type and scrambled it to make a type
+              specimen book. It has survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged.
+            </Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              mr="$3"
+              size="sm"
+              borderWidth={0}
+              variant="outline"
+              action="negative"
+              onPress={() => setIsOpenAbout(false)}
+            >
+              <ButtonText>Close</ButtonText>
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
