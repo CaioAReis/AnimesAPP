@@ -6,6 +6,7 @@ import { MenuItem } from "./MenuItem";
 import { Dialog } from "../../../../components";
 import { ButtonText } from "@gluestack-ui/themed";
 import { Image } from "@gluestack-ui/themed";
+import { router } from "expo-router";
 
 export function Settings() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +50,7 @@ export function Settings() {
                 description="Customize your account"
                 onPress={() => {
                   handleClose();
+                  router.push("stack/EditProfile");
                 }}
               />
 
