@@ -57,8 +57,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
-                  fill={rating >= 1 ? "$orange400" : "transparent"}
-                  color={rating >= 1 ? "$orange400" : "$backgroundLight400"}
+                  fill={rating >= 1 ? "$primary400" : "transparent"}
+                  color={rating >= 1 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -66,8 +66,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
-                  fill={rating >= 2 ? "$orange400" : "transparent"}
-                  color={rating >= 2 ? "$orange400" : "$backgroundLight400"}
+                  fill={rating >= 2 ? "$primary400" : "transparent"}
+                  color={rating >= 2 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -75,8 +75,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
-                  fill={rating >= 3 ? "$orange400" : "transparent"}
-                  color={rating >= 3 ? "$orange400" : "$backgroundLight400"}
+                  fill={rating >= 3 ? "$primary400" : "transparent"}
+                  color={rating >= 3 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -84,8 +84,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
-                  fill={rating >= 4 ? "$orange400" : "transparent"}
-                  color={rating >= 4 ? "$orange400" : "$backgroundLight400"}
+                  fill={rating >= 4 ? "$primary400" : "transparent"}
+                  color={rating >= 4 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -93,8 +93,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
-                  fill={rating === 5 ? "$orange400" : "transparent"}
-                  color={rating === 5 ? "$orange400" : "$backgroundLight400"}
+                  fill={rating === 5 ? "$primary400" : "transparent"}
+                  color={rating === 5 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
             </HStack>

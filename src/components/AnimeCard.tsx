@@ -5,7 +5,7 @@ import { Svg } from "react-native-svg";
 import { AnimeCardProps } from "../config/types";
 
 export function AnimeCard({ image, title, description, showPosition, height, width }: AnimeCardProps) {
-  const primaryColor = useToken("colors", "orange500");
+  const primaryColor = useToken("colors", "primary500");
 
   return (
     <Box w={width as "$32" ?? "$32"} ml={showPosition && 20}>

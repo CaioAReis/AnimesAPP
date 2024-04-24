@@ -27,11 +27,11 @@ export function MostInfoCard({ title, image, categories, description }: MostInfo
         </Text>
 
         <HStack space="sm" position="absolute" top="42%" right={20}>
-          <Button rounded="$full" w={50} h={50} bg="$orange400">
+          <Button rounded="$full" w={50} h={50} bg="$primary400">
             <ButtonIcon as={Play} size="xl" />
           </Button>
 
-          <Button rounded="$full" w={50} h={50} bg="$orange400">
+          <Button rounded="$full" w={50} h={50} bg="$primary400">
             <ButtonIcon as={Heart} size="xl" />
           </Button>
         </HStack>

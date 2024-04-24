@@ -17,7 +17,7 @@ export default function SignIn() {
 
       <Box my={20}>
         <Heading fontSize="$3xl" lineHeight="$3xl">Hello</Heading>
-        <Heading color="$orange400" fontSize="$3xl" lineHeight="$3xl">Log in to continue</Heading>
+        <Heading color="$primary400" fontSize="$3xl" lineHeight="$3xl">Log in to continue</Heading>
       </Box>
 
       <KeyboardAvoidingView behavior="padding">
@@ -80,7 +80,7 @@ export default function SignIn() {
           </FormControl>
 
           <VStack space="md" alignItems="center" mt={20}>
-            <Button onPress={onSubmit} elevation={4} mt={20} w="80%" bgColor="$orange400" borderRadius="$full">
+            <Button onPress={onSubmit} elevation={4} mt={20} w="80%" bgColor="$primary400" borderRadius="$full">
               <ButtonText color="white" mx={20}>Log in</ButtonText>
               <Icon as={LogIn} color="$white" />
             </Button>
@@ -89,7 +89,7 @@ export default function SignIn() {
               <Text>First time here?</Text>
               <Link href="stack/SignUp" asChild>
                 <Button variant="link" h="auto">
-                  <ButtonText color="$orange400"> Sign up</ButtonText>
+                  <ButtonText color="$primary400"> Sign up</ButtonText>
                 </Button>
               </Link>
             </HStack>

@@ -27,11 +27,11 @@ export function AnimeInfo({ title, summary, rating, year, categories }: AnimeInf
           <HStack space="md" alignItems="center">
             <Text>{rating}</Text>
             <HStack space="xs">
-              <Icon as={Star} color="$orange400" fill="$orange400" />
-              <Icon as={Star} color="$orange400" fill="$orange400" />
-              <Icon as={Star} color="$orange400" fill="$orange400" />
-              <Icon as={Star} color="$orange400" fill="$orange400" />
-              <Icon as={Star} color="$orange400" />
+              <Icon as={Star} color="$primary400" fill="$primary400" />
+              <Icon as={Star} color="$primary400" fill="$primary400" />
+              <Icon as={Star} color="$primary400" fill="$primary400" />
+              <Icon as={Star} color="$primary400" fill="$primary400" />
+              <Icon as={Star} color="$primary400" />
             </HStack>
           </HStack>
 

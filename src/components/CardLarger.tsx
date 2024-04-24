@@ -27,7 +27,7 @@ export function CardLarger({ image, title, description, duration }: CardLargerPr
 
         {duration && (
           <Progress w="$full" size="xs" value={duration}>
-            <ProgressFilledTrack bgColor="$orange400" />
+            <ProgressFilledTrack bgColor="$primary400" />
           </Progress>
         )}
       </Box>

@@ -13,15 +13,15 @@ const TabButton = ({ color, icon, focused, }: TabButtonProps) => (
   <Center>
     <Icon
       as={icon}
-      color={focused ? "$orange600" : color}
-      fill={focused ? "$orange300" : "transparent"}
+      color={focused ? "$primary600" : color}
+      fill={focused ? "$primary300" : "transparent"}
     />
   </Center>
 );
 
 export default function TabsApp() {
-  const tintColor = useToken("colors", "orange400");
-  const activeBGColor = useToken("colors", "orange100");
+  const tintColor = useToken("colors", "primary400");
+  const activeBGColor = useToken("colors", "primary100");
 
   return (
     <Tabs

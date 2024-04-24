@@ -1,8 +1,8 @@
+import { Link } from "expo-router";
 import { useWindowDimensions } from "react-native";
 import { LogIn, UserRoundPlus } from "lucide-react-native";
 import { Button, ButtonText, Icon } from "@gluestack-ui/themed";
 import { Box, Divider, Image, VStack } from "@gluestack-ui/themed";
-import { Link } from "expo-router";
 
 export default function Start() {
   const { height } = useWindowDimensions();
@@ -88,16 +88,16 @@ export default function Start() {
 
           <VStack w="$full" space="2xl">
             <Link href="stack/SignIn" asChild>
-              <Button elevation={4} bgColor="$orange400" borderRadius="$full">
+              <Button elevation={4} bgColor="$primary400" borderRadius="$full">
                 <ButtonText color="$textDark900" mx={20}>Sign In</ButtonText>
                 <Icon as={LogIn} color="$textDark900" />
               </Button>
             </Link>
 
             <Link href="stack/SignUp" asChild>
-              <Button variant="outline" borderColor="$orange400" elevation={4} borderRadius="$full">
-                <ButtonText color="$orange400" mx={20}>Sign Up</ButtonText>
-                <Icon as={UserRoundPlus} color="$orange400" />
+              <Button variant="outline" borderColor="$primary400" elevation={4} borderRadius="$full">
+                <ButtonText color="$primary400" mx={20}>Sign Up</ButtonText>
+                <Icon as={UserRoundPlus} color="$primary400" />
               </Button>
             </Link>
           </VStack>

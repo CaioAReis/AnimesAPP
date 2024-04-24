@@ -12,8 +12,8 @@ export function NotificationCard({ title, body, onPress }: NotificationCardProps
 
   return (
     <ActionsheetItem onPress={onPress} w="$full">
-      <Center borderColor="$orange500" rounded="$full" p={8} bgColor="$orange100">
-        <Icon as={Bell} size={"25" as "md"} color="$orange500" />
+      <Center borderColor="$primary500" rounded="$full" p={8} bgColor="$primary100">
+        <Icon as={Bell} size={"25" as "md"} color="$primary500" />
       </Center>
 
       <VStack flex={1} ml={14}>

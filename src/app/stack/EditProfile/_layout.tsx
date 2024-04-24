@@ -134,7 +134,7 @@ export default function EditProfile() {
             </FormControlError>
           </FormControl>
 
-          <Button alignSelf="center" elevation={4} mt={40} w="80%" bgColor="$orange400" borderRadius="$full">
+          <Button alignSelf="center" elevation={4} mt={40} w="80%" bgColor="$primary400" borderRadius="$full">
             <ButtonText color="white" mx={20}>Save changes</ButtonText>
             <Icon as={UserCheck2} color="$white" />
           </Button>

@@ -35,7 +35,7 @@ export default function SelectProfile() {
         </VStack>
       </VStack>
 
-      <Button onPress={onToggle} my={20} w="80%" bgColor="$orange400" borderRadius="$full">
+      <Button onPress={onToggle} my={20} w="80%" bgColor="$primary400" borderRadius="$full">
         <ButtonText color="white" mx={20}>New Profile</ButtonText>
         <Icon as={UserRoundCog} color="$white" />
       </Button>
