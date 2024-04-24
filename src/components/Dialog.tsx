@@ -15,7 +15,7 @@ export function Dialog({ isOpen, onClose, title, description, Button: ButtonActi
     <AlertDialog isOpen={isOpen} onClose={onClose}>
       <AlertDialogBackdrop />
 
-      <AlertDialogContent bgColor="white">
+      <AlertDialogContent bgColor="$bg0">
         <AlertDialogHeader>
           <Heading size="lg">{title}</Heading>
           <AlertDialogCloseButton>

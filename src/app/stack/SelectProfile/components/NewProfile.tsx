@@ -53,7 +53,7 @@ export function NewProfile({ isOpen, onClose }: NewProfileProps) {
           <Box px={20} mt={10} w="$full">
             <Heading>New Profile</Heading>
 
-            <Avatar my={20} alignSelf="center" bgColor="$amber600" size="xl" borderRadius="$full">
+            <Avatar my={20} alignSelf="center" bgColor="$primary400" size="xl" borderRadius="$full">
               <AvatarFallbackText>{"CAIO"}</AvatarFallbackText>
               <AvatarImage
                 alt={`${"CAIO"}'s profile`}
@@ -90,21 +90,21 @@ export function NewProfile({ isOpen, onClose }: NewProfileProps) {
               <Switch
                 size="lg"
                 defaultValue={true}
-                thumbColor="$green400"
+                thumbColor="$success400"
                 trackColor={{
-                  true: "$green300",
-                  false: "$backgroundLight200"
+                  true: "$success200",
+                  false: "$bg100"
                 }}
               />
             </HStack>
 
             <Button rounded="$full" mt={20} bgColor="$primary400" onPress={onSubmit}>
-              <ButtonText mx={10}>Create new profile</ButtonText>
-              <Icon as={SmilePlus} size="lg" color="$white" />
+              <ButtonText mx={10} color="$bg0">Create new profile</ButtonText>
+              <Icon as={SmilePlus} size="lg" color="$bg0" />
             </Button>
 
             <Button variant="link" mt={20} onPress={onClose}>
-              <ButtonText mx={20}>Cancel</ButtonText>
+              <ButtonText color="$secondary300" mx={20}>Cancel</ButtonText>
             </Button>
           </Box>
         </KeyboardAvoidingView>

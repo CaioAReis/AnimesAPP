@@ -23,7 +23,7 @@ export default function SelectProfile() {
 
         <Center>
           <Heading fontSize="$xl" lineHeight="$xl">Welcome Back!</Heading>
-          <Text fontSize="$sm" color="$backgroundLight500" lineHeight="$sm" textAlign="center" mb={30}>
+          <Text fontSize="$sm" color="$text600" lineHeight="$sm" textAlign="center" mb={30}>
             Chose a profile to begin
           </Text>
         </Center>
@@ -36,8 +36,8 @@ export default function SelectProfile() {
       </VStack>
 
       <Button onPress={onToggle} my={20} w="80%" bgColor="$primary400" borderRadius="$full">
-        <ButtonText color="white" mx={20}>New Profile</ButtonText>
-        <Icon as={UserRoundCog} color="$white" />
+        <ButtonText color="$bg0" mx={20}>New Profile</ButtonText>
+        <Icon as={UserRoundCog} color="$bg0" />
       </Button>
 
       <NewProfile isOpen={showAction} onClose={onToggle} />

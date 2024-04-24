@@ -9,7 +9,7 @@ export function MostInfoCard({ title, image, categories, description }: MostInfo
 
   return (
     <Box w={width} px={20} mb={10}>
-      <Box softShadow="1" backgroundColor="$white" w="$full" rounded="$lg" overflow="hidden">
+      <Box softShadow="1" backgroundColor="$$bg0" w="$full" rounded="$lg" overflow="hidden">
         <Image
           h="$40"
           w="$full"

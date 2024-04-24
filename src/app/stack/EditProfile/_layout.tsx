@@ -36,7 +36,7 @@ export default function EditProfile() {
       <KeyboardAvoidingView behavior={Platform.select({ ios: "padding" })}>
         <HStack my={10} alignItems="center" justifyContent="space-between">
           <Button w={40} h={40} bgColor="transparent" onPress={() => router.back()}>
-            <ButtonIcon as={ArrowLeft} size={"25" as "xl"} color="$textDark900" />
+            <ButtonIcon as={ArrowLeft} size={"25" as "xl"} color="$text100" />
           </Button>
           <Heading>Edit profile</Heading>
           <Box w={40} />
@@ -135,8 +135,8 @@ export default function EditProfile() {
           </FormControl>
 
           <Button alignSelf="center" elevation={4} mt={40} w="80%" bgColor="$primary400" borderRadius="$full">
-            <ButtonText color="white" mx={20}>Save changes</ButtonText>
-            <Icon as={UserCheck2} color="$white" />
+            <ButtonText color="$bg0" mx={20}>Save changes</ButtonText>
+            <Icon as={UserCheck2} color="$$bg0" />
           </Button>
         </VStack>
       </KeyboardAvoidingView>

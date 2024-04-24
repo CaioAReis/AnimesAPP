@@ -33,10 +33,10 @@ export function Rating() {
       <Button
         w={40} h={40}
         rounded="$full"
-        bgColor="$backgroundLight50"
+        bgColor="$bg50"
         onPress={() => setIsOpen(true)}
       >
-        <ButtonIcon as={ThumbsUp} size="xl" color="$textDark900" />
+        <ButtonIcon as={ThumbsUp} size="xl" color="$text100" />
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleClose} zIndex={999}>
@@ -57,8 +57,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
+                  color={rating >= 1 ? "$primary400" : "$bg300"}
                   fill={rating >= 1 ? "$primary400" : "transparent"}
-                  color={rating >= 1 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -66,8 +66,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
+                  color={rating >= 2 ? "$primary400" : "$bg300"}
                   fill={rating >= 2 ? "$primary400" : "transparent"}
-                  color={rating >= 2 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -75,8 +75,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
+                  color={rating >= 3 ? "$primary400" : "$bg300"}
                   fill={rating >= 3 ? "$primary400" : "transparent"}
-                  color={rating >= 3 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -84,8 +84,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
+                  color={rating >= 4 ? "$primary400" : "$bg300"}
                   fill={rating >= 4 ? "$primary400" : "transparent"}
-                  color={rating >= 4 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
 
@@ -93,8 +93,8 @@ export function Rating() {
                 <Icon
                   as={Star}
                   size={"30" as "xl"}
+                  color={rating === 5 ? "$primary400" : "$bg300"}
                   fill={rating === 5 ? "$primary400" : "transparent"}
-                  color={rating === 5 ? "$primary400" : "$backgroundLight400"}
                 />
               </Button>
             </HStack>
@@ -102,13 +102,13 @@ export function Rating() {
             <Button
               mt={40}
               rounded="$full"
-              bgColor="$red400"
+              bgColor="$primary400"
               onPress={onSubmit}
               disabled={!rating}
               opacity={rating ? 1 : 0.7}
             >
               <ButtonText mx={20}>Enviar Avaliação</ButtonText>
-              <Icon as={Send} color="white" size="lg" />
+              <Icon as={Send} color="$bg0" size="lg" />
             </Button>
           </Box>
         </ActionsheetContent>

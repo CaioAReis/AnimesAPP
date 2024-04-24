@@ -21,7 +21,7 @@ export function ProfileCard({ name, picture, accountType }: ProfileCardProps) {
   return (
     <Link href="(tabs)/home" style={{ marginHorizontal: 20 }}>
       <HStack alignItems="center" space="xl" mx={20}>
-        <Avatar bgColor="$amber600" size="lg" borderRadius="$full">
+        <Avatar bgColor="$primary400" size="lg" borderRadius="$full">
           <AvatarFallbackText>{name}</AvatarFallbackText>
           <AvatarImage
             alt={`${name}'s profile`}
@@ -31,7 +31,7 @@ export function ProfileCard({ name, picture, accountType }: ProfileCardProps) {
 
         <VStack>
           <Heading>{name}</Heading>
-          <Text fontSize="$sm" lineHeight="$sm" color="$backgroundLight500">
+          <Text fontSize="$sm" lineHeight="$sm" color="$text600">
             {accountTypes[accountType]}
           </Text>
         </VStack>

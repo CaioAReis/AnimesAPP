@@ -1,11 +1,12 @@
 import { router } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 import { Heart, Play, Share } from "lucide-react-native";
-import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text } from "@gluestack-ui/themed";
+import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useToken } from "@gluestack-ui/themed";
 
 import { HighlightsProps } from "../types";
+import { LinearGradient } from "expo-linear-gradient";
 
 export function Highlights({ height, image, title, description }: HighlightsProps) {
+  const bg = useToken("colors", "bg0" as "amber100");
 
   return (
     <Box h={height} justifyContent="flex-end">
@@ -17,8 +18,8 @@ export function Highlights({ height, image, title, description }: HighlightsProp
       />
 
       <LinearGradient
-        colors={["transparent", "white"]}
-        style={{ position: "absolute", height: "100%", width: "100%" }}
+        colors={["transparent", bg]}
+        style={{ position: "absolute", width: "100%", height: "100%" }}
       />
 
       <Box px={20}>
@@ -34,11 +35,11 @@ export function Highlights({ height, image, title, description }: HighlightsProp
             <ButtonIcon as={Play} ml={8} />
           </Button>
 
-          <Button rounded="$full" w={40} h={40} bg="$black">
+          <Button rounded="$full" w={40} h={40} bg="$bg950">
             <ButtonIcon as={Heart} />
           </Button>
 
-          <Button rounded="$full" w={40} h={40} bg="$black">
+          <Button rounded="$full" w={40} h={40} bg="$bg950">
             <ButtonIcon as={Share} />
           </Button>
         </HStack>

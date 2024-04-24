@@ -107,8 +107,8 @@ export default function SignUp() {
 
           <VStack space="md" alignItems="center" mt={20}>
             <Button onPress={onSubmit} elevation={4} mt={20} w="80%" bgColor="$primary400" borderRadius="$full">
-              <ButtonText color="white" mx={20}>Create Account</ButtonText>
-              <Icon as={UserRoundPlus} color="$white" />
+              <ButtonText color="$bg0" mx={20}>Create Account</ButtonText>
+              <Icon as={UserRoundPlus} color="$bg0" />
             </Button>
 
             <HStack>

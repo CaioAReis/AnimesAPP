@@ -81,8 +81,8 @@ export default function SignIn() {
 
           <VStack space="md" alignItems="center" mt={20}>
             <Button onPress={onSubmit} elevation={4} mt={20} w="80%" bgColor="$primary400" borderRadius="$full">
-              <ButtonText color="white" mx={20}>Log in</ButtonText>
-              <Icon as={LogIn} color="$white" />
+              <ButtonText color="$bg0" mx={20}>Log in</ButtonText>
+              <Icon as={LogIn} color="$bg0" />
             </Button>
 
             <HStack>

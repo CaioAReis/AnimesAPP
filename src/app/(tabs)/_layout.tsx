@@ -27,7 +27,7 @@ export default function TabsApp() {
     <Tabs
       backBehavior="none"
       initialRouteName="home"
-      sceneContainerStyle={{ backgroundColor: "white" }}
+      sceneContainerStyle={{ backgroundColor: "$bg0" }}
       screenOptions={{
         headerShown: false,
         freezeOnBlur: true,

@@ -19,7 +19,7 @@ export default function Start() {
           />
         </Box>
 
-        <Divider bgColor="white" h={4} />
+        <Divider bgColor="$bg0" h={4} />
 
         <Box flexDirection="row" w="$full" h={height / 3}>
           <VStack flex={1}>
@@ -31,7 +31,7 @@ export default function Start() {
               source={require("../../assets/images/img_02.png")}
             />
 
-            <Divider bgColor="white" h={4} />
+            <Divider bgColor="$bg0" h={4} />
 
             <Image
               w="$full"
@@ -42,7 +42,7 @@ export default function Start() {
             />
           </VStack>
 
-          <Divider bgColor="white" w={4} />
+          <Divider bgColor="$bg0" w={4} />
 
           <Image
             alt="Image 04"
@@ -52,9 +52,9 @@ export default function Start() {
           />
         </Box>
 
-        <Divider bgColor="white" h={4} />
+        <Divider bgColor="$bg0" h={4} />
 
-        <Box flexDirection="row" flex={1} bgColor="white">
+        <Box flexDirection="row" flex={1} bgColor="$bg0">
           <Image
             alt="Image 05"
             resizeMode="cover"
@@ -63,7 +63,7 @@ export default function Start() {
             source={require("../../assets/images/img_05.png")}
           />
 
-          <Divider bgColor="white" w={4} />
+          <Divider bgColor="$bg0" w={4} />
 
           <Image
             h="$full"
@@ -89,8 +89,8 @@ export default function Start() {
           <VStack w="$full" space="2xl">
             <Link href="stack/SignIn" asChild>
               <Button elevation={4} bgColor="$primary400" borderRadius="$full">
-                <ButtonText color="$textDark900" mx={20}>Sign In</ButtonText>
-                <Icon as={LogIn} color="$textDark900" />
+                <ButtonText color="$text100" mx={20}>Sign In</ButtonText>
+                <Icon as={LogIn} color="$text100" />
               </Button>
             </Link>
 
