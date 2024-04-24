@@ -30,7 +30,7 @@ export function Notifications() {
   return (
     <>
       <Button onPress={handleOpenNotifications} w="$10" rounded="$full" bgColor="transparent">
-        <ButtonIcon as={Bell} size="xl" color="$backgroundDark800" />
+        <ButtonIcon as={Bell} size="xl" color="$bg600" />
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleCloseNotifications} zIndex={999}>

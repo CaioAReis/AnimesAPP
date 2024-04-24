@@ -31,7 +31,7 @@ export function Settings() {
   return (
     <>
       <Button onPress={handleOpen} w="$10" rounded="$full" bgColor="transparent">
-        <ButtonIcon as={SettingsIcon} size="xl" color="$backgroundDark800" />
+        <ButtonIcon as={SettingsIcon} size="xl" color="$bg600" />
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleClose} zIndex={999}>

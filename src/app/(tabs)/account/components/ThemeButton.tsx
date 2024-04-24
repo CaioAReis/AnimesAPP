@@ -11,7 +11,7 @@ export function ThemeButton() {
 
   return (
     <Button onPress={handleChangeTheme} w="$10" rounded="$full" bgColor="transparent">
-      <ButtonIcon as={Moon} size="xl" color="$backgroundDark800" />
+      <ButtonIcon as={Moon} size="xl" color="$bg600" />
     </Button>
   );
 }

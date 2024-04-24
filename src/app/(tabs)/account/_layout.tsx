@@ -62,7 +62,6 @@ export default function Account() {
               <Notifications />
 
               <Settings />
-
             </HStack>
           </HStack>
 
@@ -74,7 +73,7 @@ export default function Account() {
 
             <VStack ml={10} flex={1}>
               <Heading>Caio AReis</Heading>
-              <Text color="$textDark500" mb={4} fontSize="$sm">Caio@mail.com</Text>
+              <Text color="$text500" mb={4} fontSize="$sm">Caio@mail.com</Text>
               <Text fontSize="$sm" lineHeight="$sm">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               </Text>

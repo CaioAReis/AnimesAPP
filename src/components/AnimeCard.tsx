@@ -19,7 +19,7 @@ export function AnimeCard({ image, title, description, showPosition, height, wid
       />
       <Heading numberOfLines={1} fontSize="$sm" lineHeight="$sm">{title}</Heading>
       {description && (
-        <Text fontSize="$xs" numberOfLines={1}>{description}</Text>
+        <Text fontSize="$xs" color="$text500" numberOfLines={1}>{description}</Text>
       )}
 
       {showPosition && (
