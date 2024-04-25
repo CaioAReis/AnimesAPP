@@ -23,7 +23,7 @@ export default function SelectProfile() {
 
         <Center>
           <Heading fontSize="$xl" lineHeight="$xl">Welcome Back!</Heading>
-          <Text fontSize="$sm" color="$text600" lineHeight="$sm" textAlign="center" mb={30}>
+          <Text fontSize="$sm" color="$text400" lineHeight="$sm" textAlign="center" mb={30}>
             Chose a profile to begin
           </Text>
         </Center>

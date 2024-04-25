@@ -31,16 +31,16 @@ export function Highlights({ height, image, title, description }: HighlightsProp
 
         <HStack my={8} space="md">
           <Button rounded="$full" bg="$primary400" onPress={() => router.push("/stack/AnimeDetails")}>
-            <ButtonText>PLAY</ButtonText>
-            <ButtonIcon as={Play} ml={8} />
+            <ButtonText color="$bg0">PLAY</ButtonText>
+            <ButtonIcon color="$bg0" as={Play} ml={8} />
           </Button>
 
           <Button rounded="$full" w={40} h={40} bg="$bg950">
-            <ButtonIcon as={Heart} />
+            <ButtonIcon as={Heart} color="$bg0" />
           </Button>
 
           <Button rounded="$full" w={40} h={40} bg="$bg950">
-            <ButtonIcon as={Share} />
+            <ButtonIcon as={Share} color="$bg0" />
           </Button>
         </HStack>
       </Box>

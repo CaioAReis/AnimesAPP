@@ -9,8 +9,8 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
   const { width } = useWindowDimensions();
   const translate = useRef(new Animated.Value(0)).current;
 
-  const x = useToken("colors", "backgroundLight300");
   const y = useToken("colors", "primary400");
+  const x = useToken("colors", "bg400" as "amber100");
 
   return (
     <Box>

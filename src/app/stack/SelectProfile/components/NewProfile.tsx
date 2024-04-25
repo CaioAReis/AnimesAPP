@@ -43,8 +43,8 @@ export function NewProfile({ isOpen, onClose }: NewProfileProps) {
 
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose} zIndex={999}>
-      <ActionsheetBackdrop />
-      <ActionsheetContent h="60%" zIndex={999}>
+      <ActionsheetBackdrop bgColor="$bg500" />
+      <ActionsheetContent h="60%" zIndex={999} bgColor="$bg0">
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>

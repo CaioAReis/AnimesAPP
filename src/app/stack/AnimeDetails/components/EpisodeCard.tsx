@@ -6,7 +6,7 @@ import { EpisodeCardProps } from "../types";
 export function EpisodeCard({ thumb, title, episode, episodeMin, watched }: EpisodeCardProps) {
 
   return (
-    <HStack maxHeight={90} mx={20} space="md">
+    <HStack maxHeight={90} mx={20} space="md" bgColor={watched ? "$primary100" : "transparent"} rounded="$md">
       <Box minHeight={90} w="40%" bgColor="$blueGray200" rounded="$md" overflow="hidden">
         <Image
           w="$full" h="$full"
@@ -21,14 +21,14 @@ export function EpisodeCard({ thumb, title, episode, episodeMin, watched }: Epis
             {title?.toUpperCase()}
           </Heading>
 
-          <Text fontSize="$xs" lineHeight="$sm" color="$text500">
+          <Text fontSize="$xs" lineHeight="$sm" color="$text300">
             Episode {episode}
           </Text>
 
           <HStack alignItems="center" justifyContent="space-between">
             <Text fontSize="$xs" lineHeight="$sm" color="$primary500">{episodeMin} min</Text>
 
-            {watched && <Icon as={Eye} color="$primary500" fill="$primary100" size="lg" />}
+            {watched && <Icon as={Eye} mr={10} color="$primary500" fill="$primary100" size="lg" />}
           </HStack>
         </VStack>
       </Box>

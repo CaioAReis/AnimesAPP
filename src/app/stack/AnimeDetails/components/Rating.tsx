@@ -33,7 +33,7 @@ export function Rating() {
       <Button
         w={40} h={40}
         rounded="$full"
-        bgColor="$bg50"
+        bgColor="$bg100"
         onPress={() => setIsOpen(true)}
       >
         <ButtonIcon as={ThumbsUp} size="xl" color="$text100" />

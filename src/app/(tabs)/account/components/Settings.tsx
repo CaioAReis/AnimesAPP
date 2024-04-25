@@ -35,15 +35,13 @@ export function Settings() {
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleClose} zIndex={999}>
-        <ActionsheetBackdrop />
-        <ActionsheetContent h="85%" zIndex={999}>
+        <ActionsheetBackdrop bgColor="$bg400" />
+        <ActionsheetContent h="85%" zIndex={999} bgColor="$bg0">
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
-
           <ActionsheetScrollView>
             <VStack space="md" pt={12}>
-
               <MenuItem
                 Icon={User2}
                 title="Edit profile"
@@ -76,13 +74,12 @@ export function Settings() {
               <MenuItem
                 Icon={LogOut}
                 title="Log out"
-                color="$red400"
+                color="$error500"
                 onPress={() => {
                   handleClose();
                   setIsOpenLogout(true);
                 }}
               />
-
             </VStack>
           </ActionsheetScrollView>
         </ActionsheetContent>
@@ -133,7 +130,7 @@ export function Settings() {
         onClose={() => setIsOpenAbout(false)}
       // finalFocusRef={ref}
       >
-        <ModalBackdrop />
+        <ModalBackdrop bgColor="$bg500" />
         <ModalContent>
           <ModalHeader>
             <Heading size="lg">About</Heading>

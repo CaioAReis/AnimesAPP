@@ -1,33 +1,35 @@
-import { Appearance } from "react-native";
-
 import { config } from "@gluestack-ui/config";
+
+import { fontWeights, fonts } from "./fonts";
 import { colors as colorsDark } from "./dark";
 import { colors as colorsLight } from "./light";
 
-const theme = Appearance.getColorScheme();
-const colorTheme = theme === "dark" ? colorsDark : colorsLight;
+interface appConfigProps {
+  theme: "light" | "dark";
+}
 
-export const appConfig = {
-  ...config,
-  tokens: {
-    ...config.tokens,
-
-    colors: {
-      ...config.tokens.colors,
-      ...colorTheme,
+export function appConfig({ theme }: appConfigProps) {
+  const themes = {
+    "dark": {
+      ...config,
+      tokens: {
+        ...config.tokens,
+        fonts,
+        fontWeights,
+        colors: { ...config.tokens.colors, ...colorsDark },
+      }
     },
 
-    fonts: {
-      mono: "Ubuntu_300Light",
-      body: "Ubuntu_400Regular",
-      heading: "Ubuntu_500Medium",
-    },
-
-    fontWeights: {
-      bold: "normal",
-      medium: "normal",
-      normal: "normal",
-      semibold: "normal",
+    "light": {
+      ...config,
+      tokens: {
+        ...config.tokens,
+        fonts,
+        fontWeights,
+        colors: { ...config.tokens.colors, ...colorsLight },
+      }
     }
-  }
-};
+  };
+
+  return themes[theme];
+}

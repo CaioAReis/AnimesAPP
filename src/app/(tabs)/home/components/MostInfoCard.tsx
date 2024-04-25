@@ -9,7 +9,7 @@ export function MostInfoCard({ title, image, categories, description }: MostInfo
 
   return (
     <Box w={width} px={20} mb={10}>
-      <Box softShadow="1" backgroundColor="$$bg0" w="$full" rounded="$lg" overflow="hidden">
+      <Box softShadow="1" backgroundColor="$bg0" w="$full" rounded="$lg" overflow="hidden">
         <Image
           h="$40"
           w="$full"
@@ -28,11 +28,11 @@ export function MostInfoCard({ title, image, categories, description }: MostInfo
 
         <HStack space="sm" position="absolute" top="42%" right={20}>
           <Button rounded="$full" w={50} h={50} bg="$primary400">
-            <ButtonIcon as={Play} size="xl" />
+            <ButtonIcon as={Play} color="$bg0" size="xl" />
           </Button>
 
           <Button rounded="$full" w={50} h={50} bg="$primary400">
-            <ButtonIcon as={Heart} size="xl" />
+            <ButtonIcon as={Heart} color="$bg0" size="xl" />
           </Button>
         </HStack>
       </Box>

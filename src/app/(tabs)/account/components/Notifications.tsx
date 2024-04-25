@@ -34,8 +34,8 @@ export function Notifications() {
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleCloseNotifications} zIndex={999}>
-        <ActionsheetBackdrop />
-        <ActionsheetContent h="85%" zIndex={999}>
+        <ActionsheetBackdrop bgColor="$bg500" />
+        <ActionsheetContent h="85%" zIndex={999} bgColor="$bg0">
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>

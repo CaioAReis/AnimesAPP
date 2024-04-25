@@ -37,7 +37,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
           bgColor="$bg0"
           rounded="$full"
           borderWidth={2}
-          borderColor="$text100"
+          borderColor="$bg400"
           onPress={() => router.back()}
         >
           <ButtonIcon as={ArrowLeft} size="xl" color="$text100" />
@@ -49,7 +49,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
               w={40} h={40}
               rounded="$full"
               onPress={onShare}
-              bgColor="$text100"
+              bgColor="$bg950"
             >
               <ButtonIcon as={Share} size="md" color="$bg0" />
             </Button>
@@ -57,8 +57,8 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             <Button
               w={40} h={40}
               rounded="$full"
+              bgColor="$bg950"
               onPress={onFavorite}
-              bgColor="$text100"
             >
               <ButtonIcon as={Heart} size="xl" color="$bg0" />
             </Button>
@@ -69,10 +69,10 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             rounded="$full"
             borderWidth={4}
             onPress={onPlay}
-            bgColor="$primary400"
             borderColor="$bg0"
+            bgColor="$primary400"
           >
-            <Icon as={Play} size="xl" color="$bg0" />
+            <Icon as={Play} size="xl" fill="$bg0" color="$bg0" />
           </Button>
         </HStack>
       </LinearGradient>

@@ -31,7 +31,7 @@ export function ProfileCard({ name, picture, accountType }: ProfileCardProps) {
 
         <VStack>
           <Heading>{name}</Heading>
-          <Text fontSize="$sm" lineHeight="$sm" color="$text600">
+          <Text fontSize="$sm" lineHeight="$sm" color="$text400">
             {accountTypes[accountType]}
           </Text>
         </VStack>

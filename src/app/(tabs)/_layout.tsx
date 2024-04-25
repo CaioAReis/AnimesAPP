@@ -13,21 +13,22 @@ const TabButton = ({ color, icon, focused, }: TabButtonProps) => (
   <Center>
     <Icon
       as={icon}
-      color={focused ? "$primary600" : color}
-      fill={focused ? "$primary300" : "transparent"}
+      color={focused ? "$primary400" : color}
+      fill={focused ? "$primary200" : "transparent"}
     />
   </Center>
 );
 
 export default function TabsApp() {
-  const tintColor = useToken("colors", "primary400");
+  const tintColor = useToken("colors", "primary200");
+  const bg = useToken("colors", "bg0" as "primary400");
   const activeBGColor = useToken("colors", "primary100");
 
   return (
     <Tabs
       backBehavior="none"
       initialRouteName="home"
-      sceneContainerStyle={{ backgroundColor: "$bg0" }}
+      sceneContainerStyle={{ backgroundColor: bg }}
       screenOptions={{
         headerShown: false,
         freezeOnBlur: true,
@@ -35,8 +36,9 @@ export default function TabsApp() {
         tabBarHideOnKeyboard: true,
         tabBarLabelStyle: { bottom: 6 },
         tabBarActiveTintColor: tintColor,
-        tabBarStyle: { elevation: 0, height: 45 },
+        tabBarInactiveBackgroundColor: bg,
         tabBarActiveBackgroundColor: activeBGColor,
+        tabBarStyle: { elevation: 0, height: 45, borderColor: bg },
       }}
     >
       <Tabs.Screen

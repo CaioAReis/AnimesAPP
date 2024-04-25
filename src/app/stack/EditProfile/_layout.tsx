@@ -136,7 +136,7 @@ export default function EditProfile() {
 
           <Button alignSelf="center" elevation={4} mt={40} w="80%" bgColor="$primary400" borderRadius="$full">
             <ButtonText color="$bg0" mx={20}>Save changes</ButtonText>
-            <Icon as={UserCheck2} color="$$bg0" />
+            <Icon as={UserCheck2} color="$bg0" />
           </Button>
         </VStack>
       </KeyboardAvoidingView>

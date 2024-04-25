@@ -17,7 +17,7 @@ export function AnimeInfo({ title, summary, rating, year, categories }: AnimeInf
       <Heading>{title?.toLocaleUpperCase() ?? ""}</Heading>
 
       {categories?.length && (
-        <Text fontSize="$sm" lineHeight="$sm">
+        <Text fontSize="$sm" lineHeight="$sm" color="$text200">
           {`${year ?? ""} | ${categories![0]}, ${categories![1]}, ${categories![2]}, `}
         </Text>
       )}
@@ -39,7 +39,7 @@ export function AnimeInfo({ title, summary, rating, year, categories }: AnimeInf
         </HStack>
       )}
 
-      <Text fontSize={14} numberOfLines={6} color="$textDark700">
+      <Text fontSize={14} numberOfLines={6} color="$text300">
         {summary ?? ""}
       </Text>
     </VStack>

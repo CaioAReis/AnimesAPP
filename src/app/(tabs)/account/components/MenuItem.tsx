@@ -15,7 +15,7 @@ export function MenuItem({ title, description, color, Icon, onPress }: MenuItemP
     <ActionsheetItem onPress={onPress} justifyContent="space-between">
       <ActionsheetIcon as={Icon} size={"25" as "lg"} color={color ?? "$textDark400"} />
       <VStack flex={1}>
-        <ActionsheetItemText color={color ?? "$textDark800"}>{title}</ActionsheetItemText>
+        <ActionsheetItemText color={color ?? "$text100"}>{title}</ActionsheetItemText>
         {description && (
           <ActionsheetItemText color="$textDark500" fontSize="$xs" lineHeight="$xs">
             {description}

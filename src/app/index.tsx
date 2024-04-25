@@ -89,8 +89,8 @@ export default function Start() {
           <VStack w="$full" space="2xl">
             <Link href="stack/SignIn" asChild>
               <Button elevation={4} bgColor="$primary400" borderRadius="$full">
-                <ButtonText color="$text100" mx={20}>Sign In</ButtonText>
-                <Icon as={LogIn} color="$text100" />
+                <ButtonText color="$bg0" mx={20}>Sign In</ButtonText>
+                <Icon as={LogIn} color="$bg0" />
               </Button>
             </Link>
 

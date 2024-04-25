@@ -20,7 +20,7 @@ export default function App() {
   return (
     <SafeAreaProvider style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
-        <GluestackUIProvider config={appConfig}>
+        <GluestackUIProvider colorMode="dark" config={appConfig({ theme: "dark" })}>
           <Slot />
           <StatusBar style="auto" />
         </GluestackUIProvider>

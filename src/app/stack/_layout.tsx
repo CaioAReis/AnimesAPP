@@ -1,10 +1,11 @@
+import { useToken } from "@gluestack-style/react";
 import { Stack } from "expo-router";
 
-
 export default function StackApp() {
+  const bg = useToken("colors", "bg0" as "amber100");
 
   return (
-    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "$bg0" } }}>
+    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: bg } }}>
 
       <Stack.Screen name="AnimeDetails" />
 
@@ -15,7 +16,6 @@ export default function StackApp() {
       <Stack.Screen name="SignIn" />
 
       <Stack.Screen name="SignUp" />
-
 
     </Stack>
   );
