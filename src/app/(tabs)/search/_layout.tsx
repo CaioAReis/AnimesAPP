@@ -46,7 +46,7 @@ export default function Search() {
 
   return (
     <Box flex={1}>
-      <Input size="lg" m={20} rounded="$lg" bgColor="$bg100">
+      <Input size="lg" m={20} rounded="$lg" bgColor="$bg50">
         <InputSlot>
           <InputIcon as={SearchICON} ml={8} />
         </InputSlot>

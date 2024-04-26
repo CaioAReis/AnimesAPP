@@ -11,11 +11,7 @@ interface TabButtonProps {
 
 const TabButton = ({ color, icon, focused, }: TabButtonProps) => (
   <Center>
-    <Icon
-      as={icon}
-      color={focused ? "$primary400" : color}
-      fill={focused ? "$primary200" : "transparent"}
-    />
+    <Icon as={icon} color={focused ? "$primary600" : color} />
   </Center>
 );
 
@@ -47,7 +43,9 @@ export default function TabsApp() {
           lazy: true,
           title: "INÍCIO",
           freezeOnBlur: true,
-          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Home} color={color} />,
+          tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
+            <TabButton focused={focused} icon={Home} color={color} />
+          ),
         }}
       />
 
@@ -55,7 +53,9 @@ export default function TabsApp() {
         name="search"
         options={{
           title: "PESQUISAR",
-          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Search} color={color} />,
+          tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
+            <TabButton focused={focused} icon={Search} color={color} />
+          ),
         }}
       />
 
@@ -65,7 +65,9 @@ export default function TabsApp() {
           lazy: true,
           title: "SALVOS",
           freezeOnBlur: true,
-          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={Heart} color={color} />,
+          tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
+            <TabButton focused={focused} icon={Heart} color={color} />
+          ),
         }}
       />
 
@@ -75,7 +77,9 @@ export default function TabsApp() {
           lazy: true,
           title: "PERFIL",
           freezeOnBlur: true,
-          tabBarIcon: ({ color, focused }) => <TabButton focused={focused} icon={UserRound} color={color} />,
+          tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
+            <TabButton focused={focused} icon={UserRound} color={color} />
+          ),
         }}
       />
     </Tabs>

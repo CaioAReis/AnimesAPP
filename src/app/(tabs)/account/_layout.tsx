@@ -1,9 +1,9 @@
 import { Divider, HStack, Heading, Image, ScrollView } from "@gluestack-ui/themed";
 import { Avatar, AvatarFallbackText, AvatarImage, Box, Text, VStack } from "@gluestack-ui/themed";
 
-import { Notifications, Settings, ThemeButton } from "./components";
 import { MostInfoList } from "../home/components";
 import { HorizontalList } from "../../../components";
+import { Notifications, Settings, ThemeButton } from "./components";
 
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },

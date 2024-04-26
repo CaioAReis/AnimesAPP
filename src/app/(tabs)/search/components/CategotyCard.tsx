@@ -12,18 +12,18 @@ export function CategoryCard({ title, IconCard, onPress }: CategoryCardProps) {
         w={width / 4.5}
         h={width / 4.5}
         rounded="$full"
-        borderWidth={1}
+        borderWidth={4}
         onPress={onPress}
         overflow="hidden"
         alignItems="center"
-        bgColor="$primary100"
+        bgColor="$primary50"
         justifyContent="center"
-        borderColor="$primary400"
+        borderColor="$primary100"
       >
         <Icon color="$primary400" as={IconCard} size={"40" as "lg"} />
       </Pressable>
 
-      <Heading color="$primary400" size="sm" mt={6}>{title}</Heading>
+      <Heading color="$primary400" size="sm" mt={2}>{title}</Heading>
     </Box>
   );
 }
