@@ -26,14 +26,14 @@ export function CardLarger({ image, title, description, duration }: CardLargerPr
         />
 
         {duration && (
-          <Progress bgColor="$bg300" w="$full" size="xs" value={duration}>
+          <Progress bgColor="$bg100" w="$full" size="xs" value={duration}>
             <ProgressFilledTrack bgColor="$primary400" />
           </Progress>
         )}
       </Box>
 
       <Heading fontSize="$sm" lineHeight="$sm" mx={4} numberOfLines={1}>{title}</Heading>
-      {description && <Text fontSize="$xs" lineHeight="$xs" mx={4}>{description}</Text>}
+      {description && <Text color="$text500" fontSize="$xs" lineHeight="$xs" mx={4}>{description}</Text>}
     </VStack>
   );
 }

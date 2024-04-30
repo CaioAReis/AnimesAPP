@@ -1,25 +1,25 @@
 import { useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, useWindowDimensions } from "react-native";
 import { Box, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
-import { Axe, BookHeart, Castle, Drama, Footprints, Landmark, Laugh, Palmtree, Rocket, Search as SearchICON, Sofa, Swords, Trophy } from "lucide-react-native";
+import { Axe, BookHeart, Castle, Drama, Footprints, Hourglass, Laugh, Medal, Palmtree, Rocket, Search as SearchICON, Sofa, Swords } from "lucide-react-native";
 
 import { CategoryCard } from "./components";
 import { AnimeCard } from "../../../components";
 import { AnimeCardProps } from "../../../config/types";
 
 const categories = [
-  { title: "Adventure", icon: Palmtree },
-  { title: "Action", icon: Swords },
-  { title: "Comedy", icon: Laugh },
-  { title: "Fantasy", icon: Castle },
-  { title: "Drama", icon: Drama },
-  { title: "Family", icon: Sofa },
-  { title: "Mystery", icon: Footprints },
-  { title: "History", icon: Landmark },
-  { title: "Romance", icon: BookHeart },
-  { title: "Sport", icon: Trophy },
-  { title: "Sci-fi", icon: Rocket },
-  { title: "Thriller", icon: Axe },
+  { title: "Adventure", icon: Palmtree, color: "green" },
+  { title: "Action", icon: Swords, color: "orange" },
+  { title: "Comedy", icon: Laugh, color: "cyan" },
+  { title: "Fantasy", icon: Castle, color: "pink" },
+  { title: "Drama", icon: Drama, color: "purple" },
+  { title: "Family", icon: Sofa, color: "red" },
+  { title: "Mystery", icon: Footprints, color: "blue" },
+  { title: "History", icon: Hourglass, color: "amber" },
+  { title: "Romance", icon: BookHeart, color: "teal" },
+  { title: "Sport", icon: Medal, color: "fuchsia" },
+  { title: "Sci-fi", icon: Rocket, color: "emerald" },
+  { title: "Thriller", icon: Axe, color: "violet" },
 ];
 
 const fakeList = [
@@ -42,6 +42,7 @@ const fakeList = [
 ];
 
 export default function Search() {
+  const { width } = useWindowDimensions();
   const [list, setList] = useState<AnimeCardProps[]>([]);
 
   return (
@@ -70,10 +71,13 @@ export default function Search() {
       ) : (
         <Box>
           <Heading mx={20} fontSize="$2xl">Categorias</Heading>
-          <HStack mt={20} px={20} space="4xl" justifyContent="center" flexWrap="wrap">
+          <HStack mt={20} px={20} space="md" justifyContent="center" flexWrap="wrap">
             {categories?.map((item, i) => (
               <CategoryCard
                 key={i}
+                height={width / 3}
+                width={width / 3.6}
+                color={item?.color}
                 title={item?.title}
                 IconCard={item?.icon}
                 onPress={() => setList(fakeList)}

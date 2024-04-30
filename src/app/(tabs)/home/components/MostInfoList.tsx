@@ -10,7 +10,7 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
   const translate = useRef(new Animated.Value(0)).current;
 
   const y = useToken("colors", "primary400");
-  const x = useToken("colors", "bg400" as "amber100");
+  const x = useToken("colors", "bg200" as "amber100");
 
   return (
     <Box>

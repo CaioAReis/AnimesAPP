@@ -27,7 +27,7 @@ export function Highlights({ height, image, title, description }: HighlightsProp
           {title}
         </Heading>
 
-        <Text fontSize="$sm">{description}</Text>
+        <Text fontSize="$sm" color="$text400">{description}</Text>
 
         <HStack my={8} space="md">
           <Button rounded="$full" bg="$primary400" onPress={() => router.push("/stack/AnimeDetails")}>
