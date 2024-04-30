@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { useWindowDimensions } from "react-native";
 import { LogIn, UserRoundPlus } from "lucide-react-native";
 import { Button, ButtonText, Icon } from "@gluestack-ui/themed";
@@ -6,6 +6,8 @@ import { Box, Divider, Image, VStack } from "@gluestack-ui/themed";
 
 export default function Start() {
   const { height } = useWindowDimensions();
+
+  return <Redirect href="stack/SignIn" />;
 
   return (
     <Box flex={1}>

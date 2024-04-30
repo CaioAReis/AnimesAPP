@@ -24,18 +24,10 @@ export const myConfig = createConfig({
       colors: {
         ...config.tokens.colors,
         ...colorsDark,
-        textDark0: "red",
-        textDark50: "red",
-        textDark100: "red",
-        textDark200: "red",
-        textDark300: "red",
-        textDark400: "red",
-        textDark500: "red",
-        textDark600: "red",
-        textDark700: "red",
-        textDark800: "red",
-        textDark900: "red",
-        textDark950: "red",
+
+        textLight400: colorsDark.text200,
+        textLight700: colorsDark.text200,
+        textLight900: colorsDark.text100,
       },
     },
 
@@ -46,19 +38,10 @@ export const myConfig = createConfig({
       colors: {
         ...config.tokens.colors,
         ...colorsLight,
-        // light
-        textLight0: "blue",
-        textLight50: "blue",
-        textLight100: "blue",
-        textLight200: "blue",
-        textLight300: "blue",
-        textLight400: "blue",
-        textLight500: "blue",
-        textLight600: "blue",
-        textLight700: "blue",
-        textLight800: "blue",
-        textLight900: "blue",
-        textLight950: "blue",
+
+        textLight400: colorsLight.text200,
+        textLight700: colorsLight.text200,
+        textLight900: colorsLight.text100,
       },
     },
   }

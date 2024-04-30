@@ -27,7 +27,7 @@ export default function App() {
     <SafeAreaProvider style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
         <ThemeContext.Provider value={{ theme: theme!, setTheme: setTheme }}>
-          <GluestackUIProvider colorMode={theme} config={myConfig}>
+          <GluestackUIProvider colorMode={theme!} config={myConfig}>
 
             <Slot />
             <StatusBar style={styleBar} backgroundColor={myConfig.themes[theme!].colors.bg0} />
