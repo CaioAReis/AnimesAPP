@@ -34,7 +34,7 @@ export default function TabsApp() {
         tabBarActiveTintColor: tintColor,
         tabBarInactiveBackgroundColor: bg,
         tabBarActiveBackgroundColor: activeBGColor,
-        tabBarStyle: { elevation: 0, height: 45, borderColor: bg },
+        tabBarStyle: { elevation: 0, height: 45, borderColor: tintColor },
       }}
     >
       <Tabs.Screen

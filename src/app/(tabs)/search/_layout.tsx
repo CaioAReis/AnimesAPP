@@ -8,18 +8,18 @@ import { AnimeCard } from "../../../components";
 import { AnimeCardProps } from "../../../config/types";
 
 const categories = [
-  { title: "Adventure", icon: Palmtree, color: "green" },
-  { title: "Action", icon: Swords, color: "orange" },
-  { title: "Comedy", icon: Laugh, color: "cyan" },
-  { title: "Fantasy", icon: Castle, color: "pink" },
-  { title: "Drama", icon: Drama, color: "purple" },
-  { title: "Family", icon: Sofa, color: "red" },
-  { title: "Mystery", icon: Footprints, color: "blue" },
-  { title: "History", icon: Hourglass, color: "amber" },
-  { title: "Romance", icon: BookHeart, color: "teal" },
-  { title: "Sport", icon: Medal, color: "fuchsia" },
-  { title: "Sci-fi", icon: Rocket, color: "emerald" },
-  { title: "Thriller", icon: Axe, color: "violet" },
+  { title: "Adventure", icon: Palmtree, color: "$green" },
+  { title: "Action", icon: Swords, color: "$orange" },
+  { title: "Comedy", icon: Laugh, color: "$cyan" },
+  { title: "Fantasy", icon: Castle, color: "$pink" },
+  { title: "Drama", icon: Drama, color: "$purple" },
+  { title: "Family", icon: Sofa, color: "$red" },
+  { title: "Mystery", icon: Footprints, color: "$blue" },
+  { title: "History", icon: Hourglass, color: "$amber" },
+  { title: "Romance", icon: BookHeart, color: "$teal" },
+  { title: "Sport", icon: Medal, color: "$fuchsia" },
+  { title: "Sci-fi", icon: Rocket, color: "$emerald" },
+  { title: "Thriller", icon: Axe, color: "$violet" },
 ];
 
 const fakeList = [

@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+// import { BlurView } from "expo-blur";
 import { Bell } from "lucide-react-native";
+import { useCallback, useState } from "react";
 import {
   Button,
   VStack,
@@ -13,6 +14,7 @@ import {
 } from "@gluestack-ui/themed";
 
 import { NotificationCard } from "./NotificationCard";
+import { BlurView } from "expo-blur";
 
 const notifications = [
   { title: "Notification 01", body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", isRead: false },
@@ -34,7 +36,13 @@ export function Notifications() {
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleCloseNotifications} zIndex={999}>
-        <ActionsheetBackdrop bgColor="$bg500" />
+        <ActionsheetBackdrop bgColor="transparent">
+
+          <BlurView intensity={10} tint="dark" style={{ flex: 1, backgroundColor: "red" }}>
+          </BlurView>
+
+        </ActionsheetBackdrop>
+
         <ActionsheetContent h="85%" zIndex={999} bgColor="$bg0">
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
@@ -54,6 +62,8 @@ export function Notifications() {
           </ActionsheetScrollView>
         </ActionsheetContent>
       </Actionsheet>
+
+
     </>
   );
 }

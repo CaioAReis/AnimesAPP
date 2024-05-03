@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useWindowDimensions } from "react-native";
 import { Box, Heading, Image, Progress, ProgressFilledTrack, Text, VStack } from "@gluestack-ui/themed";
 
@@ -6,7 +7,7 @@ import { CardLargerProps } from "../config/types";
 export function CardLarger({ image, title, description, duration }: CardLargerProps) {
   const { width } = useWindowDimensions();
 
-  return (
+  const _render = useMemo(() => (
     <VStack>
       <Box
         h="$24"
@@ -35,5 +36,7 @@ export function CardLarger({ image, title, description, duration }: CardLargerPr
       <Heading fontSize="$sm" lineHeight="$sm" mx={4} numberOfLines={1}>{title}</Heading>
       {description && <Text color="$text500" fontSize="$xs" lineHeight="$xs" mx={4}>{description}</Text>}
     </VStack>
-  );
+  ), []);
+
+  return _render;
 }

@@ -1,5 +1,5 @@
+import { useMemo } from "react";
 import { AlertDialogFooter, Button, ButtonGroup, ButtonText, Text, AlertDialog, AlertDialogBackdrop, AlertDialogContent, AlertDialogBody, AlertDialogCloseButton, AlertDialogHeader, CloseIcon, Heading, Icon } from "@gluestack-ui/themed";
-// import { ReactNode } from "react";
 
 interface DialogProps {
   title: string,
@@ -11,7 +11,7 @@ interface DialogProps {
 
 export function Dialog({ isOpen, onClose, title, description, Button: ButtonAction }: DialogProps) {
 
-  return (
+  const _render = useMemo(() => (
     <AlertDialog isOpen={isOpen} onClose={onClose}>
       <AlertDialogBackdrop bgColor="$bg500" />
 
@@ -46,5 +46,7 @@ export function Dialog({ isOpen, onClose, title, description, Button: ButtonActi
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  );
+  ), []);
+
+  return _render;
 }

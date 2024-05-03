@@ -1,13 +1,13 @@
+import { useMemo } from "react";
+import { Svg, Text as TextSVG } from "react-native-svg";
 import { Box, Heading, Image, Text, useToken } from "@gluestack-ui/themed";
-import { Text as TextSVG } from "react-native-svg";
 
-import { Svg } from "react-native-svg";
 import { AnimeCardProps } from "../config/types";
 
 export function AnimeCard({ image, title, description, showPosition, height, width }: AnimeCardProps) {
   const primaryColor = useToken("colors", "primary500");
 
-  return (
+  const _render = useMemo(() => (
     <Box w={width as "$32" ?? "$32"} ml={showPosition && 20}>
       <Image
         w="$full"
@@ -37,17 +37,7 @@ export function AnimeCard({ image, title, description, showPosition, height, wid
         </Svg>
       )}
     </Box>
-  );
-}
+  ), []);
 
-{/* <Heading
-  // bgColor="blue"
-  bottom={35}
-  left={-30}
-  color="red"
-  fontSize={120}
-  lineHeight={120}
-  position="absolute"
->
-  {showPosition}
-</Heading> */}
+  return _render;
+}

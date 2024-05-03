@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Heart, Play } from "lucide-react-native";
 import { useWindowDimensions } from "react-native";
 import { Box, Button, ButtonIcon, HStack, Heading, Image, Text } from "@gluestack-ui/themed";
@@ -7,9 +8,9 @@ import { MostInfoCardProps } from "../types";
 export function MostInfoCard({ title, image, categories, description }: MostInfoCardProps) {
   const { width } = useWindowDimensions();
 
-  return (
+  const _render = useMemo(() => (
     <Box w={width} px={20} mb={10}>
-      <Box softShadow="1" backgroundColor="$bg50" w="$full" rounded="$lg" overflow="hidden">
+      <Box softShadow="1" shadowColor="$bg0" backgroundColor="$bg50" w="$full" rounded="$lg" overflow="hidden">
         <Image
           h="$40"
           w="$full"
@@ -37,5 +38,7 @@ export function MostInfoCard({ title, image, categories, description }: MostInfo
         </HStack>
       </Box>
     </Box>
-  );
+  ), []);
+
+  return _render;
 }
