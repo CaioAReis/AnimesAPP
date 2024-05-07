@@ -17,7 +17,6 @@ export function CardLarger({ image, title, description, duration }: CardLargerPr
         bgColor="$blueGray200"
         justifyContent="flex-end"
       >
-
         <Image
           w="$full"
           h="$full"
@@ -27,7 +26,7 @@ export function CardLarger({ image, title, description, duration }: CardLargerPr
         />
 
         {duration && (
-          <Progress bgColor="$bg100" w="$full" size="xs" value={duration}>
+          <Progress bgColor="$bg300" w="$full" size="xs" value={duration}>
             <ProgressFilledTrack bgColor="$primary400" />
           </Progress>
         )}

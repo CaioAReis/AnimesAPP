@@ -4,9 +4,10 @@ import { Heading, Icon, Text, Box, HStack, VStack, Image } from "@gluestack-ui/t
 import { EpisodeCardProps } from "../types";
 
 export function EpisodeCard({ thumb, title, episode, episodeMin, watched }: EpisodeCardProps) {
+  const watchedColor = watched ? "$primary100" : "transparent";
 
   return (
-    <HStack maxHeight={90} mx={20} space="md" bgColor={watched ? "$primary100" : "transparent"} rounded="$md">
+    <HStack maxHeight={90} mx={20} space="md" bgColor={watchedColor} rounded="$md">
       <Box minHeight={90} w="40%" bgColor="$blueGray200" rounded="$md" overflow="hidden">
         <Image
           w="$full" h="$full"
@@ -26,9 +27,9 @@ export function EpisodeCard({ thumb, title, episode, episodeMin, watched }: Epis
           </Text>
 
           <HStack alignItems="center" justifyContent="space-between">
-            <Text fontSize="$xs" lineHeight="$sm" color="$primary500">{episodeMin} min</Text>
+            <Text fontSize="$xs" lineHeight="$sm" color="$primary600">{episodeMin} min</Text>
 
-            {watched && <Icon as={Eye} mr={10} color="$primary500" fill="$primary100" size="lg" />}
+            {watched && <Icon as={Eye} mr={10} color="$primary600" size="lg" />}
           </HStack>
         </VStack>
       </Box>

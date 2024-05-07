@@ -1,9 +1,9 @@
+import { useCallback } from "react";
 import { router } from "expo-router";
 import { useWindowDimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { ArrowLeft, Heart, Play, Share } from "lucide-react-native";
 import { Button, ButtonIcon, HStack, Icon, ImageBackground, useToken } from "@gluestack-ui/themed";
-import { useCallback } from "react";
 
 interface CoverHeaderProps {
   imageCover: string,
@@ -33,8 +33,8 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
 
         <Button
           m={20}
+          bgColor={bg}
           w={50} h={50}
-          bgColor="$bg0"
           rounded="$full"
           borderWidth={2}
           borderColor="$bg400"
@@ -48,10 +48,10 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             <Button
               w={40} h={40}
               rounded="$full"
-              onPress={onShare}
               bgColor="$bg950"
+              onPress={onShare}
             >
-              <ButtonIcon as={Share} size="md" color="$bg0" />
+              <ButtonIcon as={Share} size="md" color={bg} />
             </Button>
 
             <Button
@@ -60,7 +60,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
               bgColor="$bg950"
               onPress={onFavorite}
             >
-              <ButtonIcon as={Heart} size="xl" color="$bg0" />
+              <Icon as={Heart} size="md" color={bg} fill={bg} />
             </Button>
           </HStack>
 
@@ -69,10 +69,10 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             rounded="$full"
             borderWidth={4}
             onPress={onPlay}
-            borderColor="$bg0"
+            borderColor={bg}
             bgColor="$primary400"
           >
-            <Icon as={Play} size="xl" fill="$bg0" color="$bg0" />
+            <Icon as={Play} size="xl" fill={bg} color={bg} />
           </Button>
         </HStack>
       </LinearGradient>

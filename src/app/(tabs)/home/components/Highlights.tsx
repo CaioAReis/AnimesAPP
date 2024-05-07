@@ -1,9 +1,9 @@
 import { router } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
 import { Heart, Play, Share } from "lucide-react-native";
-import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useToken } from "@gluestack-ui/themed";
+import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useToken, Icon } from "@gluestack-ui/themed";
 
 import { HighlightsProps } from "../types";
-import { LinearGradient } from "expo-linear-gradient";
 
 export function Highlights({ height, image, title, description }: HighlightsProps) {
   const bg = useToken("colors", "bg0" as "amber100");
@@ -31,16 +31,16 @@ export function Highlights({ height, image, title, description }: HighlightsProp
 
         <HStack my={8} space="md">
           <Button rounded="$full" bg="$primary400" onPress={() => router.push("/stack/AnimeDetails")}>
-            <ButtonText color="$bg0">PLAY</ButtonText>
-            <ButtonIcon color="$bg0" as={Play} ml={8} />
+            <ButtonText color={bg}>PLAY</ButtonText>
+            <Icon color={bg} fill={bg} as={Play} ml={8} />
           </Button>
 
           <Button rounded="$full" w={40} h={40} bg="$bg950">
-            <ButtonIcon as={Heart} color="$bg0" />
+            <Icon as={Heart} color={bg} fill={bg} />
           </Button>
 
           <Button rounded="$full" w={40} h={40} bg="$bg950">
-            <ButtonIcon as={Share} color="$bg0" />
+            <ButtonIcon as={Share} color={bg} />
           </Button>
         </HStack>
       </Box>

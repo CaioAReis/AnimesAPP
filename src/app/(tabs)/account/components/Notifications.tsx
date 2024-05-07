@@ -38,17 +38,16 @@ export function Notifications() {
       <Actionsheet isOpen={isOpen} onClose={handleCloseNotifications} zIndex={999}>
         <ActionsheetBackdrop bgColor="transparent">
 
-          <BlurView intensity={10} tint="dark" style={{ flex: 1, backgroundColor: "red" }}>
-          </BlurView>
+          <BlurView intensity={90} tint="light" style={{ flex: 1 }} />
 
         </ActionsheetBackdrop>
 
-        <ActionsheetContent h="85%" zIndex={999} bgColor="$bg0">
+        <ActionsheetContent zIndex={999} bgColor="$bg0">
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
 
-          <ActionsheetScrollView>
+          <ActionsheetScrollView h="85%">
             <VStack space="md" pt={12}>
               {notifications?.map((notification, i) => (
                 <NotificationCard
@@ -59,11 +58,10 @@ export function Notifications() {
                 />
               ))}
             </VStack>
+
           </ActionsheetScrollView>
         </ActionsheetContent>
       </Actionsheet>
-
-
     </>
   );
 }

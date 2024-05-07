@@ -14,11 +14,16 @@ import {
   ActionsheetContent,
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
+  useToken,
 } from "@gluestack-ui/themed";
+
+const stars = [1, 2, 3, 4, 5];
 
 export function Rating() {
   const [rating, setRating] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+
+  const starColor = useToken("colors", "primary400");
 
   const handleClose = () => setIsOpen(false);
 
@@ -40,7 +45,7 @@ export function Rating() {
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleClose} zIndex={999}>
-        <ActionsheetBackdrop />
+        <ActionsheetBackdrop bgColor="$bg400" />
         <ActionsheetContent h="auto" zIndex={999}>
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
@@ -53,61 +58,27 @@ export function Rating() {
 
           <Box mb={100}>
             <HStack space="md" justifyContent="center">
-              <Button onPress={() => setRating(1)} bgColor="transparent" w="$1/6">
-                <Icon
-                  as={Star}
-                  size={"30" as "xl"}
-                  color={rating >= 1 ? "$primary400" : "$bg300"}
-                  fill={rating >= 1 ? "$primary400" : "transparent"}
-                />
-              </Button>
-
-              <Button onPress={() => setRating(2)} bgColor="transparent" w="$1/6">
-                <Icon
-                  as={Star}
-                  size={"30" as "xl"}
-                  color={rating >= 2 ? "$primary400" : "$bg300"}
-                  fill={rating >= 2 ? "$primary400" : "transparent"}
-                />
-              </Button>
-
-              <Button onPress={() => setRating(3)} bgColor="transparent" w="$1/6">
-                <Icon
-                  as={Star}
-                  size={"30" as "xl"}
-                  color={rating >= 3 ? "$primary400" : "$bg300"}
-                  fill={rating >= 3 ? "$primary400" : "transparent"}
-                />
-              </Button>
-
-              <Button onPress={() => setRating(4)} bgColor="transparent" w="$1/6">
-                <Icon
-                  as={Star}
-                  size={"30" as "xl"}
-                  color={rating >= 4 ? "$primary400" : "$bg300"}
-                  fill={rating >= 4 ? "$primary400" : "transparent"}
-                />
-              </Button>
-
-              <Button onPress={() => setRating(5)} bgColor="transparent" w="$1/6">
-                <Icon
-                  as={Star}
-                  size={"30" as "xl"}
-                  color={rating === 5 ? "$primary400" : "$bg300"}
-                  fill={rating === 5 ? "$primary400" : "transparent"}
-                />
-              </Button>
+              {stars?.map(star => (
+                <Button key={star} onPress={() => setRating(star)} bgColor="transparent" w="$1/6">
+                  <Icon
+                    as={Star}
+                    size={"30" as "xl"}
+                    color={rating >= star ? starColor : "$bg300"}
+                    fill={rating >= star ? starColor : "transparent"}
+                  />
+                </Button>
+              ))}
             </HStack>
 
             <Button
               mt={40}
               rounded="$full"
-              bgColor="$primary400"
               onPress={onSubmit}
               disabled={!rating}
+              bgColor={starColor}
               opacity={rating ? 1 : 0.7}
             >
-              <ButtonText mx={20}>Enviar Avaliação</ButtonText>
+              <ButtonText mx={20} color="$bg0">Enviar Avaliação</ButtonText>
               <Icon as={Send} color="$bg0" size="lg" />
             </Button>
           </Box>

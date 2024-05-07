@@ -36,11 +36,12 @@ export function Settings() {
 
       <Actionsheet isOpen={isOpen} onClose={handleClose} zIndex={999}>
         <ActionsheetBackdrop bgColor="$bg400" />
-        <ActionsheetContent h="85%" zIndex={999} bgColor="$bg0">
+        <ActionsheetContent zIndex={999} bgColor="$bg0">
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
-          <ActionsheetScrollView>
+
+          <ActionsheetScrollView mb={60}>
             <VStack space="md" pt={12}>
               <MenuItem
                 Icon={User2}
@@ -74,7 +75,7 @@ export function Settings() {
               <MenuItem
                 Icon={LogOut}
                 title="Log out"
-                color="$error500"
+                color="$red500"
                 onPress={() => {
                   handleClose();
                   setIsOpenLogout(true);
@@ -95,7 +96,7 @@ export function Settings() {
         Button={
           <Button
             size="sm"
-            bg="$error400"
+            bg="$red500"
             rounded="$full"
             action="negative"
             onPress={handleLogOut}
@@ -115,7 +116,7 @@ export function Settings() {
         Button={
           <Button
             size="sm"
-            bg="$error400"
+            bg="$red500"
             rounded="$full"
             action="negative"
             onPress={handleDeleteProfile}
@@ -162,10 +163,9 @@ export function Settings() {
               size="sm"
               borderWidth={0}
               variant="outline"
-              action="negative"
               onPress={() => setIsOpenAbout(false)}
             >
-              <ButtonText>Close</ButtonText>
+              <ButtonText color="$red500">Close</ButtonText>
             </Button>
           </ModalFooter>
         </ModalContent>
