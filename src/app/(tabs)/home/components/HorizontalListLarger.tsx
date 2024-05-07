@@ -17,14 +17,15 @@ export function HorizontalListLarger({ title, list }: HorizontalListLargerProps)
           maxToRenderPerBatch={1}
           ListHeaderComponent={<Box w={20} />}
           ListFooterComponent={<Box w={20} />}
-          ItemSeparatorComponent={() => <Box w={10} />}
           showsHorizontalScrollIndicator={false}
+          ItemSeparatorComponent={() => <Box w={10} />}
           renderItem={({ item }) => (
             <CardLarger
               image={item?.image}
               title={item?.title}
               duration={item?.duration}
               description={item?.description}
+              onPress={() => alert("Abrir episódio")}
             />
           )}
         />

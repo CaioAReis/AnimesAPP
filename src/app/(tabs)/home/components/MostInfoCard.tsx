@@ -1,19 +1,19 @@
 import { useContext, useMemo } from "react";
 import { Heart, Play } from "lucide-react-native";
 import { useWindowDimensions } from "react-native";
-import { Box, Button, Icon, HStack, Heading, Image, Text, useToken } from "@gluestack-ui/themed";
+import { Box, Button, Icon, HStack, Heading, Image, Text, useToken, Pressable } from "@gluestack-ui/themed";
 
 import { MostInfoCardProps } from "../types";
 import ThemeContext from "../../../../config/contexts/ThemeContext";
 
-export function MostInfoCard({ title, image, categories, description }: MostInfoCardProps) {
+export function MostInfoCard({ title, image, categories, description, onPress }: MostInfoCardProps) {
   const { width } = useWindowDimensions();
   const { theme } = useContext(ThemeContext);
   const bg = useToken("colors", "bg0" as "amber100");
 
   const _render = useMemo(() => (
     <Box w={width} px={20} mb={10}>
-      <Box softShadow="1" shadowColor="$bg0" backgroundColor="$bg50" w="$full" rounded="$lg" overflow="hidden">
+      <Pressable onPress={onPress} softShadow="1" shadowColor="$bg0" backgroundColor="$bg50" w="$full" rounded="$lg" overflow="hidden">
         <Image
           h="$40"
           w="$full"
@@ -39,9 +39,9 @@ export function MostInfoCard({ title, image, categories, description }: MostInfo
             <Icon as={Heart} color={bg} fill={bg} size="xl" />
           </Button>
         </HStack>
-      </Box>
+      </Pressable>
     </Box>
-  ), [ theme ]);
+  ), [theme]);
 
   return _render;
 }

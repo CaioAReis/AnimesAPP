@@ -1,13 +1,15 @@
-import { Link, Redirect } from "expo-router";
+import {
+  Link,
+  // Redirect,
+} from "expo-router";
 import { useWindowDimensions } from "react-native";
 import { LogIn, UserRoundPlus } from "lucide-react-native";
-import { Button, ButtonText, Icon } from "@gluestack-ui/themed";
-import { Box, Divider, Image, VStack } from "@gluestack-ui/themed";
+import { Box, Divider, Image, VStack, Button, ButtonIcon, ButtonText, Icon } from "@gluestack-ui/themed";
 
 export default function Start() {
   const { height } = useWindowDimensions();
 
-  return <Redirect href="stack/SignIn" />;
+  // return <Redirect href="stack/SignIn" />;
 
   return (
     <Box flex={1}>
@@ -78,21 +80,22 @@ export default function Start() {
         </Box>
       </Box>
 
-      <Box w="$full" h="$full" position="absolute" bgColor="#00000099">
+      <Box w="$full" h="$full" position="absolute" bgColor="#000000aa">
         <VStack flex={1} px={20} justifyContent="space-evenly">
-          <Image
-            alt="Logo app"
-            w="60%" h="8%"
-            alignSelf="center"
-            resizeMode="contain"
-            source={require("../../assets/images/logo_light.png")}
-          />
+          <Box w="70%" h="8%" p={10} alignSelf="center">
+            <Image
+              alt="Logo app"
+              w="$full" h="$full"
+              resizeMode="contain"
+              source={require("../../assets/images/logo_dark.png")}
+            />
+          </Box>
 
           <VStack w="$full" space="2xl">
             <Link href="stack/SignIn" asChild>
               <Button elevation={4} bgColor="$primary400" borderRadius="$full">
-                <ButtonText color="$bg0" mx={20}>Sign In</ButtonText>
-                <Icon as={LogIn} color="$bg0" />
+                <ButtonText color="$black" mx={20}>Sign In</ButtonText>
+                <ButtonIcon as={LogIn} color="$black" />
               </Button>
             </Link>
 

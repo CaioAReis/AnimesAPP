@@ -31,6 +31,7 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
               image={item?.image}
               categories={item?.categories}
               description={item?.description}
+              onPress={() => alert("Abrir detalhes")}
             />
           )}
         />

@@ -66,6 +66,7 @@ export default function AnimeDetails() {
           episode={index + 1}
           watched={item.watched}
           episodeMin={item.episodeMin}
+          onPress={() => alert("Assistir episódio")}
         />
       )}
 

@@ -4,6 +4,7 @@ interface EpisodeCardProps {
   episode: number,
   watched: boolean,
   episodeMin: number,
+  onPress: () => void,
 }
 
 export { EpisodeCardProps };

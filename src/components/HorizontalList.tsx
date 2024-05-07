@@ -23,11 +23,11 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
             title={item.title}
             image={item?.image}
             description={item?.description}
+            onPress={() => alert("Abrir Detalhes")}
             showPosition={showPosition ? index + 1 : null}
           />
         )}
       />
-
     </Box>
   );
 }
