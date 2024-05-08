@@ -1,11 +1,22 @@
 import { Link, router } from "expo-router";
 import { KeyboardAvoidingView } from "react-native";
+import { Controller, useForm } from "react-hook-form";
 import { AlertCircleIcon, ArrowLeft, EyeOff, Lock, LogIn, Mail } from "lucide-react-native";
 import { Box, Button, Heading, Text, ButtonText, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlLabel, FormControlLabelText, HStack, Icon, Input, InputField, InputIcon, InputSlot, VStack, ScrollView } from "@gluestack-ui/themed";
 
-export default function SignIn() {
+interface formType {
+  email: string,
+  password: string,
+}
 
-  const onSubmit = () => {
+export default function SignIn() {
+  const { control, handleSubmit, formState: { errors }, } = useForm({
+    defaultValues: { email: "", password: "" },
+  });
+
+  const onSubmit = (data: formType) => {
+    console.warn(data);
+
     router.push("stack/SelectProfile");
   };
 
@@ -22,65 +33,96 @@ export default function SignIn() {
 
       <KeyboardAvoidingView behavior="padding">
         <VStack my={40} space="2xl">
-          <FormControl
-            w="$full"
-            size="md"
-            alignSelf="center"
-            isDisabled={false}
-            isInvalid={false}
-            isReadOnly={false}
-            isRequired={false}
-          >
-            <FormControlLabel mb="$1">
-              <FormControlLabelText>Email</FormControlLabelText>
-            </FormControlLabel>
-            <Input size="lg" variant="underlined">
-              <InputSlot mr={6}>
-                <InputIcon as={Mail} />
-              </InputSlot>
-              <InputField placeholder="Email" />
-            </Input>
 
-            <FormControlError>
-              <FormControlErrorIcon as={AlertCircleIcon} />
-              <FormControlErrorText>
-                At least 6 characters are required.
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
+          <Controller
+            name="email"
+            control={control}
+            rules={{ required: "The email is required" }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <FormControl
+                w="$full"
+                size="lg"
+                isRequired={true}
+                alignSelf="center"
+                isInvalid={Boolean(errors?.email)}
+              >
+                <FormControlLabel mb="$1">
+                  <FormControlLabelText color={errors?.email ? "$error400" : "$bg700"}>
+                    Email
+                  </FormControlLabelText>
+                </FormControlLabel>
 
-          <FormControl
-            w="$full"
-            size="md"
-            alignSelf="center"
-            isDisabled={false}
-            isInvalid={false}
-            isReadOnly={false}
-            isRequired={false}
-          >
-            <FormControlLabel mb="$1">
-              <FormControlLabelText>Password</FormControlLabelText>
-            </FormControlLabel>
-            <Input size="lg" variant="underlined">
-              <InputSlot mr={6}>
-                <InputIcon as={Lock} />
-              </InputSlot>
-              <InputField type="password" placeholder="Password" />
-              <InputSlot mr={6}>
-                <InputIcon as={EyeOff} />
-              </InputSlot>
-            </Input>
+                <Input size="lg" variant="underlined">
+                  <InputSlot mr={6}>
+                    <InputIcon as={Mail} color={errors?.email ? "$error400" : "$bg700"} />
+                  </InputSlot>
 
-            <FormControlError>
-              <FormControlErrorIcon as={AlertCircleIcon} />
-              <FormControlErrorText>
-                At least 6 characters are required.
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
+                  <InputField
+                    value={value}
+                    onBlur={onBlur}
+                    placeholder="Email"
+                    onChangeText={onChange}
+                  />
+                </Input>
+
+                {errors?.email && (
+                  <FormControlError>
+                    <FormControlErrorIcon as={AlertCircleIcon} />
+                    <FormControlErrorText>
+                      {errors?.email?.message}
+                    </FormControlErrorText>
+                  </FormControlError>
+                )}
+              </FormControl>
+            )}
+          />
+
+          <Controller
+            name="password"
+            control={control}
+            rules={{ required: "The password is required" }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <FormControl
+                w="$full"
+                size="lg"
+                isRequired={true}
+                alignSelf="center"
+                isInvalid={Boolean(errors?.password)}
+              >
+                <FormControlLabel mb="$1">
+                  <FormControlLabelText color={errors?.password ? "$error400" : "$bg700"}>Password</FormControlLabelText>
+                </FormControlLabel>
+
+                <Input size="lg" variant="underlined">
+                  <InputSlot mr={6}>
+                    <InputIcon as={Lock} color={errors?.password ? "$error400" : "$bg700"} />
+                  </InputSlot>
+
+                  <InputField
+                    value={value}
+                    onBlur={onBlur}
+                    type="password"
+                    placeholder="Password"
+                    onChangeText={onChange}
+                  />
+
+                  <InputSlot mr={6}>
+                    <InputIcon as={EyeOff} />
+                  </InputSlot>
+                </Input>
+
+                {errors?.password && (
+                  <FormControlError>
+                    <FormControlErrorIcon as={AlertCircleIcon} />
+                    <FormControlErrorText>{errors?.password?.message}</FormControlErrorText>
+                  </FormControlError>
+                )}
+              </FormControl>
+            )}
+          />
 
           <VStack space="md" alignItems="center" mt={20}>
-            <Button onPress={onSubmit} elevation={4} mt={20} w="80%" bgColor="$primary400" borderRadius="$full">
+            <Button onPress={handleSubmit(onSubmit)} elevation={4} mt={20} w="80%" bgColor="$primary400" borderRadius="$full">
               <ButtonText color="$bg0" mx={20}>Log in</ButtonText>
               <Icon as={LogIn} color="$bg0" />
             </Button>

@@ -5,8 +5,6 @@ import { fontWeights, fonts } from "./fonts";
 import { colors as colorsDark } from "./dark";
 import { colors as colorsLight } from "./light";
 
-// SEPARAR TODOS OS TOKENS DARKS E LIGHTS
-
 export const myConfig = createConfig({
   ...config,
   tokens: {
