@@ -19,7 +19,7 @@ export default function Start() {
             alt="Image 01"
             resizeMode="cover"
             w="$full" h="$full"
-            source={require("../../assets/images/img_01.png")}
+            source={require("@/../assets/images/img_01.png")}
           />
         </Box>
 
@@ -32,7 +32,7 @@ export default function Start() {
               alt="Image 02"
               resizeMode="cover"
               flex={1} bgColor="$blueGray400"
-              source={require("../../assets/images/img_02.png")}
+              source={require("@/../assets/images/img_02.png")}
             />
 
             <Divider bgColor="$bg0" h={4} />
@@ -42,7 +42,7 @@ export default function Start() {
               alt="Image 03"
               resizeMode="cover"
               flex={1} bgColor="$blueGray400"
-              source={require("../../assets/images/img_03.png")}
+              source={require("@/../assets/images/img_03.png")}
             />
           </VStack>
 
@@ -52,7 +52,7 @@ export default function Start() {
             alt="Image 04"
             w="60%" h="$full"
             bgColor="$blueGray400"
-            source={require("../../assets/images/img_04.png")}
+            source={require("@/../assets/images/img_04.png")}
           />
         </Box>
 
@@ -64,7 +64,7 @@ export default function Start() {
             resizeMode="cover"
             w="60%" h="$full"
             bgColor="$blueGray400"
-            source={require("../../assets/images/img_05.png")}
+            source={require("@/../assets/images/img_05.png")}
           />
 
           <Divider bgColor="$bg0" w={4} />
@@ -75,7 +75,7 @@ export default function Start() {
             alt="Image 06"
             resizeMode="cover"
             bgColor="$blueGray400"
-            source={require("../../assets/images/img_06.png")}
+            source={require("@/../assets/images/img_06.png")}
           />
         </Box>
       </Box>
@@ -87,7 +87,7 @@ export default function Start() {
               alt="Logo app"
               w="$full" h="$full"
               resizeMode="contain"
-              source={require("../../assets/images/logo_dark.png")}
+              source={require("@/../assets/images/logo_dark.png")}
             />
           </Box>
 

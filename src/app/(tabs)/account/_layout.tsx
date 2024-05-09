@@ -1,8 +1,8 @@
 import { Divider, HStack, Heading, Image, ScrollView } from "@gluestack-ui/themed";
 import { Avatar, AvatarFallbackText, AvatarImage, Box, Text, VStack } from "@gluestack-ui/themed";
 
+import { HorizontalList } from "@/components";
 import { MostInfoList } from "../home/components";
-import { HorizontalList } from "../../../components";
 import { Notifications, Settings, ThemeButton } from "./components";
 
 const fakeList = [
@@ -53,7 +53,7 @@ export default function Account() {
               alt="Logo app"
               w="40%" h="$10"
               resizeMode="contain"
-              source={require("../../../../assets/images/logo_dark.png")}
+              source={require("@/../assets/images/logo_dark.png")}
             />
 
             <HStack alignSelf="flex-end" space="md">

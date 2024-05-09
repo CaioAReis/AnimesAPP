@@ -3,8 +3,8 @@ import { FlatList } from "react-native";
 import { Heart } from "lucide-react-native";
 import { Center, HStack, Heading, Icon, Text, VStack, Box } from "@gluestack-ui/themed";
 
-import { AnimeCard } from "../../../components";
-import { AnimeCardProps } from "../../../config/types";
+import { AnimeCard } from "@/components";
+import { AnimeCardProps } from "@/config/types";
 
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },

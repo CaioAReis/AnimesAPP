@@ -1,4 +1,4 @@
-import { AnimeCardProps, CardLargerProps } from "../../../../config/types";
+import { AnimeCardProps, CardLargerProps } from "@/config/types";
 
 interface HighlightsProps {
   image: string,

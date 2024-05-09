@@ -17,7 +17,7 @@ export default function SelectProfile() {
             height={80}
             alt="Logo app"
             resizeMode="contain"
-            source={require("../../../../assets/images/logo_dark.png")}
+            source={require("@/../assets/images/logo_dark.png")}
           />
         </Center>
 

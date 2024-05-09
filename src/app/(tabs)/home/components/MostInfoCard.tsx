@@ -4,7 +4,7 @@ import { useWindowDimensions } from "react-native";
 import { Box, Button, Icon, HStack, Heading, Image, Text, useToken, Pressable } from "@gluestack-ui/themed";
 
 import { MostInfoCardProps } from "../types";
-import ThemeContext from "../../../../config/contexts/ThemeContext";
+import ThemeContext from "@/config/contexts/ThemeContext";
 
 export function MostInfoCard({ title, image, categories, description, onPress }: MostInfoCardProps) {
   const { width } = useWindowDimensions();

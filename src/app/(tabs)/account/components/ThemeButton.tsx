@@ -1,7 +1,7 @@
 import { Moon, Sun } from "lucide-react-native";
 import { Button, ButtonIcon } from "@gluestack-ui/themed";
 import { useCallback, useContext } from "react";
-import ThemeContext from "../../../../config/contexts/ThemeContext";
+import ThemeContext from "@/config/contexts/ThemeContext";
 
 export function ThemeButton() {
   const { theme, setTheme } = useContext(ThemeContext);

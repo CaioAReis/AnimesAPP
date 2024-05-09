@@ -1,12 +1,10 @@
+import { router } from "expo-router";
 import { useCallback, useState } from "react";
 import { Info, LogOut, Settings as SettingsIcon, User2, UserX2 } from "lucide-react-native";
-import { Actionsheet, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack, Modal, ModalBackdrop, ModalContent, ModalHeader, Heading, ModalCloseButton, Icon, CloseIcon, ModalBody, Text, ModalFooter } from "@gluestack-ui/themed";
+import { Actionsheet, ButtonText, Image, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack, Modal, ModalBackdrop, ModalContent, ModalHeader, Heading, ModalCloseButton, Icon, CloseIcon, ModalBody, Text, ModalFooter } from "@gluestack-ui/themed";
 
 import { MenuItem } from "./MenuItem";
-import { Dialog } from "../../../../components";
-import { ButtonText } from "@gluestack-ui/themed";
-import { Image } from "@gluestack-ui/themed";
-import { router } from "expo-router";
+import { Dialog } from "@/components";
 
 export function Settings() {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,7 +143,7 @@ export function Settings() {
               w={200} h={100}
               alignSelf="center"
               resizeMode="contain"
-              source={require("../../../../../assets/images/logo_dark.png")}
+              source={require("@/../assets/images/logo_dark.png")}
             />
 
             <Text>

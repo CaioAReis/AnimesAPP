@@ -3,9 +3,9 @@ import { FlatList, useWindowDimensions } from "react-native";
 import { Box, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
 import { Axe, BookHeart, Castle, Drama, Footprints, Hourglass, Laugh, Medal, Palmtree, Rocket, Search as SearchICON, Sofa, Swords } from "lucide-react-native";
 
+import { AnimeCard } from "@/components";
 import { CategoryCard } from "./components";
-import { AnimeCard } from "../../../components";
-import { AnimeCardProps } from "../../../config/types";
+import { AnimeCardProps } from "@/config/types";
 
 const categories = [
   { title: "Adventure", icon: Palmtree, color: "$green" },

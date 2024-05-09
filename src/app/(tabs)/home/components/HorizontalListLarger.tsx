@@ -1,7 +1,7 @@
 import { FlatList } from "react-native";
 import { Box, Heading } from "@gluestack-ui/themed";
 
-import { CardLarger } from "../../../../components";
+import { CardLarger } from "@/components";
 import { HorizontalListLargerProps } from "../types";
 
 export function HorizontalListLarger({ title, list }: HorizontalListLargerProps) {

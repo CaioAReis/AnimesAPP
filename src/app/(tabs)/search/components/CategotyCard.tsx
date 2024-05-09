@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Heading, Icon, Pressable, useToken } from "@gluestack-ui/themed";
 
 import { CategoryCardProps } from "../types";
-import ThemeContext from "../../../../config/contexts/ThemeContext";
+import ThemeContext from "@/config/contexts/ThemeContext";
 
 export function CategoryCard({ title, color, width, height, IconCard, onPress }: CategoryCardProps) {
   const { theme } = useContext(ThemeContext);

@@ -12,7 +12,7 @@ interface CardLargerProps {
   image: string,
   title: string,
   duration: number,
-  onPress: () => void,
+  onPress?: () => void,
   description?: string,
 }
 
