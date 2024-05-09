@@ -1,8 +1,11 @@
 import { Link, router } from "expo-router";
+import { useCallback, useState } from "react";
 import { KeyboardAvoidingView } from "react-native";
 import { Controller, useForm } from "react-hook-form";
-import { AlertCircleIcon, ArrowLeft, EyeOff, Lock, LogIn, Mail } from "lucide-react-native";
+import { AlertCircleIcon, ArrowLeft, Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react-native";
 import { Box, Button, Heading, Text, ButtonText, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlLabel, FormControlLabelText, HStack, Icon, Input, InputField, InputIcon, InputSlot, VStack, ScrollView } from "@gluestack-ui/themed";
+
+import { regexs, validates } from "@/config/utils";
 
 interface formType {
   email: string,
@@ -10,9 +13,13 @@ interface formType {
 }
 
 export default function SignIn() {
+  const [showPass, setShowPass] = useState(false);
+
   const { control, handleSubmit, formState: { errors }, } = useForm({
     defaultValues: { email: "", password: "" },
   });
+
+  const handleShowPass = useCallback(() => setShowPass(prev => !prev), []);
 
   const onSubmit = (data: formType) => {
     console.warn(data);
@@ -37,7 +44,10 @@ export default function SignIn() {
           <Controller
             name="email"
             control={control}
-            rules={{ required: "The email is required" }}
+            rules={{
+              required: "The email is required",
+              pattern: { value: regexs.EMAIL, message: "Email invalid." }
+            }}
             render={({ field: { onChange, onBlur, value } }) => (
               <FormControl
                 w="$full"
@@ -47,14 +57,14 @@ export default function SignIn() {
                 isInvalid={Boolean(errors?.email)}
               >
                 <FormControlLabel mb="$1">
-                  <FormControlLabelText color={errors?.email ? "$error400" : "$bg700"}>
+                  <FormControlLabelText color={errors?.email ? "$error700" : "$bg700"}>
                     Email
                   </FormControlLabelText>
                 </FormControlLabel>
 
                 <Input size="lg" variant="underlined">
                   <InputSlot mr={6}>
-                    <InputIcon as={Mail} color={errors?.email ? "$error400" : "$bg700"} />
+                    <InputIcon as={Mail} color={errors?.email ? "$error700" : "$bg700"} />
                   </InputSlot>
 
                   <InputField
@@ -80,7 +90,10 @@ export default function SignIn() {
           <Controller
             name="password"
             control={control}
-            rules={{ required: "The password is required" }}
+            rules={{
+              required: "The password is required",
+              validate: { onCheckPass: v => validates.checkPassword(v) }
+            }}
             render={({ field: { onChange, onBlur, value } }) => (
               <FormControl
                 w="$full"
@@ -90,24 +103,24 @@ export default function SignIn() {
                 isInvalid={Boolean(errors?.password)}
               >
                 <FormControlLabel mb="$1">
-                  <FormControlLabelText color={errors?.password ? "$error400" : "$bg700"}>Password</FormControlLabelText>
+                  <FormControlLabelText color={errors?.password ? "$error700" : "$bg700"}>Password</FormControlLabelText>
                 </FormControlLabel>
 
                 <Input size="lg" variant="underlined">
                   <InputSlot mr={6}>
-                    <InputIcon as={Lock} color={errors?.password ? "$error400" : "$bg700"} />
+                    <InputIcon as={Lock} color={errors?.password ? "$error700" : "$bg700"} />
                   </InputSlot>
 
                   <InputField
                     value={value}
                     onBlur={onBlur}
-                    type="password"
                     placeholder="Password"
                     onChangeText={onChange}
+                    type={showPass ? "text" : "password"}
                   />
 
-                  <InputSlot mr={6}>
-                    <InputIcon as={EyeOff} />
+                  <InputSlot mr={6} onPress={handleShowPass}>
+                    <InputIcon as={showPass ? Eye : EyeOff} />
                   </InputSlot>
                 </Input>
 

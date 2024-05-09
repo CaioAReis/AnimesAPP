@@ -98,7 +98,7 @@ export const colors = {
   error400: "#eb2e36",
   error500: "#d2161d",
   error600: "#a40e16",
-  error700: "#76080f",
+  error700: "#d2161d",
   error800: "#480307",
   error900: "#1e0000",
   error950: "#000000",
