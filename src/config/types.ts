@@ -1,7 +1,7 @@
 interface AnimeCardProps {
   image: string,
   title: string,
-  onPress: () => void,
+  onPress?: () => void,
   description?: string,
   width?: string | number,
   height?: string | number,

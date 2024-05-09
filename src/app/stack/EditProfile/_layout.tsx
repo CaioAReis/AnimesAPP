@@ -43,11 +43,11 @@ export default function EditProfile() {
         </HStack>
 
         <VStack my={40} space="2xl">
-          <Avatar my={10} alignSelf="center" bgColor="$amber600" size="xl" borderRadius="$full">
+          <Avatar my={10} alignSelf="center" bgColor="transparent" size="xl" borderRadius="$full">
             <AvatarFallbackText>{"CAIO"}</AvatarFallbackText>
             <AvatarImage
               alt={`${"CAIO"}'s profile`}
-              source={{ uri: "https://api.dicebear.com/7.x/bottts-neutral/png?seed=C" }}
+              source={{ uri: "https://api.dicebear.com/8.x/bottts/png?seed=C" }}
             />
           </Avatar>
 

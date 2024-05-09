@@ -23,11 +23,11 @@ export function ProfileCard({ name, picture, accountType }: ProfileCardProps) {
     <Link asChild href="(tabs)/home" style={{ marginHorizontal: 20 }}>
       <Pressable>
         <HStack alignItems="center" space="xl" mx={20}>
-          <Avatar bgColor="$primary400" size="lg" borderRadius="$full">
+          <Avatar bgColor="transparent" size="lg" borderRadius="$full">
             <AvatarFallbackText>{name}</AvatarFallbackText>
             <AvatarImage
               alt={`${name}'s profile`}
-              source={{ uri: picture ?? `https://api.dicebear.com/7.x/bottts-neutral/png?seed=${name}` }}
+              source={{ uri: picture ?? `https://api.dicebear.com/8.x/bottts/png?seed=${name}` }}
             />
           </Avatar>
 

@@ -28,7 +28,7 @@ interface MostInfoCardProps {
   image: string,
   categories: string,
   description: string,
-  onPress: () => void,
+  onPress?: () => void,
 }
 
 export {

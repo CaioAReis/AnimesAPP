@@ -66,9 +66,9 @@ export default function Account() {
           </HStack>
 
           <HStack alignItems="center">
-            <Avatar bgColor="$primary400" size="xl" borderRadius="$full">
+            <Avatar bgColor="transparent" size="xl" borderRadius="$full">
               <AvatarFallbackText>Caio AReis</AvatarFallbackText>
-              <AvatarImage alt="User" source={{ uri: "https://api.dicebear.com/7.x/bottts-neutral/png?seed=C" }} />
+              <AvatarImage alt="User" source={{ uri: "https://api.dicebear.com/8.x/bottts/png?seed=C" }} />
             </Avatar>
 
             <VStack ml={10} flex={1}>

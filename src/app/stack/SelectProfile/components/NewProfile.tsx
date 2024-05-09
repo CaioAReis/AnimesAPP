@@ -53,11 +53,11 @@ export function NewProfile({ isOpen, onClose }: NewProfileProps) {
           <Box px={20} mt={10} w="$full">
             <Heading>New Profile</Heading>
 
-            <Avatar my={20} alignSelf="center" bgColor="$primary400" size="xl" borderRadius="$full">
+            <Avatar my={20} alignSelf="center" bgColor="transparent" size="xl" borderRadius="$full">
               <AvatarFallbackText>{"CAIO"}</AvatarFallbackText>
               <AvatarImage
                 alt={`${"CAIO"}'s profile`}
-                source={{ uri: "https://api.dicebear.com/7.x/bottts-neutral/png?seed=C" }}
+                source={{ uri: "https://api.dicebear.com/8.x/bottts/png?seed=C" }}
               />
             </Avatar>
 
