@@ -1,7 +1,7 @@
 import { Link, router } from "expo-router";
 import { useCallback, useState } from "react";
 import { KeyboardAvoidingView } from "react-native";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, FieldValue, useForm } from "react-hook-form";
 import { AlertCircleIcon, ArrowLeft, Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react-native";
 import { Box, Button, Heading, Text, ButtonText, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlLabel, FormControlLabelText, HStack, Icon, Input, InputField, InputIcon, InputSlot, VStack, ScrollView } from "@gluestack-ui/themed";
 
@@ -21,7 +21,7 @@ export default function SignIn() {
 
   const handleShowPass = useCallback(() => setShowPass(prev => !prev), []);
 
-  const onSubmit = (data: formType) => {
+  const onSubmit = (data: FieldValue<formType>) => {
     console.warn(data);
 
     router.push("stack/SelectProfile");
@@ -92,7 +92,7 @@ export default function SignIn() {
             control={control}
             rules={{
               required: "The password is required",
-              validate: { onCheckPass: v => validates.checkPassword(v) }
+              validate: { onCheckPass: (v: string) => validates.checkPassword(v) }
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <FormControl

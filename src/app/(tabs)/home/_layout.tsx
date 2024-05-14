@@ -48,6 +48,49 @@ const forYou = [
   },
 ];
 
+// ############################################################################################
+
+// const query = `
+// query($id: Int) {
+//   Media(id: $id, type: ANIME) {
+//     id
+//     title {
+//       english
+//     }
+//     description
+//     coverImage {
+//       large
+//     }
+//   }
+// }
+// `;
+
+// const variables = {
+//   id: 15125
+// };
+
+// const url = "https://graphql.anilist.co",
+//   options = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Accept": "application/json",
+//     },
+//     body: JSON.stringify({
+//       query: query,
+//       variables: variables
+//     })
+//   };
+
+// fetch(url, options).then(response => {
+//   return response.json().then(function (json) {
+//     return response.ok ? json : Promise.reject(json);
+//   });
+// }).then(data => console.warn(data.data.Media.coverImage))
+//   .catch((e) => console.warn(e));
+
+// ############################################################################################
+
 export default function Home() {
   const { height } = useWindowDimensions();
 
