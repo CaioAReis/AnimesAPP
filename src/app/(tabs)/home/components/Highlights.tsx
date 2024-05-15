@@ -10,12 +10,14 @@ export function Highlights({ height, image, title, description }: HighlightsProp
 
   return (
     <Box h={height} justifyContent="flex-end">
-      <Image
-        alt={title}
-        h="$full" w="$full"
-        position="absolute"
-        source={{ uri: image }}
-      />
+      {image && (
+        <Image
+          alt={title}
+          h="$full" w="$full"
+          position="absolute"
+          source={{ uri: image }}
+        />
+      )}
 
       <LinearGradient
         colors={["transparent", bg]}
@@ -27,7 +29,7 @@ export function Highlights({ height, image, title, description }: HighlightsProp
           {title}
         </Heading>
 
-        <Text fontSize="$sm" color="$text400">{description}</Text>
+        <Text numberOfLines={1} fontSize="$sm" color="$text400">{description}</Text>
 
         <HStack my={8} space="md">
           <Button rounded="$full" bg="$primary400" onPress={() => router.push("/stack/AnimeDetails")}>

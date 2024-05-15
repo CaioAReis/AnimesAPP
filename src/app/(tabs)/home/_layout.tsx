@@ -1,4 +1,5 @@
-import { useWindowDimensions } from "react-native";
+import { useQuery, gql } from "@apollo/client";
+import { Text, useWindowDimensions } from "react-native";
 import { Box, ScrollView } from "@gluestack-ui/themed";
 
 import { HorizontalList } from "@/components";
@@ -91,8 +92,32 @@ const forYou = [
 
 // ############################################################################################
 
+const HIGHLIGHT_RANDOMIC = gql`
+query {
+  highlight: Media (type: ANIME, popularity_greater: 570000) {
+      id
+      popularity
+      genres
+      isAdult
+      title {
+        english
+        romaji
+      }
+      coverImage {
+        extraLarge
+      }
+    },
+}
+`;
+
 export default function Home() {
   const { height } = useWindowDimensions();
+  const { loading, error, data } = useQuery(HIGHLIGHT_RANDOMIC);
+  
+  if (loading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error : {data?.errors?.message}</Text>;
+  
+  const { highlight } = data;
 
   return (
     <Box flex={1}>
@@ -100,9 +125,9 @@ export default function Home() {
 
         <Highlights
           height={height / 1.7}
-          title="Demon Slayer: Kimetsu no Yaiba"
-          description="Action, Demons, Historical, Shounen, Supernatural"
-          image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.enjpg.com%2Fimg%2F2020%2Fdemon-slayer-desktop-8.jpg&f=1&nofb=1&ipt=4aca62af7b0a9a9be0549fb295ab0f8150c2a63652208498a3bfb572f97de0c4&ipo=images"
+          image={highlight?.coverImage.extraLarge}
+          description={[...highlight?.genres || ""].join(", ")}
+          title={highlight?.title.english || highlight?.title.romaji}
         />
 
         <HorizontalListLarger title="Continue Watching" list={listLarger} />
@@ -123,3 +148,124 @@ export default function Home() {
     </Box>
   );
 }
+
+// {
+//  HIGHLIGHT RANDOMIC
+//  highlight: Media (type: ANIME, popularity_greater: 570000) {
+//    id
+//    popularity
+//    genres
+//    isAdult
+//    title {
+//      english
+//      romaji
+//    }
+//    coverImage {
+//      large
+//    }
+//  },
+  
+//  SEARCH
+//  search: Page (page: 1, perPage: 12) {
+//    media (search: "One piece", type: ANIME) {
+//      id
+//      title {
+//        english
+//        romaji
+//      }
+//      coverImage {
+//        medium
+//      }
+//    }
+//  },
+  
+//  SEARCH BY CATEGORY
+//  searchByCategory: Page (page: 1, perPage: 12) {
+//    media (type: ANIME, genre: "Supernatural", sort: TITLE_ENGLISH_DESC) {
+//      id
+//      title {
+//        english
+//        romaji
+//      }
+//      coverImage {
+//        medium
+//      }
+//    }
+//  },
+  
+//  TODAY'S SELECTION
+//  trends: Page (page: 1, perPage: 10) {
+//    mediaTrends {
+//      media {
+//        id
+//        title {
+//          english
+//          romaji
+//        }
+//        coverImage {
+//        	medium
+//      	}
+//      }
+//    }
+//  },
+  
+//  TOP 10
+//  mostPopular: Page (page: 1, perPage: 10) {
+//    media (type:  ANIME, sort: POPULARITY_DESC) {
+//      id
+//      episodes
+//      title {
+//        english
+//        romaji
+//      }
+//      coverImage {
+//        medium
+//      }
+//    }
+//  },
+  
+//  FOR YOU
+//  forYou: Page (page: 1, perPage: 12) {
+//  	media (type: ANIME, genre: "romance", sort: TITLE_ENGLISH_DESC) {
+//      id
+//      title {
+//        english
+//        romaji
+//      }
+//      coverImage {
+//        medium
+//      }
+//    }
+//  },
+  
+//  RECOMENDEDS
+//  recommendation: Page (page: 1, perPage: 12) {
+//    recommendations (sort: RATING_DESC) {
+//      media {
+//        id
+//        episodes
+//        title {
+//          english
+//          romaji
+//        }
+//        coverImage {
+//        	medium
+//      	}
+//      }
+//    }
+//  },
+  
+//  COMING SOON
+//   comingSoon: Page (page: 1, perPage: 14) {
+//     media (type:  ANIME, status: NOT_YET_RELEASED, sort: POPULARITY_DESC) {
+//       id
+//       title {
+//         english
+//         romaji
+//       }
+//       coverImage {
+//         medium
+//       }
+//     }
+//   },
+// }

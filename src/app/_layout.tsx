@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Ubuntu_300Light, Ubuntu_400Regular, Ubuntu_500Medium } from "@expo-google-fonts/ubuntu";
 
@@ -15,6 +16,11 @@ export default function App() {
   const [theme, setTheme] = useState(colorScheme);
   const styleBar = theme === "dark" ? "light" : "dark";
 
+  const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    uri: "https://graphql.anilist.co",
+  });
+
   const [fontsLoaded, fontError] = useFonts({
     Ubuntu_300Light,
     Ubuntu_400Regular,
@@ -24,17 +30,19 @@ export default function App() {
   if (!fontsLoaded && !fontError) return null;
 
   return (
-    <SafeAreaProvider style={{ flex: 1 }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ThemeContext.Provider value={{ theme: theme!, setTheme: setTheme }}>
-          <GluestackUIProvider colorMode={theme!} config={myConfig}>
+    <ApolloProvider client={client}>
+      <SafeAreaProvider style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
+          <ThemeContext.Provider value={{ theme: theme!, setTheme: setTheme }}>
+            <GluestackUIProvider colorMode={theme!} config={myConfig}>
 
-            <Slot />
-            <StatusBar style={styleBar} backgroundColor={myConfig.themes[theme!].colors.bg0} />
+              <Slot />
+              <StatusBar style={styleBar} backgroundColor={myConfig.themes[theme!].colors.bg0} />
 
-          </GluestackUIProvider>
-        </ThemeContext.Provider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+            </GluestackUIProvider>
+          </ThemeContext.Provider>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </ApolloProvider>
   );
 }
