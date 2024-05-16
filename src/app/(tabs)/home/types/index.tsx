@@ -1,10 +1,10 @@
 import { AnimeCardProps, CardLargerProps } from "@/config/types";
 
 interface HighlightsProps {
-  image: string,
-  title: string,
+  image?: string,
+  title?: string,
   height: number,
-  description: string,
+  description?: string,
 }
 
 interface MostInfoListProps {

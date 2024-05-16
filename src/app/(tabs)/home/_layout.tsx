@@ -1,6 +1,5 @@
-import { useQuery, gql } from "@apollo/client";
-import { Text, useWindowDimensions } from "react-native";
 import { Box, ScrollView } from "@gluestack-ui/themed";
+import { useWindowDimensions } from "react-native";
 
 import { HorizontalList } from "@/components";
 import { Highlights, HorizontalListLarger, MostInfoList } from "./components";
@@ -49,86 +48,14 @@ const forYou = [
   },
 ];
 
-// ############################################################################################
-
-// const query = `
-// query($id: Int) {
-//   Media(id: $id, type: ANIME) {
-//     id
-//     title {
-//       english
-//     }
-//     description
-//     coverImage {
-//       large
-//     }
-//   }
-// }
-// `;
-
-// const variables = {
-//   id: 15125
-// };
-
-// const url = "https://graphql.anilist.co",
-//   options = {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Accept": "application/json",
-//     },
-//     body: JSON.stringify({
-//       query: query,
-//       variables: variables
-//     })
-//   };
-
-// fetch(url, options).then(response => {
-//   return response.json().then(function (json) {
-//     return response.ok ? json : Promise.reject(json);
-//   });
-// }).then(data => console.warn(data.data.Media.coverImage))
-//   .catch((e) => console.warn(e));
-
-// ############################################################################################
-
-const HIGHLIGHT_RANDOMIC = gql`
-query {
-  highlight: Media (type: ANIME, popularity_greater: 570000) {
-      id
-      popularity
-      genres
-      isAdult
-      title {
-        english
-        romaji
-      }
-      coverImage {
-        extraLarge
-      }
-    },
-}
-`;
-
 export default function Home() {
   const { height } = useWindowDimensions();
-  const { loading, error, data } = useQuery(HIGHLIGHT_RANDOMIC);
-  
-  if (loading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error : {data?.errors?.message}</Text>;
-  
-  const { highlight } = data;
 
   return (
     <Box flex={1}>
       <ScrollView>
 
-        <Highlights
-          height={height / 1.7}
-          image={highlight?.coverImage.extraLarge}
-          description={[...highlight?.genres || ""].join(", ")}
-          title={highlight?.title.english || highlight?.title.romaji}
-        />
+        <Highlights height={height / 1.7} />
 
         <HorizontalListLarger title="Continue Watching" list={listLarger} />
 
@@ -150,20 +77,6 @@ export default function Home() {
 }
 
 // {
-//  HIGHLIGHT RANDOMIC
-//  highlight: Media (type: ANIME, popularity_greater: 570000) {
-//    id
-//    popularity
-//    genres
-//    isAdult
-//    title {
-//      english
-//      romaji
-//    }
-//    coverImage {
-//      large
-//    }
-//  },
   
 //  SEARCH
 //  search: Page (page: 1, perPage: 12) {

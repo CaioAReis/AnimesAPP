@@ -19,6 +19,10 @@ export default function App() {
   const client = new ApolloClient({
     cache: new InMemoryCache(),
     uri: "https://graphql.anilist.co",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    }
   });
 
   const [fontsLoaded, fontError] = useFonts({
