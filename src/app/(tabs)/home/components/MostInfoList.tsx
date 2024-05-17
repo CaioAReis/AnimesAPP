@@ -27,10 +27,10 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: translate } } }], { useNativeDriver: false })}
           renderItem={({ item }) => (
             <MostInfoCard
-              title={item?.title}
-              image={item?.image}
-              categories={item?.categories}
-              description={item?.description}
+              description={item?.description || ""}
+              image={item?.coverImage?.large || ""}
+              categories={[...item?.genres || ""]?.join(", ")}
+              title={item?.title?.english || item?.title?.romaji || ""}
               onPress={() => alert("Abrir detalhes")}
             />
           )}
