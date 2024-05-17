@@ -71,9 +71,30 @@ const GET_FOR_YOU = gql(`
   }
 `);
 
+const GET_RECOMMENDEDS = gql(`
+  query GetRecommendeds {
+    recommendation: Page (page: 1, perPage: 12) {
+      recommendations (sort: RATING_DESC) {
+        media {
+          id
+          episodes
+          title {
+            english
+            romaji
+          }
+          coverImage {
+            medium
+          }
+        }
+      }
+    }
+  }
+`);
+
 export {
   GET_HIGHLIGHT,
   GET_TRENDS,
   GET_TOP_LIST,
   GET_FOR_YOU,
+  GET_RECOMMENDEDS
 };

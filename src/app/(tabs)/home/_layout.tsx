@@ -3,7 +3,7 @@ import { useWindowDimensions } from "react-native";
 
 import { HorizontalList } from "@/components";
 import { Highlights, HorizontalListLarger, MostInfoList } from "./components";
-import { getForYou, getHighlight, getTop10, getTrends } from "@/service/animesServices";
+import { getForYou, getHighlight, getRecommendeds, getTop10, getTrends } from "@/service/animesServices";
 
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },
@@ -59,6 +59,7 @@ export default function Home() {
   const { trends } = getTrends(currentDay + 1);
   const { highlight } = getHighlight(popularityRandom);
   const { forYou } = getForYou("Hentai");
+  const { recommendeds } = getRecommendeds();
 
   return (
     <Box flex={1}>
@@ -81,7 +82,7 @@ export default function Home() {
 
         <MostInfoList title="For you" list={forYou} />
 
-        {/* <HorizontalList title="Recommendeds" list={fakeList} /> */}
+        <HorizontalList title="Recommendeds" list={recommendeds} />
 
         {/* <HorizontalList title="Coming Soon" list={fakeList} /> */}
 
