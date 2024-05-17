@@ -10,7 +10,7 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
     <Box>
       <Heading ml={20} my={15}>{title}</Heading>
 
-      {list?.length > 0 && (
+      {list?.length && (
         <FlatList
           horizontal
           data={list}
@@ -21,10 +21,11 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
           ItemSeparatorComponent={() => <Box w={showPosition ? 20 : 10} />}
           renderItem={({ item, index }) => (
             <AnimeCard
+              image={item?.coverImage?.medium ?? ""}
               onPress={() => alert("Abrir Detalhes")}
-              image={item?.media?.coverImage?.medium ?? ""}
+              description={item?.episodes + "Episodes"}
               showPosition={showPosition ? index + 1 : null}
-              title={item?.media?.title?.english || item?.media?.title?.romaji || ""}
+              title={item?.title?.english || item?.title?.romaji || ""}
             />
           )}
         />

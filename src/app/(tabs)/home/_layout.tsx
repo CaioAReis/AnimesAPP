@@ -2,8 +2,8 @@ import { Box, ScrollView } from "@gluestack-ui/themed";
 import { useWindowDimensions } from "react-native";
 
 import { HorizontalList } from "@/components";
-import { Highlights, HorizontalListLarger } from "./components";
-import { getHighlight, getTrends } from "@/service/animesServices";
+import { Highlights, HorizontalListLarger, MostInfoList } from "./components";
+import { getForYou, getHighlight, getTop10, getTrends } from "@/service/animesServices";
 
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },
@@ -55,15 +55,17 @@ const currentDay = new Date().getDay();
 export default function Home() {
   const { height } = useWindowDimensions();
 
+  const { top10 } = getTop10();
   const { trends } = getTrends(currentDay + 1);
   const { highlight } = getHighlight(popularityRandom);
+  const { forYou } = getForYou("Hentai");
 
   return (
     <Box flex={1}>
       <ScrollView>
 
         {highlight && (
-          <Highlights 
+          <Highlights
             height={height / 1.7}
             image={highlight?.coverImage?.extraLarge}
             description={[...highlight?.genres || ""].join(", ")}
@@ -75,9 +77,9 @@ export default function Home() {
 
         <HorizontalList title="Today's Selection" list={trends} />
 
-        {/* <HorizontalList title="Top 10 of the week" showPosition list={fakeList} /> */}
+        <HorizontalList title="Top 10 of the week" showPosition list={top10} />
 
-        {/* <MostInfoList title="For you" list={forYou} /> */}
+        <MostInfoList title="For you" list={forYou} />
 
         {/* <HorizontalList title="Recommendeds" list={fakeList} /> */}
 
@@ -89,110 +91,3 @@ export default function Home() {
     </Box>
   );
 }
-
-// {
-  
-//  SEARCH
-//  search: Page (page: 1, perPage: 12) {
-//    media (search: "One piece", type: ANIME) {
-//      id
-//      title {
-//        english
-//        romaji
-//      }
-//      coverImage {
-//        medium
-//      }
-//    }
-//  },
-  
-//  SEARCH BY CATEGORY
-//  searchByCategory: Page (page: 1, perPage: 12) {
-//    media (type: ANIME, genre: "Supernatural", sort: TITLE_ENGLISH_DESC) {
-//      id
-//      title {
-//        english
-//        romaji
-//      }
-//      coverImage {
-//        medium
-//      }
-//    }
-//  },
-  
-//  TODAY'S SELECTION
-//  trends: Page (page: 1, perPage: 10) {
-//    mediaTrends {
-//      media {
-//        id
-//        title {
-//          english
-//          romaji
-//        }
-//        coverImage {
-//        	medium
-//      	}
-//      }
-//    }
-//  },
-  
-//  TOP 10
-//  mostPopular: Page (page: 1, perPage: 10) {
-//    media (type:  ANIME, sort: POPULARITY_DESC) {
-//      id
-//      episodes
-//      title {
-//        english
-//        romaji
-//      }
-//      coverImage {
-//        medium
-//      }
-//    }
-//  },
-  
-//  FOR YOU
-//  forYou: Page (page: 1, perPage: 12) {
-//  	media (type: ANIME, genre: "romance", sort: TITLE_ENGLISH_DESC) {
-//      id
-//      title {
-//        english
-//        romaji
-//      }
-//      coverImage {
-//        medium
-//      }
-//    }
-//  },
-  
-//  RECOMENDEDS
-//  recommendation: Page (page: 1, perPage: 12) {
-//    recommendations (sort: RATING_DESC) {
-//      media {
-//        id
-//        episodes
-//        title {
-//          english
-//          romaji
-//        }
-//        coverImage {
-//        	medium
-//      	}
-//      }
-//    }
-//  },
-  
-//  COMING SOON
-//   comingSoon: Page (page: 1, perPage: 14) {
-//     media (type:  ANIME, status: NOT_YET_RELEASED, sort: POPULARITY_DESC) {
-//       id
-//       title {
-//         english
-//         romaji
-//       }
-//       coverImage {
-//         medium
-//       }
-//     }
-//   },
-// }

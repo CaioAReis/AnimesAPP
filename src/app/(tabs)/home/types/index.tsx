@@ -1,4 +1,4 @@
-import { MediaTrend } from "@/__generated__/graphql";
+import { Media } from "@/__generated__/graphql";
 import { CardLargerProps } from "@/config/types";
 
 interface HighlightsProps {
@@ -11,14 +11,14 @@ interface HighlightsProps {
 
 interface MostInfoListProps {
   title: string,
-  list: MostInfoCardProps[],
+  list: Media[],
 }
 
 interface HorizontalListProps {
   title: string,
   isLoading?: boolean,
   showPosition?: boolean,
-  list: MediaTrend[],
+  list: Media[],
 }
 
 interface HorizontalListLargerProps {
@@ -27,7 +27,7 @@ interface HorizontalListLargerProps {
 }
 
 interface MostInfoCardProps {
-  title: string,
+  title: string | null | undefined,
   image: string,
   categories: string,
   description: string,

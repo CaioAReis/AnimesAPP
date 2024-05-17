@@ -1,5 +1,3 @@
-// import { gql } from "@apollo/client";
-
 import { gql } from "@/__generated__";
 
 const GET_HIGHLIGHT = gql(`
@@ -21,16 +19,52 @@ const GET_HIGHLIGHT = gql(`
 const GET_TRENDS = gql(`
   query GetTrends($day: Int!) {
     trends: Page (page: $day, perPage: 10) {
-      mediaTrends {
-        media {
-          id
-          title {
-            english
-            romaji
-          }
-          coverImage {
-            medium
-          }
+      media (type:  ANIME, sort: TRENDING_DESC) {
+        id
+        episodes
+        title {
+          english
+          romaji
+        }
+        coverImage {
+          medium
+        }
+      }
+    }
+  }
+`);
+
+const GET_TOP_LIST = gql(`
+  query GetTop {
+    mostPopular: Page (page: 1, perPage: 10) {
+      media (type: ANIME, sort: POPULARITY_DESC) {
+        id
+        episodes
+        title {
+          english
+          romaji
+        }
+        coverImage {
+          medium
+        }
+      }
+    }
+  }
+`);
+
+const GET_FOR_YOU = gql(`
+  query GetForYou($genre: String!) {
+    forYou: Page (page: 1, perPage: 5) {
+      media (type: ANIME, genre: $genre, sort: TITLE_ENGLISH_DESC) {
+        id
+        genres
+        description
+        title {
+          english
+          romaji
+        }
+        coverImage {
+          large
         }
       }
     }
@@ -40,4 +74,6 @@ const GET_TRENDS = gql(`
 export {
   GET_HIGHLIGHT,
   GET_TRENDS,
+  GET_TOP_LIST,
+  GET_FOR_YOU,
 };
