@@ -55,7 +55,7 @@ const GET_TOP_LIST = gql(`
 const GET_FOR_YOU = gql(`
   query GetForYou($genre: String!) {
     forYou: Page (page: 1, perPage: 5) {
-      media (type: ANIME, genre: $genre, sort: TITLE_ENGLISH_DESC) {
+      media (type: ANIME, genre: $genre, sort: TRENDING_DESC) {
         id
         genres
         description
