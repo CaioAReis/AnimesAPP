@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { Media } from "@/__generated__/graphql";
 
-import { GET_FOR_YOU, GET_HIGHLIGHT, GET_RECOMMENDEDS, GET_TOP_LIST, GET_TRENDS } from "./queries";
+import { GET_COMING_SOON, GET_FOR_YOU, GET_HIGHLIGHT, GET_RECOMMENDEDS, GET_TOP_LIST, GET_TRENDS } from "./queries";
 
 //  HIGHLIGHT
 const getHighlight = (popularityRandom: number) => {
@@ -60,4 +60,13 @@ const getRecommendeds = () => {
   return { ...result, recommendeds: list };
 };
 
-export { getHighlight, getTrends, getTop10, getForYou, getRecommendeds };
+//  COMING SOON
+const getComingSoon = () => {
+  const result = useQuery(GET_COMING_SOON);
+
+  const list = result?.data?.comingSoon?.media as Media[];
+
+  return { ...result, comingSoon: list };
+};
+
+export { getHighlight, getTrends, getTop10, getForYou, getRecommendeds, getComingSoon };

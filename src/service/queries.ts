@@ -91,10 +91,28 @@ const GET_RECOMMENDEDS = gql(`
   }
 `);
 
+const GET_COMING_SOON = gql(`
+  query GetComingSoon {
+    comingSoon: Page (page: 1, perPage: 14) {
+      media (type:  ANIME, status: NOT_YET_RELEASED, sort: POPULARITY_DESC) {
+        id
+        title {
+          english
+          romaji
+        }
+        coverImage {
+          medium
+        }
+      }
+    },
+  }
+`);
+
 export {
   GET_HIGHLIGHT,
   GET_TRENDS,
   GET_TOP_LIST,
   GET_FOR_YOU,
-  GET_RECOMMENDEDS
+  GET_RECOMMENDEDS,
+  GET_COMING_SOON,
 };

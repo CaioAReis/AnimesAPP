@@ -23,9 +23,9 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
             <AnimeCard
               image={item?.coverImage?.medium ?? ""}
               onPress={() => alert("Abrir Detalhes")}
-              description={item?.episodes + " Episodes"}
               showPosition={showPosition ? index + 1 : null}
               title={item?.title?.english || item?.title?.romaji || ""}
+              description={item?.episodes ? item?.episodes + " Episodes" : ""}
             />
           )}
         />
