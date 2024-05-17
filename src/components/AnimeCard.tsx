@@ -27,12 +27,13 @@ export function AnimeCard({ image, title, description, showPosition, height, wid
       {showPosition && (
         <Svg style={{ position: "absolute", left: -25 }}>
           <TextSVG
-            fill={primaryColor + "50"}
+            fill={primaryColor + "70"}
             stroke={primaryColor}
             fontSize="120"
-            strokeWidth={5}
             x={0} y="180"
+            strokeWidth={5}
             fontWeight="bold"
+            letterSpacing={-20}
           >
             {showPosition}
           </TextSVG>
