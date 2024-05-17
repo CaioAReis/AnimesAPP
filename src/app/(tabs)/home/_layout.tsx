@@ -56,7 +56,7 @@ export default function Home() {
   const { height } = useWindowDimensions();
 
   const { trends } = getTrends(currentDay + 1);
-  const { highlight, loading: loadingHighlight } = getHighlight(popularityRandom);
+  const { highlight } = getHighlight(popularityRandom);
 
   return (
     <Box flex={1}>
@@ -65,7 +65,6 @@ export default function Home() {
         {highlight && (
           <Highlights 
             height={height / 1.7}
-            isLoading={loadingHighlight}
             image={highlight?.coverImage?.extraLarge}
             description={[...highlight?.genres || ""].join(", ")}
             title={highlight?.title?.english || highlight?.title?.romaji}
