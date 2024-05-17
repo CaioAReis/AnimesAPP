@@ -1,28 +1,24 @@
 import { router } from "expo-router";
-import { ActivityIndicator } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Heart, Play, Share } from "lucide-react-native";
 import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useToken, Icon } from "@gluestack-ui/themed";
 
 import { HighlightsProps } from "../types";
-import { ANIMES_SERVICES } from "@/service";
+import { ActivityIndicator } from "react-native";
 
-export function Highlights({ height }: HighlightsProps) {
+export function Highlights({ isLoading, height, image, title, description }: HighlightsProps) {
   const bg = useToken("colors", "bg0" as "amber100");
-  const { loading, data } = ANIMES_SERVICES.getHighlight();
-
-  const highlight = data?.highlight;
 
   return (
     <Box h={height} justifyContent="flex-end">
-      {(!loading && highlight) ? (
+      {!isLoading ? (
         <>
-          {highlight?.coverImage.extraLarge && (
+          {image && (
             <Image
+              alt={title}
               h="$full" w="$full"
               position="absolute"
-              source={{ uri: highlight?.coverImage.extraLarge }}
-              alt={highlight?.title.english || highlight?.title.romaji}
+              source={{ uri: image }}
             />
           )}
 
@@ -33,11 +29,12 @@ export function Highlights({ height }: HighlightsProps) {
 
           <Box px={20}>
             <Heading numberOfLines={2} fontSize="$4xl" lineHeight="$4xl">
-              {highlight?.title.english || highlight?.title.romaji}
+              {title}
             </Heading>
 
             <Text numberOfLines={1} fontSize="$sm" color="$text400">
-              {[...highlight?.genres || ""].join(", ")}
+              {/* {[...highlight?.genres || ""].join(", ")} */}
+              {description}
             </Text>
 
             <HStack my={8} space="md">
@@ -57,6 +54,6 @@ export function Highlights({ height }: HighlightsProps) {
           </Box>
         </>
       ) : <ActivityIndicator size="large" style={{ flex: 1 }} />}
-    </Box>
+    </Box >
   );
 }

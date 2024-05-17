@@ -1,9 +1,11 @@
-import { AnimeCardProps, CardLargerProps } from "@/config/types";
+import { MediaTrend } from "@/__generated__/graphql";
+import { CardLargerProps } from "@/config/types";
 
 interface HighlightsProps {
-  image?: string,
-  title?: string,
+  image?: string | null,
+  title?: string | null,
   height: number,
+  isLoading?: boolean,
   description?: string,
 }
 
@@ -14,8 +16,9 @@ interface MostInfoListProps {
 
 interface HorizontalListProps {
   title: string,
+  isLoading?: boolean,
   showPosition?: boolean,
-  list: AnimeCardProps[],
+  list: MediaTrend[],
 }
 
 interface HorizontalListLargerProps {

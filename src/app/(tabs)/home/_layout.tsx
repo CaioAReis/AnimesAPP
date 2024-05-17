@@ -2,7 +2,8 @@ import { Box, ScrollView } from "@gluestack-ui/themed";
 import { useWindowDimensions } from "react-native";
 
 import { HorizontalList } from "@/components";
-import { Highlights, HorizontalListLarger, MostInfoList } from "./components";
+import { Highlights, HorizontalListLarger } from "./components";
+import { getHighlight, getTrends } from "@/service/animesServices";
 
 const fakeList = [
   { title: "Death note", description: "S04 E12 - Today", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.XjEUzJ0cwCQ13-EXXWzl2QHaLq%26pid%3DApi&f=1&ipt=af20627d310825304abccf32ff73ff52b22f382e99cffc39fda1631a4a3ea430&ipo=images" },
@@ -22,52 +23,66 @@ const listLarger = [
   { ...fakeList[4], duration: 60 },
 ];
 
-const forYou = [
-  {
-    ...fakeList[0],
-    categories: "Action, Demons, Historical, Shounen, Supernatural",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  },
+// const forYou = [
+//   {
+//     ...fakeList[0],
+//     categories: "Action, Demons, Historical, Shounen, Supernatural",
+//     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+//   },
 
-  {
-    ...fakeList[2],
-    categories: "Action, Demons, Historical, Shounen, Supernatural",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  },
+//   {
+//     ...fakeList[2],
+//     categories: "Action, Demons, Historical, Shounen, Supernatural",
+//     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+//   },
 
-  {
-    ...fakeList[7],
-    categories: "Action, Demons, Historical, Shounen, Supernatural",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  },
+//   {
+//     ...fakeList[7],
+//     categories: "Action, Demons, Historical, Shounen, Supernatural",
+//     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+//   },
 
-  {
-    ...fakeList[4],
-    categories: "Action, Demons, Historical, Shounen, Supernatural",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  },
-];
+//   {
+//     ...fakeList[4],
+//     categories: "Action, Demons, Historical, Shounen, Supernatural",
+//     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+//   },
+// ];
+
+const popularityRandom = Math.floor(Math.random() * (750000 - 300000)) + 300000;
+const currentDay = new Date().getDay();
 
 export default function Home() {
   const { height } = useWindowDimensions();
+
+  const { trends } = getTrends(currentDay + 1);
+  const { highlight, loading: loadingHighlight } = getHighlight(popularityRandom);
 
   return (
     <Box flex={1}>
       <ScrollView>
 
-        <Highlights height={height / 1.7} />
+        {highlight && (
+          <Highlights 
+            height={height / 1.7}
+            isLoading={loadingHighlight}
+            image={highlight?.coverImage?.extraLarge}
+            description={[...highlight?.genres || ""].join(", ")}
+            title={highlight?.title?.english || highlight?.title?.romaji}
+          />
+        )}
 
         <HorizontalListLarger title="Continue Watching" list={listLarger} />
 
-        <HorizontalList title="Today's Selection" list={fakeList} />
+        <HorizontalList title="Today's Selection" list={trends} />
 
-        <HorizontalList title="Top 10 of the week" showPosition list={fakeList} />
+        {/* <HorizontalList title="Top 10 of the week" showPosition list={fakeList} /> */}
 
-        <MostInfoList title="For you" list={forYou} />
+        {/* <MostInfoList title="For you" list={forYou} /> */}
 
-        <HorizontalList title="Recommendeds" list={fakeList} />
+        {/* <HorizontalList title="Recommendeds" list={fakeList} /> */}
 
-        <HorizontalList title="Coming Soon" list={fakeList} />
+        {/* <HorizontalList title="Coming Soon" list={fakeList} /> */}
 
         <Box h={50} />
 

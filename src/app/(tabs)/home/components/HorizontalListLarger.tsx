@@ -21,7 +21,7 @@ export function HorizontalListLarger({ title, list }: HorizontalListLargerProps)
           ItemSeparatorComponent={() => <Box w={10} />}
           renderItem={({ item }) => (
             <CardLarger
-              image={item?.image}
+              image={item?.image ?? ""}
               title={item?.title}
               duration={item?.duration}
               description={item?.description}

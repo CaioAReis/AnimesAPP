@@ -9,14 +9,16 @@ export function AnimeCard({ image, title, description, showPosition, height, wid
 
   const _render = useMemo(() => (
     <Pressable onPress={onPress} w={width as "$32" ?? "$32"} ml={showPosition && 20}>
-      <Image
-        w="$full"
-        alt={title}
-        rounded="$lg"
-        bgColor="$blueGray200"
-        source={{ uri: image }}
-        h={height as "$48" ?? "$48"}
-      />
+      {image && (
+        <Image
+          w="$full"
+          alt={title}
+          rounded="$lg"
+          bgColor="$blueGray200"
+          source={{ uri: image }}
+          h={height as "$48" ?? "$48"}
+        />
+      )}
       <Heading numberOfLines={1} fontSize="$sm" lineHeight="$sm">{title}</Heading>
       {description && (
         <Text fontSize="$xs" color="$text500" numberOfLines={1}>{description}</Text>
