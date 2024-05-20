@@ -1,7 +1,15 @@
 import { useQuery } from "@apollo/client";
 import { Media } from "@/__generated__/graphql";
 
-import { GET_COMING_SOON, GET_FOR_YOU, GET_HIGHLIGHT, GET_RECOMMENDEDS, GET_TOP_LIST, GET_TRENDS } from "./queries";
+import {
+  GET_ANIME,
+  GET_TRENDS,
+  GET_FOR_YOU,
+  GET_TOP_LIST,
+  GET_HIGHLIGHT,
+  GET_COMING_SOON,
+  GET_RECOMMENDEDS,
+} from "./queries";
 
 //  HIGHLIGHT
 const getHighlight = (popularityRandom: number) => {
@@ -69,4 +77,27 @@ const getComingSoon = () => {
   return { ...result, comingSoon: list };
 };
 
-export { getHighlight, getTrends, getTop10, getForYou, getRecommendeds, getComingSoon };
+//  GET ANIME
+const getAnime = (id: number) => {
+  const result = useQuery(GET_ANIME, 
+    { 
+      variables: { 
+        id: id 
+      } 
+    }
+  );
+
+  const anime = result?.data?.anime;
+
+  return { ...result, anime: anime };
+};
+
+export {
+  getTop10,
+  getAnime,
+  getTrends,
+  getForYou,
+  getHighlight,
+  getComingSoon,
+  getRecommendeds,
+};

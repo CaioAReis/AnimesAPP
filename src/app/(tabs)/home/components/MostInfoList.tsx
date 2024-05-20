@@ -30,7 +30,7 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
           renderItem={({ item }) => (
             <MostInfoCard
               description={item?.description || ""}
-              image={item?.coverImage?.large || ""}
+              image={item?.coverImage?.extraLarge || ""}
               categories={[...item?.genres || ""]?.join(", ")}
               title={item?.title?.english || item?.title?.romaji || ""}
               onPress={() => alert("Abrir detalhes")}

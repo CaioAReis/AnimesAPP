@@ -1,4 +1,5 @@
 import { FlatList } from "react-native";
+import { useLocalSearchParams } from "expo-router";
 import { ChevronDownIcon } from "lucide-react-native";
 import {
   Box,
@@ -16,6 +17,9 @@ import {
 } from "@gluestack-ui/themed";
 
 import { AnimeInfo, CoverHeader, EpisodeCard } from "./components";
+import { useEffect } from "react";
+import { getAnime } from "@/service/animesServices";
+// import { useLayoutEffect } from "react";
 
 const list = [
   {
@@ -55,6 +59,15 @@ const list = [
 ];
 
 export default function AnimeDetails() {
+  const { id, image, name } = useLocalSearchParams<{ id: string, image: string, name: string }>();
+
+  useEffect(() => {
+    
+    const { anime } = getAnime(parseInt(id));
+
+  }, []);
+
+  console.warn(id);
 
   return (
     <FlatList
@@ -75,14 +88,14 @@ export default function AnimeDetails() {
       ListHeaderComponent={
         <>
           <CoverHeader
+            imageCover={image ?? ""}
             onPlay={() => alert("Foi")}
-            imageCover="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.enjpg.com%2Fimg%2F2020%2Fdemon-slayer-desktop-8.jpg&f=1&nofb=1&ipt=4aca62af7b0a9a9be0549fb295ab0f8150c2a63652208498a3bfb572f97de0c4&ipo=images"
           />
 
           <AnimeInfo
-            year={2022}
-            rating={4.5}
-            title="Attack on titan"
+            title={name ?? ""}
+            year={anime?.startDate?.year}
+            rating={(5 * anime?.meanScore) / 100}
             categories={["Action", "Deamons", "Adventure"]}
             summary="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
           />

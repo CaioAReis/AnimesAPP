@@ -15,7 +15,7 @@ export function Highlights({ isLoading, height, image, title, description }: Hig
         <>
           {image && (
             <Image
-              alt={title}
+              alt={title || ""}
               h="$full" w="$full"
               position="absolute"
               source={{ uri: image }}

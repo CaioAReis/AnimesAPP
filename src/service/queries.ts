@@ -27,7 +27,7 @@ const GET_TRENDS = gql(`
           romaji
         }
         coverImage {
-          medium
+          extraLarge
         }
       }
     }
@@ -45,7 +45,7 @@ const GET_TOP_LIST = gql(`
           romaji
         }
         coverImage {
-          medium
+          extraLarge
         }
       }
     }
@@ -64,7 +64,7 @@ const GET_FOR_YOU = gql(`
           romaji
         }
         coverImage {
-          large
+          extraLarge
         }
       }
     }
@@ -83,7 +83,7 @@ const GET_RECOMMENDEDS = gql(`
             romaji
           }
           coverImage {
-            medium
+            extraLarge
           }
         }
       }
@@ -101,18 +101,36 @@ const GET_COMING_SOON = gql(`
           romaji
         }
         coverImage {
-          medium
+          extraLarge
         }
       }
     },
   }
 `);
 
+const GET_ANIME = gql(`
+  query GetAnime($id: Int!) {
+    anime: Media (id: $id) {
+      genres
+      meanScore
+      description
+      startDate {
+        year 
+      }
+      streamingEpisodes {
+        title
+        thumbnail
+      }
+    }
+  }
+`);
+
 export {
-  GET_HIGHLIGHT,
+  GET_ANIME,
   GET_TRENDS,
-  GET_TOP_LIST,
   GET_FOR_YOU,
-  GET_RECOMMENDEDS,
+  GET_TOP_LIST,
+  GET_HIGHLIGHT,
   GET_COMING_SOON,
+  GET_RECOMMENDEDS,
 };

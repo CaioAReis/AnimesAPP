@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { FlatList } from "react-native";
 import { Box, Heading } from "@gluestack-ui/themed";
 
@@ -23,9 +24,16 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
           ItemSeparatorComponent={() => <Box w={showPosition ? 20 : 10} />}
           renderItem={({ item, index }) => (
             <AnimeCard
-              image={item?.coverImage?.medium ?? ""}
-              onPress={() => alert("Abrir Detalhes")}
+              image={item?.coverImage?.extraLarge ?? ""}
               showPosition={showPosition ? index + 1 : null}
+              onPress={() => router.push({
+                pathname: "/stack/AnimeDetails",
+                params: { 
+                  id: item?.id, 
+                  image: item?.coverImage?.extraLarge, 
+                  name: item?.title?.english || item?.title?.romaji, 
+                },
+              })}
               title={item?.title?.english || item?.title?.romaji || ""}
               description={item?.episodes ? item?.episodes + " Episodes" : ""}
             />
