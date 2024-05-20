@@ -6,6 +6,8 @@ import { HorizontalListProps } from "@/app/(tabs)/home/types";
 
 export function HorizontalList({ title, list, showPosition }: HorizontalListProps) {
 
+  if (!list?.length) return null;
+
   return (
     <Box>
       <Heading ml={20} my={15}>{title}</Heading>

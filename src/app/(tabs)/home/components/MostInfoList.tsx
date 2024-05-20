@@ -12,6 +12,8 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
   const y = useToken("colors", "primary400");
   const x = useToken("colors", "bg400" as "amber100");
 
+  if (!list?.length) return null;
+
   return (
     <Box>
       <Heading ml={20} my={15}>
