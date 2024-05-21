@@ -11,10 +11,10 @@ const currentDay = new Date().getDay();
 export default function Home() {
   const { height } = useWindowDimensions();
 
-  const { top10 } = getTop10();
-  const { trends } = getTrends(currentDay + 1);
   const { highlight } = getHighlight(popularityRandom);
-  const { forYou } = getForYou("Hentai");
+  const { trends } = getTrends(currentDay + 1);
+  const { top10 } = getTop10();
+  const { forYou } = getForYou("Comedy");
   const { recommendeds } = getRecommendeds();
   const { comingSoon } = getComingSoon();
 

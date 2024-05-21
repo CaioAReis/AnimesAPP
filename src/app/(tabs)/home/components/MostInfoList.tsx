@@ -4,6 +4,7 @@ import { Animated, FlatList, useWindowDimensions } from "react-native";
 
 import { MostInfoListProps } from "../types";
 import { MostInfoCard } from "./MostInfoCard";
+import { router } from "expo-router";
 
 export function MostInfoList({ title, list }: MostInfoListProps) {
   const { width } = useWindowDimensions();
@@ -29,11 +30,18 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: translate } } }], { useNativeDriver: false })}
           renderItem={({ item }) => (
             <MostInfoCard
+              image={item?.bannerImage || ""}
               description={item?.description || ""}
-              image={item?.coverImage?.extraLarge || ""}
               categories={[...item?.genres || ""]?.join(", ")}
               title={item?.title?.english || item?.title?.romaji || ""}
-              onPress={() => alert("Abrir detalhes")}
+              onPress={() => router.push({
+                pathname: "/stack/AnimeDetails",
+                params: {
+                  id: item?.id,
+                  image: item?.coverImage?.extraLarge,
+                  name: item?.title?.english || item?.title?.romaji,
+                },
+              })}
             />
           )}
         />

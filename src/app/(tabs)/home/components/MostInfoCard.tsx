@@ -34,12 +34,12 @@ export function MostInfoCard({ title, image, categories, description, onPress }:
         </Box>
 
         <Heading numberOfLines={1} fontSize="$md" mx={10} mt={10}>{title}</Heading>
-        <Text mx={10} fontSize="$sm" lineHeight="$sm" color="$blueGray500">
+        <Text mx={10} numberOfLines={1} fontSize="$sm" lineHeight="$sm" color="$blueGray500">
           {categories}
         </Text>
 
         <Text m={10} fontSize="$sm" lineHeight="$sm" numberOfLines={4}>
-          {description}
+          {description?.replace(/<[^>]*>?/gm, "")}
         </Text>
       </Pressable>
     </Box>
