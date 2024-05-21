@@ -112,6 +112,7 @@ const GET_ANIME = gql(`
   query GetAnime($id: Int!) {
     anime: Media (id: $id) {
       genres
+      duration
       meanScore
       description
       startDate {

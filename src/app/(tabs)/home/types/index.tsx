@@ -2,6 +2,7 @@ import { Media } from "@/__generated__/graphql";
 import { CardLargerProps } from "@/config/types";
 
 interface HighlightsProps {
+  id?: number,
   image?: string | null,
   title?: string | null,
   height: number,

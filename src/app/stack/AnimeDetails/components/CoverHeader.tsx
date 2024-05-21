@@ -8,9 +8,10 @@ import { Button, ButtonIcon, HStack, Icon, ImageBackground, useToken } from "@gl
 interface CoverHeaderProps {
   imageCover: string,
   onPlay: () => void,
+  hiddenPlay: boolean,
 }
 
-export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
+export function CoverHeader({ imageCover, hiddenPlay, onPlay }: CoverHeaderProps) {
   const { width, height } = useWindowDimensions();
   const bg = useToken("colors", "bg0" as "amber100");
 
@@ -44,7 +45,7 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
         </Button>
 
         <HStack justifyContent="space-between" w="$full" px={20} position="absolute" bottom={-20}>
-          <HStack space="md">
+          <HStack space="md" py={hiddenPlay ? 0 : 20}>
             <Button
               w={40} h={40}
               rounded="$full"
@@ -64,16 +65,18 @@ export function CoverHeader({ imageCover, onPlay }: CoverHeaderProps) {
             </Button>
           </HStack>
 
-          <Button
-            w={80} h={80}
-            rounded="$full"
-            borderWidth={4}
-            onPress={onPlay}
-            borderColor={bg}
-            bgColor="$primary400"
-          >
-            <Icon as={Play} size="xl" fill={bg} color={bg} />
-          </Button>
+          {hiddenPlay && (
+            <Button
+              w={80} h={80}
+              rounded="$full"
+              borderWidth={4}
+              onPress={onPlay}
+              borderColor={bg}
+              bgColor="$primary400"
+            >
+              <Icon as={Play} size="xl" fill={bg} color={bg} />
+            </Button>
+          )}
         </HStack>
       </LinearGradient>
     </ImageBackground>

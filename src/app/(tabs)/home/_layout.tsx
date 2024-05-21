@@ -24,6 +24,7 @@ export default function Home() {
 
         {highlight && (
           <Highlights
+            id={highlight?.id}
             height={height / 1.7}
             image={highlight?.coverImage?.extraLarge}
             description={[...highlight?.genres || ""].join(", ")}

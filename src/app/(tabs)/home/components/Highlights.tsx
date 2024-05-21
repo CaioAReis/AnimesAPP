@@ -6,7 +6,7 @@ import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useT
 import { HighlightsProps } from "../types";
 import { ActivityIndicator } from "react-native";
 
-export function Highlights({ isLoading, height, image, title, description }: HighlightsProps) {
+export function Highlights({ id, isLoading, height, image, title, description }: HighlightsProps) {
   const bg = useToken("colors", "bg0" as "amber100");
 
   return (
@@ -38,7 +38,16 @@ export function Highlights({ isLoading, height, image, title, description }: Hig
             </Text>
 
             <HStack my={8} space="md">
-              <Button rounded="$full" bg="$primary400" onPress={() => router.push("/stack/AnimeDetails")}>
+              <Button rounded="$full" bg="$primary400"
+                onPress={() => router.push({
+                  pathname: "/stack/AnimeDetails",
+                  params: {
+                    id: id,
+                    name: title,
+                    image: image,
+                  },
+                })}
+              >
                 <ButtonText color={bg}>PLAY</ButtonText>
                 <Icon color={bg} fill={bg} as={Play} ml={8} />
               </Button>

@@ -19,7 +19,7 @@ const documents = {
     "\n  query GetForYou($genre: String!) {\n    forYou: Page (page: 1, perPage: 5) {\n      media (type: ANIME, genre: $genre, sort: TRENDING_DESC) {\n        id\n        genres\n        description\n        title {\n          english\n          romaji\n        }\n        coverImage {\n          extraLarge\n        }\n      }\n    }\n  }\n": types.GetForYouDocument,
     "\n  query GetRecommendeds {\n    recommendation: Page (page: 1, perPage: 12) {\n      recommendations (sort: RATING_DESC) {\n        media {\n          id\n          episodes\n          title {\n            english\n            romaji\n          }\n          coverImage {\n            extraLarge\n          }\n        }\n      }\n    }\n  }\n": types.GetRecommendedsDocument,
     "\n  query GetComingSoon {\n    comingSoon: Page (page: 1, perPage: 14) {\n      media (type:  ANIME, status: NOT_YET_RELEASED, sort: POPULARITY_DESC) {\n        id\n        title {\n          english\n          romaji\n        }\n        coverImage {\n          extraLarge\n        }\n      }\n    },\n  }\n": types.GetComingSoonDocument,
-    "\n  query GetAnime($id: Int!) {\n    anime: Media (id: $id) {\n      genres\n      meanScore\n      description\n      startDate {\n        year \n      }\n      streamingEpisodes {\n        title\n        thumbnail\n      }\n    }\n  }\n": types.GetAnimeDocument,
+    "\n  query GetAnime($id: Int!) {\n    anime: Media (id: $id) {\n      genres\n      duration\n      meanScore\n      description\n      startDate {\n        year \n      }\n      streamingEpisodes {\n        title\n        thumbnail\n      }\n    }\n  }\n": types.GetAnimeDocument,
 };
 
 /**
@@ -63,7 +63,7 @@ export function gql(source: "\n  query GetComingSoon {\n    comingSoon: Page (pa
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query GetAnime($id: Int!) {\n    anime: Media (id: $id) {\n      genres\n      meanScore\n      description\n      startDate {\n        year \n      }\n      streamingEpisodes {\n        title\n        thumbnail\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetAnime($id: Int!) {\n    anime: Media (id: $id) {\n      genres\n      meanScore\n      description\n      startDate {\n        year \n      }\n      streamingEpisodes {\n        title\n        thumbnail\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query GetAnime($id: Int!) {\n    anime: Media (id: $id) {\n      genres\n      duration\n      meanScore\n      description\n      startDate {\n        year \n      }\n      streamingEpisodes {\n        title\n        thumbnail\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetAnime($id: Int!) {\n    anime: Media (id: $id) {\n      genres\n      duration\n      meanScore\n      description\n      startDate {\n        year \n      }\n      streamingEpisodes {\n        title\n        thumbnail\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

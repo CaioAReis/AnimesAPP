@@ -23,12 +23,18 @@ export function EpisodeCard({ thumb, title, episode, episodeMin, watched, onPres
               {title?.toUpperCase()}
             </Heading>
 
-            <Text fontSize="$xs" lineHeight="$sm" color="$text300">
-              Episode {episode}
-            </Text>
+            {episode ? (
+              <Text fontSize="$xs" lineHeight="$sm" color="$text300">
+                {episode}
+              </Text>
+            ) : null}
 
             <HStack alignItems="center" justifyContent="space-between">
-              <Text fontSize="$xs" lineHeight="$sm" color="$primary600">{episodeMin} min</Text>
+              {episodeMin ? (
+                <Text fontSize="$xs" lineHeight="$sm" color="$primary600">
+                  {episodeMin} min
+                </Text>
+              ) : null}
 
               {watched && <Icon as={Eye} mr={10} color="$primary600" size="lg" />}
             </HStack>

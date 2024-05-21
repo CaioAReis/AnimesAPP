@@ -28,10 +28,10 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
               showPosition={showPosition ? index + 1 : null}
               onPress={() => router.push({
                 pathname: "/stack/AnimeDetails",
-                params: { 
-                  id: item?.id, 
-                  image: item?.coverImage?.extraLarge, 
-                  name: item?.title?.english || item?.title?.romaji, 
+                params: {
+                  id: item?.id,
+                  image: item?.coverImage?.extraLarge,
+                  name: item?.title?.english || item?.title?.romaji,
                 },
               })}
               title={item?.title?.english || item?.title?.romaji || ""}

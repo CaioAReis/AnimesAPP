@@ -1,10 +1,10 @@
 interface EpisodeCardProps {
   thumb: string,
   title: string,
-  episode: number,
+  episode: string,
   watched: boolean,
-  episodeMin: number,
   onPress: () => void,
+  episodeMin?: number | null | undefined,
 }
 
 export { EpisodeCardProps };
