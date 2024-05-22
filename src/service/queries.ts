@@ -127,12 +127,48 @@ const GET_ANIME = gql(`
   }
 `);
 
+const SEARCH_ANIMES = gql(`
+  query SearchAnimes($search: String!) {
+    search: Page (page: 1, perPage: 21) {
+      media (search: $search, type: ANIME) {
+        id
+        title {
+          english
+          romaji
+        }
+        coverImage {
+          extraLarge
+        }
+      }
+    }
+  }
+`);
+
+const GET_BY_CATEGORY = gql(`
+  query GetByCategory($genre: String!) {
+    list: Page (page: 1, perPage: 21) {
+      media (type: ANIME, genre: $genre, sort: TITLE_ENGLISH_DESC) {
+        id
+        title {
+          english
+          romaji
+        }
+        coverImage {
+          extraLarge
+        }
+      }
+    }
+  }
+`);
+
 export {
   GET_ANIME,
   GET_TRENDS,
   GET_FOR_YOU,
   GET_TOP_LIST,
+  SEARCH_ANIMES,
   GET_HIGHLIGHT,
   GET_COMING_SOON,
+  GET_BY_CATEGORY,
   GET_RECOMMENDEDS,
 };

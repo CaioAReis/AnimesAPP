@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useLazyQuery, useQuery } from "@apollo/client";
 import { Media } from "@/__generated__/graphql";
 
 import {
@@ -7,7 +7,9 @@ import {
   GET_FOR_YOU,
   GET_TOP_LIST,
   GET_HIGHLIGHT,
+  SEARCH_ANIMES,
   GET_COMING_SOON,
+  GET_BY_CATEGORY,
   GET_RECOMMENDEDS,
 } from "./queries";
 
@@ -79,11 +81,11 @@ const getComingSoon = () => {
 
 //  GET ANIME
 const getAnime = (id: number) => {
-  const result = useQuery(GET_ANIME, 
-    { 
-      variables: { 
-        id: id 
-      } 
+  const result = useQuery(GET_ANIME,
+    {
+      variables: {
+        id: id
+      }
     }
   );
 
@@ -92,12 +94,46 @@ const getAnime = (id: number) => {
   return { ...result, anime: anime };
 };
 
+//  SEARCH ANIMES
+const searchAnimes = (search: string) => {
+  const result = useQuery(SEARCH_ANIMES,
+    {
+      variables: {
+        search: search
+      }
+    }
+  );
+
+  const list = result?.data?.search?.media as Media[];
+
+  return { ...list, search: list };
+};
+
+//  GET BY CATEGORY
+const getByCategory = (category: string | null) => {
+  if (category) {
+    const [ getList, result ] = useLazyQuery(GET_BY_CATEGORY,
+      {
+        variables: {
+          genre: category
+        }
+      }
+    );
+
+    const list = result?.data?.list?.media as Media[];
+
+    return [getList, { ...result, list: list }];
+  }
+};
+
 export {
   getTop10,
   getAnime,
   getTrends,
   getForYou,
   getHighlight,
+  searchAnimes,
   getComingSoon,
+  getByCategory,
   getRecommendeds,
 };
