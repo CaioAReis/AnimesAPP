@@ -1,17 +1,18 @@
+import { Suspense } from "react";
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { Heart, Play, Share } from "lucide-react-native";
 import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useToken, Icon } from "@gluestack-ui/themed";
 
+import { Loading } from "@/components";
 import { HighlightsProps } from "../types";
-import { ActivityIndicator } from "react-native";
 
-export function Highlights({ id, isLoading, height, image, title, description }: HighlightsProps) {
+export function Highlights({ id, height, image, title, description }: HighlightsProps) {
   const bg = useToken("colors", "bg0" as "amber100");
 
   return (
-    <Box h={height} justifyContent="flex-end">
-      {!isLoading ? (
+    <Suspense fallback={<Loading />}>
+      <Box h={height} justifyContent="flex-end">
         <>
           {image && (
             <Image
@@ -62,7 +63,7 @@ export function Highlights({ id, isLoading, height, image, title, description }:
             </HStack>
           </Box>
         </>
-      ) : <ActivityIndicator size="large" style={{ flex: 1 }} />}
-    </Box >
+      </Box>
+    </Suspense>
   );
 }

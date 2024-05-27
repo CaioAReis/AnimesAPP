@@ -1,8 +1,9 @@
+import { Suspense } from "react";
 import { router } from "expo-router";
 import { FlatList } from "react-native";
 import { Box, Heading } from "@gluestack-ui/themed";
 
-import { AnimeCard } from "./";
+import { AnimeCard, Loading } from "./";
 import { HorizontalListProps } from "@/app/(tabs)/home/types";
 
 export function HorizontalList({ title, list, showPosition }: HorizontalListProps) {
@@ -13,7 +14,7 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
     <Box>
       <Heading ml={20} my={15}>{title}</Heading>
 
-      {list?.length && (
+      <Suspense fallback={<Loading />}>
         <FlatList
           horizontal
           data={list}
@@ -39,7 +40,7 @@ export function HorizontalList({ title, list, showPosition }: HorizontalListProp
             />
           )}
         />
-      )}
+      </Suspense>
     </Box>
   );
 }

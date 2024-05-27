@@ -1,5 +1,5 @@
-import { Box, ScrollView } from "@gluestack-ui/themed";
 import { useWindowDimensions } from "react-native";
+import { Box, ScrollView } from "@gluestack-ui/themed";
 
 import { HorizontalList } from "@/components";
 import { Highlights, MostInfoList } from "./components";
@@ -21,16 +21,14 @@ export default function Home() {
   return (
     <Box flex={1}>
       <ScrollView>
-
-        {highlight && (
-          <Highlights
-            id={highlight?.id}
-            height={height / 1.7}
-            image={highlight?.coverImage?.extraLarge}
-            description={[...highlight?.genres || ""].join(", ")}
-            title={highlight?.title?.english || highlight?.title?.romaji}
-          />
-        )}
+        
+        <Highlights
+          id={highlight?.id}
+          height={height / 1.7}
+          image={highlight?.coverImage?.extraLarge}
+          description={[...highlight?.genres || ""].join(", ")}
+          title={highlight?.title?.english || highlight?.title?.romaji}
+        />
 
         {/* <HorizontalListLarger title="Continue Watching" list={listLarger} /> */}
 
