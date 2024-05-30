@@ -128,8 +128,8 @@ const GET_ANIME = gql(`
 `);
 
 const SEARCH_ANIMES = gql(`
-  query SearchAnimes($search: String!) {
-    search: Page (page: 1, perPage: 21) {
+  query SearchAnimes($search: String!, $page: Int!) {
+    search: Page (page: $page, perPage: 21) {
       media (search: $search, type: ANIME) {
         id
         title {

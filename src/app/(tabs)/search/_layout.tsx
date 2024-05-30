@@ -7,7 +7,7 @@ import { AnimeCard } from "@/components";
 import { CategoryCard } from "./components";
 import { useLazyQuery } from "@apollo/client";
 import { Media } from "@/__generated__/graphql";
-import { GET_BY_CATEGORY } from "@/service/queries";
+import { GET_BY_CATEGORY, SEARCH_ANIMES } from "@/service/queries";
 
 const categories = [
   { title: "Adventure", icon: Palmtree, color: "$green" },
@@ -30,24 +30,25 @@ export default function Search() {
   const [list, setList] = useState<Media[]>([]);
   const [category, setCategory] = useState<string | null>(null);
 
-  const [getList, { loading, fetchMore }] = useLazyQuery(GET_BY_CATEGORY);
+  const [searchList, { loading: loadingSearch }] = useLazyQuery(SEARCH_ANIMES);
+  const [getList, { loading: loadingList, fetchMore: getMore }] = useLazyQuery(GET_BY_CATEGORY);
 
-  // const handleGetSearchList = (search: string) => {
-
-  //   console.warn(search);
-
-  // };
+  const handleGetSearchList = (search: string) => {
+    searchList({ variables: { search: search, page: page + 1 } }).then(result => {
+      setList(result?.data?.search?.media as Media[]);
+    });
+  };
 
   const handleGetListByCategory = (categorySelected: string) => {
     getList({ variables: { genre: categorySelected, page: page } }).then(result => {
       setList(result?.data?.list?.media as Media[]);
     });
-    
+
     setCategory(categorySelected);
   };
 
   const handleGetMore = () => {
-    fetchMore({ variables: { genre: category, page: page + 1 } }).then(result => {
+    getMore({ variables: { genre: category, page: page + 1 } }).then(result => {
       const resultList = result?.data?.list?.media as Media[];
       setList(prev => [...prev, ...resultList]);
     });
@@ -87,7 +88,7 @@ export default function Search() {
           onEndReached={handleGetMore}
           keyExtractor={item => String(item?.id)}
           ListFooterComponent={
-            loading
+            (loadingList || loadingSearch)
               ? <ActivityIndicator size="large" style={{ marginVertical: 60 }} />
               : <Box h={60} />
           }
