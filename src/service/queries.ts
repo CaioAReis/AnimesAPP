@@ -145,8 +145,8 @@ const SEARCH_ANIMES = gql(`
 `);
 
 const GET_BY_CATEGORY = gql(`
-  query GetByCategory($genre: String!) {
-    list: Page (page: 1, perPage: 21) {
+  query GetByCategory($genre: String!, $page: Int!) {
+    list: Page (page: $page, perPage: 21) {
       media (type: ANIME, genre: $genre, sort: TITLE_ENGLISH_DESC) {
         id
         title {

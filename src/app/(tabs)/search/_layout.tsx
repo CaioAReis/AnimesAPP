@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ActivityIndicator, FlatList, useWindowDimensions } from "react-native";
-import { Box, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
-import { Axe, BookHeart, Castle, Drama, Footprints, Hourglass, Laugh, Medal, Palmtree, Rocket, Search as SearchICON, Sofa, Swords } from "lucide-react-native";
+import { Box, Button, ButtonIcon, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
+import { Axe, BookHeart, Castle, Drama, Footprints, Hourglass, Laugh, Medal, Palmtree, Rocket, Search as SearchICON, Sofa, Swords, X } from "lucide-react-native";
 
 import { AnimeCard } from "@/components";
 import { CategoryCard } from "./components";
@@ -25,10 +25,12 @@ const categories = [
 ];
 
 export default function Search() {
+  const [page, setPage] = useState(1);
   const { width } = useWindowDimensions();
   const [list, setList] = useState<Media[]>([]);
+  const [category, setCategory] = useState<string | null>(null);
 
-  const [getList, { loading }] = useLazyQuery(GET_BY_CATEGORY);
+  const [getList, { loading, fetchMore }] = useLazyQuery(GET_BY_CATEGORY);
 
   // const handleGetSearchList = (search: string) => {
 
@@ -36,54 +38,85 @@ export default function Search() {
 
   // };
 
-  const handleGetListByCategory = (category: string) => {
-    getList({ variables: { genre: category } }).then(result => {
+  const handleGetListByCategory = (categorySelected: string) => {
+    getList({ variables: { genre: categorySelected, page: page } }).then(result => {
       setList(result?.data?.list?.media as Media[]);
     });
+    
+    setCategory(categorySelected);
+  };
+
+  const handleGetMore = () => {
+    fetchMore({ variables: { genre: category, page: page + 1 } }).then(result => {
+      const resultList = result?.data?.list?.media as Media[];
+      setList(prev => [...prev, ...resultList]);
+    });
+
+    setPage(prev => prev + 1);
+  };
+
+  const handleClearList = () => {
+    setPage(1);
+    setList([]);
+    setCategory(null);
   };
 
   return (
     <Box flex={1}>
-      <Input size="lg" m={20} rounded="$lg" bgColor="$bg50">
-        <InputSlot>
-          <InputIcon as={SearchICON} ml={8} />
-        </InputSlot>
-        <InputField placeholder="Pesquisar" />
-      </Input>
+      {list?.length > 0 ? (
+        <HStack mx={20} my={10} alignItems="center" justifyContent="space-between">
+          <Heading>{category}</Heading>
+          <Button bgColor="$error50" rounded="$full" onPress={handleClearList}>
+            <ButtonIcon as={X} color="$error400" />
+          </Button>
+        </HStack>
+      ) : (
+        <Input size="lg" m={20} rounded="$lg" bgColor="$bg50">
+          <InputSlot>
+            <InputIcon as={SearchICON} ml={8} />
+          </InputSlot>
+          <InputField placeholder="Pesquisar" />
+        </Input>
+      )}
 
-      {loading ? <ActivityIndicator size="large" style={{ marginVertical: 60 }} /> : (
-        list?.length ? (
-          <FlatList
-            data={list}
-            numColumns={3}
-            ListFooterComponent={<Box h={60} />}
-            columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
-            renderItem={({ item }) => (
-              <AnimeCard
-                width="30%"
-                image={item?.coverImage?.extraLarge || ""}
-                title={item?.title?.english || item?.title?.romaji || ""}
+      {list?.length ? (
+        <FlatList
+          data={list}
+          numColumns={3}
+          onEndReachedThreshold={1.5}
+          onEndReached={handleGetMore}
+          keyExtractor={item => String(item?.id)}
+          ListFooterComponent={
+            loading
+              ? <ActivityIndicator size="large" style={{ marginVertical: 60 }} />
+              : <Box h={60} />
+          }
+          columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
+          renderItem={({ item }) => (
+            <AnimeCard
+              width="30%"
+              image={item?.coverImage?.extraLarge || ""}
+              title={item?.title?.english || item?.title?.romaji || ""}
+            />
+          )}
+        />
+      ) : (
+        <Box>
+          <Heading mx={20} fontSize="$2xl">Categorias</Heading>
+          <HStack mt={20} px={20} space="md" justifyContent="center" flexWrap="wrap">
+            {categories?.map((item, i) => (
+              <CategoryCard
+                key={i}
+                height={width / 3}
+                width={width / 3.6}
+                color={item?.color}
+                title={item?.title}
+                IconCard={item?.icon}
+                onPress={() => handleGetListByCategory(item?.title)}
               />
-            )}
-          />
-        ) : (
-          <Box>
-            <Heading mx={20} fontSize="$2xl">Categorias</Heading>
-            <HStack mt={20} px={20} space="md" justifyContent="center" flexWrap="wrap">
-              {categories?.map((item, i) => (
-                <CategoryCard
-                  key={i}
-                  height={width / 3}
-                  width={width / 3.6}
-                  color={item?.color}
-                  title={item?.title}
-                  IconCard={item?.icon}
-                  onPress={() => handleGetListByCategory(item?.title)}
-                />
-              ))}
-            </HStack>
-          </Box>
-        )
+            ))}
+          </HStack>
+        </Box>
       )}
     </Box>
   );

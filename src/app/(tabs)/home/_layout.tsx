@@ -34,7 +34,7 @@ export default function Home() {
 
         <HorizontalList title="Today's Selection" list={trends} />
 
-        <HorizontalList title="Top 10 of the week" showPosition list={top10} />
+        <HorizontalList title="Top 10" showPosition list={top10} />
 
         <MostInfoList title="For you" list={forYou} />
 
