@@ -52,7 +52,9 @@ export default function TabsApp() {
       <Tabs.Screen
         name="search"
         options={{
+          lazy: true,
           title: "PESQUISAR",
+          freezeOnBlur: true,
           tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
             <TabButton focused={focused} icon={Search} color={color} />
           ),

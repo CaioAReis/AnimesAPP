@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { router } from "expo-router";
 import { ActivityIndicator, FlatList, useWindowDimensions } from "react-native";
 import { Box, Button, ButtonIcon, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
 import { Axe, BookHeart, Castle, Drama, Footprints, Hourglass, Laugh, Medal, Palmtree, Rocket, Search as SearchICON, Sofa, Swords, X } from "lucide-react-native";
@@ -28,32 +29,36 @@ export default function Search() {
   const [page, setPage] = useState(1);
   const { width } = useWindowDimensions();
   const [list, setList] = useState<Media[]>([]);
+  const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState<string | null>(null);
 
-  const [searchList, { loading: loadingSearch }] = useLazyQuery(SEARCH_ANIMES);
-  const [getList, { loading: loadingList, fetchMore: getMore }] = useLazyQuery(GET_BY_CATEGORY);
+  const [searchList] = useLazyQuery(SEARCH_ANIMES);
+  const [getList, { fetchMore: getMore }] = useLazyQuery(GET_BY_CATEGORY);
 
   const handleGetSearchList = (search: string) => {
+    setLoading(true);
     searchList({ variables: { search: search, page: page + 1 } }).then(result => {
       setList(result?.data?.search?.media as Media[]);
-    });
+    }).finally(() => setLoading(false));
   };
 
   const handleGetListByCategory = (categorySelected: string) => {
+    setLoading(true);
     getList({ variables: { genre: categorySelected, page: page } }).then(result => {
       setList(result?.data?.list?.media as Media[]);
-    });
+    }).finally(() => setLoading(false));
 
     setCategory(categorySelected);
   };
 
   const handleGetMore = () => {
+    alert("Aqui");
+    setLoading(true);
     getMore({ variables: { genre: category, page: page + 1 } }).then(result => {
       const resultList = result?.data?.list?.media as Media[];
       setList(prev => [...prev, ...resultList]);
-    });
-
-    setPage(prev => prev + 1);
+      setPage(prev => prev + 1);
+    }).finally(() => setLoading(false));
   };
 
   const handleClearList = () => {
@@ -80,45 +85,55 @@ export default function Search() {
         </Input>
       )}
 
-      {list?.length ? (
-        <FlatList
-          data={list}
-          numColumns={3}
-          onEndReachedThreshold={1.5}
-          onEndReached={handleGetMore}
-          keyExtractor={item => String(item?.id)}
-          ListFooterComponent={
-            (loadingList || loadingSearch)
-              ? <ActivityIndicator size="large" style={{ marginVertical: 60 }} />
-              : <Box h={60} />
-          }
-          columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
-          renderItem={({ item }) => (
-            <AnimeCard
-              width="30%"
-              image={item?.coverImage?.extraLarge || ""}
-              title={item?.title?.english || item?.title?.romaji || ""}
-            />
-          )}
-        />
-      ) : (
-        <Box>
-          <Heading mx={20} fontSize="$2xl">Categorias</Heading>
-          <HStack mt={20} px={20} space="md" justifyContent="center" flexWrap="wrap">
-            {categories?.map((item, i) => (
-              <CategoryCard
-                key={i}
-                height={width / 3}
-                width={width / 3.6}
-                color={item?.color}
-                title={item?.title}
-                IconCard={item?.icon}
-                onPress={() => handleGetListByCategory(item?.title)}
-              />
-            ))}
-          </HStack>
-        </Box>
-      )}
-    </Box>
+      <FlatList
+        data={list}
+        numColumns={3}
+        style={{ borderWidth: 1 }}
+        onEndReachedThreshold={-1}
+        onEndReached={handleGetMore}
+        keyExtractor={item => String(item?.id)}
+        ListFooterComponent={
+          loading
+            ? <ActivityIndicator />
+            : <></>
+        }
+        columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
+        renderItem={({ item }) => (
+          <AnimeCard
+            width="30%"
+            image={item?.coverImage?.extraLarge || ""}
+            title={item?.title?.english || item?.title?.romaji || ""}
+            onPress={() => router.push({
+              pathname: "/stack/AnimeDetails",
+              params: {
+                id: item?.id,
+                image: item?.coverImage?.extraLarge,
+                name: item?.title?.english || item?.title?.romaji,
+              },
+            })}
+          />
+        )}
+        ListEmptyComponent={
+          !loading ?
+            <Box>
+              <Heading mx={20} fontSize="$2xl">Categorias</Heading>
+              <HStack mt={20} px={20} space="md" justifyContent="center" flexWrap="wrap">
+                {categories?.map((item, i) => (
+                  <CategoryCard
+                    key={i}
+                    height={width / 3}
+                    width={width / 3.6}
+                    color={item?.color}
+                    title={item?.title}
+                    IconCard={item?.icon}
+                    onPress={() => handleGetListByCategory(item?.title)}
+                  />
+                ))}
+              </HStack>
+            </Box>
+            : null
+        }
+      />
+    </Box >
   );
 }
