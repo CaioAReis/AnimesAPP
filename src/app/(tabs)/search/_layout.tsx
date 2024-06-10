@@ -30,16 +30,19 @@ export default function Search() {
   const { width } = useWindowDimensions();
   const [list, setList] = useState<Media[]>([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
 
-  const [searchList] = useLazyQuery(SEARCH_ANIMES);
   const [getList, { fetchMore: getMore }] = useLazyQuery(GET_BY_CATEGORY);
+  const [searchList, { fetchMore: searchMore }] = useLazyQuery(SEARCH_ANIMES);
 
   const handleGetSearchList = (search: string) => {
     setLoading(true);
-    searchList({ variables: { search: search, page: page + 1 } }).then(result => {
+    searchList({ variables: { search: search, page: page } }).then(result => {
       setList(result?.data?.search?.media as Media[]);
     }).finally(() => setLoading(false));
+
+    setSearch(search);
   };
 
   const handleGetListByCategory = (categorySelected: string) => {
@@ -51,14 +54,32 @@ export default function Search() {
     setCategory(categorySelected);
   };
 
+  // console.warn(ss);
+
   const handleGetMore = () => {
-    alert("Aqui");
+    if (list?.length < 20 || page < 0) return;
+
     setLoading(true);
-    getMore({ variables: { genre: category, page: page + 1 } }).then(result => {
-      const resultList = result?.data?.list?.media as Media[];
-      setList(prev => [...prev, ...resultList]);
-      setPage(prev => prev + 1);
-    }).finally(() => setLoading(false));
+
+    console.warn("PÁGINA: " + (page + 1));
+
+    if (search) {
+      searchMore({ variables: { search: search, page: (page + 1) } }).then(result => {
+        const resultList = result?.data?.search?.media as Media[];
+        setList(prev => [...prev, ...resultList]);
+        if (resultList?.length < 20) setPage(-2);
+        else setPage(prev => prev + 1);
+      });
+    } else {
+      getMore({ variables: { genre: category, page: (page + 1) } }).then(result => {
+        const resultList = result?.data?.list?.media as Media[];
+        setList(prev => [...prev, ...resultList]);
+        if (resultList?.length < 20) setPage(-2);
+        else setPage(prev => prev + 1);
+      });
+    }
+
+    setLoading(false);
   };
 
   const handleClearList = () => {
@@ -71,7 +92,7 @@ export default function Search() {
     <Box flex={1}>
       {list?.length > 0 ? (
         <HStack mx={20} my={10} alignItems="center" justifyContent="space-between">
-          <Heading>{category}</Heading>
+          <Heading>{category || search}</Heading>
           <Button bgColor="$error50" rounded="$full" onPress={handleClearList}>
             <ButtonIcon as={X} color="$error400" />
           </Button>
@@ -81,21 +102,27 @@ export default function Search() {
           <InputSlot>
             <InputIcon as={SearchICON} ml={8} />
           </InputSlot>
-          <InputField placeholder="Pesquisar" />
+          <InputField
+            returnKeyType="go"
+            placeholder="Pesquisar"
+            keyboardType="web-search"
+            onSubmitEditing={e => handleGetSearchList(e.nativeEvent.text)}
+          />
         </Input>
       )}
+
+      {/* {console.warn(list.length)} */}
 
       <FlatList
         data={list}
         numColumns={3}
-        style={{ borderWidth: 1 }}
-        onEndReachedThreshold={-1}
+        onEndReachedThreshold={0}
         onEndReached={handleGetMore}
         keyExtractor={item => String(item?.id)}
         ListFooterComponent={
           loading
             ? <ActivityIndicator />
-            : <></>
+            : <Box mb={80} />
         }
         columnWrapperStyle={{ marginBottom: 15, marginHorizontal: 10, justifyContent: "space-evenly" }}
         renderItem={({ item }) => (

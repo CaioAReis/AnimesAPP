@@ -130,7 +130,7 @@ const GET_ANIME = gql(`
 const SEARCH_ANIMES = gql(`
   query SearchAnimes($search: String!, $page: Int!) {
     search: Page (page: $page, perPage: 21) {
-      media (search: $search, type: ANIME) {
+      media (search: $search, type: ANIME, sort: TITLE_ENGLISH_DESC) {
         id
         title {
           english
