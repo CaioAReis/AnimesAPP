@@ -28,6 +28,7 @@ interface HorizontalListLargerProps {
 }
 
 interface MostInfoCardProps {
+  id: number,
   title: string | null | undefined,
   image: string,
   categories: string,

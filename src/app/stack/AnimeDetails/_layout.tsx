@@ -1,7 +1,8 @@
 import { useLocalSearchParams } from "expo-router";
-import { FlatList, ActivityIndicator } from "react-native";
 import { Box, Divider } from "@gluestack-ui/themed";
+import { FlatList, ActivityIndicator } from "react-native";
 
+import { useFavorited } from "@/hooks";
 import { getAnime } from "@/service/animesServices";
 import { AnimeInfo, CoverHeader, EpisodeCard } from "./components";
 
@@ -9,10 +10,19 @@ export default function AnimeDetails() {
   const { id, image, name } = useLocalSearchParams<{ id: string, image: string, name: string }>();
 
   const { anime } = getAnime(parseInt(id!));
-  
+  const { favorited, handleFavorite } = useFavorited({
+    anime: {
+      id: parseInt(id!),
+      title: { english: name ?? "" },
+      coverImage: { extraLarge: image }
+    }
+  });
+
   return (
     <FlatList
       data={anime?.streamingEpisodes}
+      ListFooterComponent={<Box h={70} />}
+      ItemSeparatorComponent={() => <Box h={15} />}
       renderItem={({ item }) => {
 
         const titleSplited = item?.title?.split(" - ");
@@ -32,14 +42,14 @@ export default function AnimeDetails() {
           />
         );
       }}
-
-      ItemSeparatorComponent={() => <Box h={15} />}
-
       ListHeaderComponent={
         <>
           <CoverHeader
+            favorited={favorited}
             imageCover={image ?? ""}
             onPlay={() => alert("Foi")}
+            onFavorite={handleFavorite}
+            onShare={() => alert("Compartilhar")}
             hiddenPlay={Boolean(anime?.streamingEpisodes?.length)}
           />
 
@@ -56,8 +66,6 @@ export default function AnimeDetails() {
           <Divider mb={20} bgColor="$bg100" />
         </>
       }
-
-      ListFooterComponent={<Box h={70} />}
     />
   );
 }

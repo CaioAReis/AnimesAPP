@@ -5,10 +5,19 @@ import { Heart, Play, Share } from "lucide-react-native";
 import { Box, Button, ButtonIcon, ButtonText, HStack, Heading, Image, Text, useToken, Icon } from "@gluestack-ui/themed";
 
 import { Loading } from "@/components";
+import { useFavorited } from "@/hooks";
 import { HighlightsProps } from "../types";
 
 export function Highlights({ id, height, image, title, description }: HighlightsProps) {
   const bg = useToken("colors", "bg0" as "amber100");
+
+  const { favorited, handleFavorite } = useFavorited({
+    anime: {
+      id: id,
+      title: { english: title ?? "" },
+      coverImage: { extraLarge: image }
+    }
+  });
 
   return (
     <Suspense fallback={<Loading />}>
@@ -34,7 +43,6 @@ export function Highlights({ id, height, image, title, description }: Highlights
             </Heading>
 
             <Text numberOfLines={1} fontSize="$sm" color="$text400">
-              {/* {[...highlight?.genres || ""].join(", ")} */}
               {description}
             </Text>
 
@@ -53,8 +61,8 @@ export function Highlights({ id, height, image, title, description }: Highlights
                 <Icon color={bg} fill={bg} as={Play} ml={8} />
               </Button>
 
-              <Button rounded="$full" w={40} h={40} bg="$bg950">
-                <Icon as={Heart} color={bg} fill={bg} />
+              <Button onPress={handleFavorite} rounded="$full" w={40} h={40} bg="$bg950">
+                <Icon as={Heart} color={bg} fill={favorited ? bg : "transparent"} />
               </Button>
 
               <Button rounded="$full" w={40} h={40} bg="$bg950">

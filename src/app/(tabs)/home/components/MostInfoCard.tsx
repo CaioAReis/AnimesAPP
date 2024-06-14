@@ -3,13 +3,22 @@ import { Heart, Play } from "lucide-react-native";
 import { useWindowDimensions } from "react-native";
 import { Box, Button, Icon, HStack, Heading, Image, Text, useToken, Pressable } from "@gluestack-ui/themed";
 
+import { useFavorited } from "@/hooks";
 import { MostInfoCardProps } from "../types";
 import ThemeContext from "@/config/contexts/ThemeContext";
 
-export function MostInfoCard({ title, image, categories, description, onPress }: MostInfoCardProps) {
+export function MostInfoCard({ id, title, image, categories, description, onPress }: MostInfoCardProps) {
   const { width } = useWindowDimensions();
   const { theme } = useContext(ThemeContext);
   const bg = useToken("colors", "bg0" as "amber100");
+
+  const { favorited, handleFavorite } = useFavorited({
+    anime: {
+      id: id,
+      title: { english: title ?? "" },
+      coverImage: { extraLarge: image }
+    }
+  });
 
   const _render = useMemo(() => (
     <Box w={width} px={20} mb={10}>
@@ -27,8 +36,8 @@ export function MostInfoCard({ title, image, categories, description, onPress }:
               <Icon as={Play} color={bg} fill={bg} size="xl" />
             </Button>
 
-            <Button rounded="$full" w={50} h={50} bg="$primary400">
-              <Icon as={Heart} color={bg} fill={bg} size="xl" />
+            <Button onPress={handleFavorite} rounded="$full" w={50} h={50} bg="$primary400">
+              <Icon as={Heart} color={bg} fill={favorited ? bg : "transparent"} size="xl" />
             </Button>
           </HStack>
         </Box>
@@ -43,7 +52,7 @@ export function MostInfoCard({ title, image, categories, description, onPress }:
         </Text>
       </Pressable>
     </Box>
-  ), [theme]);
+  ), [theme, favorited]);
 
   return _render;
 }

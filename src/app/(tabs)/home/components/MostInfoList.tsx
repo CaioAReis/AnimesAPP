@@ -30,6 +30,7 @@ export function MostInfoList({ title, list }: MostInfoListProps) {
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: translate } } }], { useNativeDriver: false })}
           renderItem={({ item }) => (
             <MostInfoCard
+              id={item?.id}
               image={item?.bannerImage || ""}
               description={item?.description || ""}
               categories={[...item?.genres || ""]?.join(", ")}

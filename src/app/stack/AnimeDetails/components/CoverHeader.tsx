@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { router } from "expo-router";
 import { useWindowDimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,20 +7,15 @@ import { Button, ButtonIcon, HStack, Icon, ImageBackground, useToken } from "@gl
 interface CoverHeaderProps {
   imageCover: string,
   onPlay: () => void,
+  favorited: boolean,
   hiddenPlay: boolean,
+  onShare: () => void,
+  onFavorite: () => void,
 }
 
-export function CoverHeader({ imageCover, hiddenPlay, onPlay }: CoverHeaderProps) {
+export function CoverHeader({ imageCover, onFavorite, favorited, onShare, hiddenPlay, onPlay }: CoverHeaderProps) {
   const { width, height } = useWindowDimensions();
   const bg = useToken("colors", "bg0" as "amber100");
-
-  const onShare = useCallback(() => {
-    alert("Compartilhar");
-  }, []);
-
-  const onFavorite = useCallback(() => {
-    alert("Favoritar");
-  }, []);
 
   return (
     <ImageBackground
@@ -61,7 +55,7 @@ export function CoverHeader({ imageCover, hiddenPlay, onPlay }: CoverHeaderProps
               bgColor="$bg950"
               onPress={onFavorite}
             >
-              <Icon as={Heart} size="md" color={bg} fill={bg} />
+              <Icon as={Heart} size="md" color={bg} fill={favorited ? bg : "transparent"} />
             </Button>
           </HStack>
 

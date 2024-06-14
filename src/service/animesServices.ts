@@ -89,17 +89,17 @@ const getAnime = (id: number) => {
     }
   );
 
-  const anime = result?.data?.anime;
+  const anime = result?.data?.anime as Media;
 
   return { ...result, anime: anime };
 };
 
 //  SEARCH ANIMES
-const searchAnimes = (search: string) => {
+const searchAnimes = (search: string, page: number) => {
   const result = useQuery(SEARCH_ANIMES,
     {
       variables: {
-        search: search
+        search: search, page: page
       }
     }
   );
@@ -110,12 +110,12 @@ const searchAnimes = (search: string) => {
 };
 
 //  GET BY CATEGORY
-const getByCategory = (category: string | null) => {
+const getByCategory = (category: string | null, page: number) => {
   if (category) {
-    const [ getList, result ] = useLazyQuery(GET_BY_CATEGORY,
+    const [getList, result] = useLazyQuery(GET_BY_CATEGORY,
       {
         variables: {
-          genre: category
+          genre: category, page: page
         }
       }
     );
