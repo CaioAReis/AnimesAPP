@@ -9,7 +9,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Ubuntu_300Light, Ubuntu_400Regular, Ubuntu_500Medium } from "@expo-google-fonts/ubuntu";
 
 import { myConfig } from "../config/theme";
-import ThemeContext from "../config/contexts/ThemeContext";
+import Providers from "@/config/contexts/Providers";
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -37,14 +37,14 @@ export default function App() {
     <ApolloProvider client={client}>
       <SafeAreaProvider style={{ flex: 1 }}>
         <SafeAreaView style={{ flex: 1 }}>
-          <ThemeContext.Provider value={{ theme: theme!, setTheme: setTheme }}>
+          <Providers theme={theme!} setTheme={setTheme}>
             <GluestackUIProvider colorMode={theme!} config={myConfig}>
 
               <Slot />
               <StatusBar style={styleBar} backgroundColor={myConfig.themes[theme!].colors.bg0} />
 
             </GluestackUIProvider>
-          </ThemeContext.Provider>
+          </Providers>
         </SafeAreaView>
       </SafeAreaProvider>
     </ApolloProvider>

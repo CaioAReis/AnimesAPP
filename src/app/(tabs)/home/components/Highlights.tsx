@@ -10,6 +10,7 @@ import { HighlightsProps } from "../types";
 
 export function Highlights({ id, height, image, title, description }: HighlightsProps) {
   const bg = useToken("colors", "bg0" as "amber100");
+  const invertBG = useToken("colors", "bg950" as "amber100");
 
   const { favorited, handleFavorite } = useFavorited({
     anime: {
@@ -61,11 +62,11 @@ export function Highlights({ id, height, image, title, description }: Highlights
                 <Icon color={bg} fill={bg} as={Play} ml={8} />
               </Button>
 
-              <Button onPress={handleFavorite} rounded="$full" w={40} h={40} bg="$bg950">
+              <Button onPress={handleFavorite} rounded="$full" w={40} h={40} bg={invertBG}>
                 <Icon as={Heart} color={bg} fill={favorited ? bg : "transparent"} />
               </Button>
 
-              <Button rounded="$full" w={40} h={40} bg="$bg950">
+              <Button rounded="$full" w={40} h={40} bg={invertBG}>
                 <ButtonIcon as={Share} color={bg} />
               </Button>
             </HStack>

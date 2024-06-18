@@ -16,6 +16,8 @@ interface CoverHeaderProps {
 export function CoverHeader({ imageCover, onFavorite, favorited, onShare, hiddenPlay, onPlay }: CoverHeaderProps) {
   const { width, height } = useWindowDimensions();
   const bg = useToken("colors", "bg0" as "amber100");
+  const invertedBG = useToken("colors", "bg950" as "amber100");
+  const textColor = useToken("colors", "text100" as "amber100");
 
   return (
     <ImageBackground
@@ -35,7 +37,7 @@ export function CoverHeader({ imageCover, onFavorite, favorited, onShare, hidden
           borderColor="$bg400"
           onPress={() => router.back()}
         >
-          <ButtonIcon as={ArrowLeft} size="xl" color="$text100" />
+          <ButtonIcon as={ArrowLeft} size="xl" color={textColor} />
         </Button>
 
         <HStack justifyContent="space-between" w="$full" px={20} position="absolute" bottom={-20}>
@@ -43,8 +45,8 @@ export function CoverHeader({ imageCover, onFavorite, favorited, onShare, hidden
             <Button
               w={40} h={40}
               rounded="$full"
-              bgColor="$bg950"
               onPress={onShare}
+              bgColor={invertedBG}
             >
               <ButtonIcon as={Share} size="md" color={bg} />
             </Button>
@@ -52,8 +54,8 @@ export function CoverHeader({ imageCover, onFavorite, favorited, onShare, hidden
             <Button
               w={40} h={40}
               rounded="$full"
-              bgColor="$bg950"
               onPress={onFavorite}
+              bgColor={invertedBG}
             >
               <Icon as={Heart} size="md" color={bg} fill={favorited ? bg : "transparent"} />
             </Button>

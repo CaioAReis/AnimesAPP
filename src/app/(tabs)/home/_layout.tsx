@@ -14,14 +14,14 @@ export default function Home() {
   const { highlight } = getHighlight(popularityRandom);
   const { trends } = getTrends(currentDay + 1);
   const { top10 } = getTop10();
-  const { forYou } = getForYou("Comedy");
+  const { forYou } = getForYou("Action");
   const { recommendeds } = getRecommendeds();
   const { comingSoon } = getComingSoon();
 
   return (
     <Box flex={1}>
       <ScrollView>
-        
+
         <Highlights
           id={highlight?.id}
           height={height / 1.7}

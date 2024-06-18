@@ -14,13 +14,14 @@ interface AnimeInfoProps {
 export function AnimeInfo({ title, summary, rating, year, categories }: AnimeInfoProps) {
   const bg = useToken("colors", "bg0" as "amber100");
   const starColor = useToken("colors", "warn400" as "amber100");
+  const textColor = useToken("colors", "text300" as "amber100");
 
   return (
     <VStack my={15} mx={20} space="sm">
       <Heading>{title?.toLocaleUpperCase() ?? ""}</Heading>
 
       {categories?.length ? (
-        <Text fontSize="$sm" lineHeight="$sm" color="$text200">
+        <Text fontSize="$sm" lineHeight="$sm" color={textColor}>
           {`${year ?? ""} - ${categories?.map(category => category + ", ")}`}
         </Text>
       ) : null}
@@ -43,7 +44,7 @@ export function AnimeInfo({ title, summary, rating, year, categories }: AnimeInf
       ) : null}
 
       {summary && (
-        <Text fontSize={14} color="$text300">
+        <Text fontSize={14} color={textColor}>
           {summary?.replace(/<[^>]*>?/gm, "") ?? ""}
         </Text>
       )}

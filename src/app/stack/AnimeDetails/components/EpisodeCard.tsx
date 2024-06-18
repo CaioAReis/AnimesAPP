@@ -1,10 +1,11 @@
 import { Eye } from "lucide-react-native";
-import { Heading, Icon, Text, Box, HStack, VStack, Image, Pressable } from "@gluestack-ui/themed";
+import { Heading, Icon, Text, Box, HStack, VStack, Image, Pressable, useToken } from "@gluestack-ui/themed";
 
 import { EpisodeCardProps } from "../types";
 
 export function EpisodeCard({ thumb, title, episode, episodeMin, watched, onPress }: EpisodeCardProps) {
   const watchedColor = watched ? "$primary100" : "transparent";
+  const textColor = useToken("colors", "text400" as "amber100");
 
   return (
     <Pressable mx={20} onPress={onPress}>
@@ -24,7 +25,7 @@ export function EpisodeCard({ thumb, title, episode, episodeMin, watched, onPres
             </Heading>
 
             {episode ? (
-              <Text fontSize="$xs" lineHeight="$sm" color="$text300">
+              <Text fontSize="$xs" lineHeight="$sm" color={textColor}>
                 {episode}
               </Text>
             ) : null}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { router } from "expo-router";
 import { ActivityIndicator, FlatList, useWindowDimensions } from "react-native";
-import { Box, Button, ButtonIcon, HStack, Heading, Input, InputField, InputIcon, InputSlot } from "@gluestack-ui/themed";
+import { Box, Button, ButtonIcon, HStack, Heading, Input, InputField, InputIcon, InputSlot, useToken } from "@gluestack-ui/themed";
 import { Axe, BookHeart, Castle, Drama, Footprints, Hourglass, Laugh, Medal, Palmtree, Rocket, Search as SearchICON, Sofa, Swords, X } from "lucide-react-native";
 
 import { AnimeCard } from "@/components";
@@ -33,6 +33,8 @@ export default function Search() {
   const [search, setSearch] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
 
+  const inputBG = useToken("colors", "bg50" as "amber100");
+
   const [getList, { fetchMore: getMore }] = useLazyQuery(GET_BY_CATEGORY);
   const [searchList, { fetchMore: searchMore }] = useLazyQuery(SEARCH_ANIMES);
 
@@ -54,14 +56,10 @@ export default function Search() {
     setCategory(categorySelected);
   };
 
-  // console.warn(ss);
-
   const handleGetMore = () => {
     if (list?.length < 20 || page < 0) return;
 
     setLoading(true);
-
-    console.warn("PÁGINA: " + (page + 1));
 
     if (search) {
       searchMore({ variables: { search: search, page: (page + 1) } }).then(result => {
@@ -98,7 +96,7 @@ export default function Search() {
           </Button>
         </HStack>
       ) : (
-        <Input size="lg" m={20} rounded="$lg" bgColor="$bg50">
+        <Input size="lg" m={20} rounded="$lg" bgColor={inputBG}>
           <InputSlot>
             <InputIcon as={SearchICON} ml={8} />
           </InputSlot>
@@ -111,12 +109,10 @@ export default function Search() {
         </Input>
       )}
 
-      {/* {console.warn(list.length)} */}
-
       <FlatList
         data={list}
         numColumns={3}
-        onEndReachedThreshold={0}
+        onEndReachedThreshold={1}
         onEndReached={handleGetMore}
         keyExtractor={item => String(item?.id)}
         ListFooterComponent={

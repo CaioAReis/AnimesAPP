@@ -1,16 +1,16 @@
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import { Heart, Play } from "lucide-react-native";
 import { useWindowDimensions } from "react-native";
 import { Box, Button, Icon, HStack, Heading, Image, Text, useToken, Pressable } from "@gluestack-ui/themed";
 
 import { useFavorited } from "@/hooks";
 import { MostInfoCardProps } from "../types";
-import ThemeContext from "@/config/contexts/ThemeContext";
 
 export function MostInfoCard({ id, title, image, categories, description, onPress }: MostInfoCardProps) {
   const { width } = useWindowDimensions();
-  const { theme } = useContext(ThemeContext);
   const bg = useToken("colors", "bg0" as "amber100");
+  const surface = useToken("colors", "bg50" as "amber100");
+  const primary = useToken("colors", "primary400" as "amber100");
 
   const { favorited, handleFavorite } = useFavorited({
     anime: {
@@ -22,7 +22,7 @@ export function MostInfoCard({ id, title, image, categories, description, onPres
 
   const _render = useMemo(() => (
     <Box w={width} px={20} mb={10}>
-      <Pressable onPress={onPress} softShadow="1" shadowColor="$bg0" backgroundColor="$bg50" w="$full" rounded="$lg" overflow="hidden">
+      <Pressable onPress={onPress} softShadow="1" shadowColor="$bg0" backgroundColor={surface} w="$full" rounded="$lg" overflow="hidden">
         <Box h="$40" w="$full">
           <Image
             h="$full"
@@ -32,11 +32,11 @@ export function MostInfoCard({ id, title, image, categories, description, onPres
           />
 
           <HStack space="sm" position="absolute" bottom={-12} right={20}>
-            <Button rounded="$full" w={50} h={50} bg="$primary400">
+            <Button rounded="$full" w={50} h={50} bg={primary}>
               <Icon as={Play} color={bg} fill={bg} size="xl" />
             </Button>
 
-            <Button onPress={handleFavorite} rounded="$full" w={50} h={50} bg="$primary400">
+            <Button onPress={handleFavorite} rounded="$full" w={50} h={50} bg={primary}>
               <Icon as={Heart} color={bg} fill={favorited ? bg : "transparent"} size="xl" />
             </Button>
           </HStack>
@@ -52,7 +52,7 @@ export function MostInfoCard({ id, title, image, categories, description, onPres
         </Text>
       </Pressable>
     </Box>
-  ), [theme, favorited]);
+  ), [favorited]);
 
   return _render;
 }

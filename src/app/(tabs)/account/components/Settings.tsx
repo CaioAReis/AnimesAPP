@@ -1,13 +1,14 @@
 import { router } from "expo-router";
 import { useCallback, useState } from "react";
 import { Info, LogOut, Settings as SettingsIcon, User2, UserX2 } from "lucide-react-native";
-import { Actionsheet, ButtonText, Image, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack, Modal, ModalBackdrop, ModalContent, ModalHeader, Heading, ModalCloseButton, Icon, CloseIcon, ModalBody, Text, ModalFooter } from "@gluestack-ui/themed";
+import { Actionsheet, ButtonText, Image, Button, ButtonIcon, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper, ActionsheetScrollView, VStack, Modal, ModalBackdrop, ModalContent, ModalHeader, Heading, ModalCloseButton, Icon, CloseIcon, ModalBody, Text, ModalFooter, useToken } from "@gluestack-ui/themed";
 
 import { MenuItem } from "./MenuItem";
 import { Dialog } from "@/components";
 
 export function Settings() {
   const [isOpen, setIsOpen] = useState(false);
+  const iconColor = useToken("colors", "bg600" as "amber100");
 
   const [isOpenAbout, setIsOpenAbout] = useState(false);
   const [isOpenLogout, setIsOpenLogout] = useState(false);
@@ -29,7 +30,7 @@ export function Settings() {
   return (
     <>
       <Button onPress={handleOpen} w="$10" rounded="$full" bgColor="transparent">
-        <ButtonIcon as={SettingsIcon} size="xl" color="$bg600" />
+        <ButtonIcon as={SettingsIcon} size="xl" color={iconColor} />
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleClose} zIndex={999}>

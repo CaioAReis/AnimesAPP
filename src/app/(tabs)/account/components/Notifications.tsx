@@ -10,6 +10,7 @@ import {
   ActionsheetScrollView,
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
+  useToken,
 } from "@gluestack-ui/themed";
 
 import { NotificationCard } from "./NotificationCard";
@@ -23,6 +24,7 @@ const notifications = [
 
 export function Notifications() {
   const [isOpen, setIsOpen] = useState(false);
+  const iconColor = useToken("colors", "bg600" as "amber100");
 
   const handleOpenNotifications = useCallback(() => setIsOpen(true), []);
   const handleCloseNotifications = useCallback(() => setIsOpen(false), []);
@@ -30,7 +32,7 @@ export function Notifications() {
   return (
     <>
       <Button onPress={handleOpenNotifications} w="$10" rounded="$full" bgColor="transparent">
-        <ButtonIcon as={Bell} size="xl" color="$bg600" />
+        <ButtonIcon as={Bell} size="xl" color={iconColor} />
       </Button>
 
       <Actionsheet isOpen={isOpen} onClose={handleCloseNotifications} zIndex={999}>

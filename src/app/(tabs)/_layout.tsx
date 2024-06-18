@@ -26,6 +26,7 @@ export default function TabsApp() {
       initialRouteName="home"
       sceneContainerStyle={{ backgroundColor: bg }}
       screenOptions={{
+        lazy: true,
         headerShown: false,
         freezeOnBlur: true,
         tabBarShowLabel: false,
@@ -40,9 +41,7 @@ export default function TabsApp() {
       <Tabs.Screen
         name="home"
         options={{
-          lazy: true,
           title: "INÍCIO",
-          freezeOnBlur: true,
           tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
             <TabButton focused={focused} icon={Home} color={color} />
           ),
@@ -52,9 +51,7 @@ export default function TabsApp() {
       <Tabs.Screen
         name="search"
         options={{
-          lazy: true,
           title: "PESQUISAR",
-          freezeOnBlur: true,
           tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
             <TabButton focused={focused} icon={Search} color={color} />
           ),
@@ -64,9 +61,7 @@ export default function TabsApp() {
       <Tabs.Screen
         name="library"
         options={{
-          lazy: true,
           title: "SALVOS",
-          freezeOnBlur: true,
           tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
             <TabButton focused={focused} icon={Heart} color={color} />
           ),
@@ -76,9 +71,7 @@ export default function TabsApp() {
       <Tabs.Screen
         name="account"
         options={{
-          lazy: true,
           title: "PERFIL",
-          freezeOnBlur: true,
           tabBarIcon: ({ color, focused }: Partial<TabButtonProps>) => (
             <TabButton focused={focused} icon={UserRound} color={color} />
           ),
