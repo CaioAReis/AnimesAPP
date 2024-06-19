@@ -61,8 +61,8 @@ Basta lê o QrCode gerado atraves do aplicativo do Expo Go instalado em seu smar
 </p>
 
 <p align="center" display="flex">
-  <img src = "./result/gif2.png" width=250>
-  <img src = "./result/gif3.png" width=250>
+  <img src = "./result/gif2.gif" width=250>
+  <img src = "./result/gif3.gif" width=250>
   <img src = "./result/gif4.gif" width=250>
 </p>
 
