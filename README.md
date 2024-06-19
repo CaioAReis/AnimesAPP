@@ -1,5 +1,7 @@
 # Animes APP
 
+Os dados dos animes foram obtidos a partir da API do [AniList](https://anilist.gitbook.io/anilist-apiv2-docs).
+
 ## Pré-requisitos
 
  - Ter o [Expo Go](https://expo.dev/expo-go) instalado.
