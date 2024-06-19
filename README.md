@@ -57,6 +57,13 @@ Basta lê o QrCode gerado atraves do aplicativo do Expo Go instalado em seu smar
 <p align="center" display="flex">
   <img src = "./result/Config.png" width=250>
   <img src = "./result/Edit_profile.png" width=250>
+  <img src = "./result/gif1.gif" width=250>
+</p>
+
+<p align="center" display="flex">
+  <img src = "./result/gif2.png" width=250>
+  <img src = "./result/gif3.png" width=250>
+  <img src = "./result/gif4.gif" width=250>
 </p>
 
 ## Valeu pela visita! 😉
