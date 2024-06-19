@@ -1,6 +1,6 @@
 import { Media } from "@/__generated__/graphql";
 import { useLibralyStore } from "@/store/libraryStore";
-import { useToast, Toast, ToastTitle } from "@gluestack-ui/themed";
+import { useToast, Toast, ToastTitle, useToken } from "@gluestack-ui/themed";
 
 interface Props {
   anime: Partial<Media>,
@@ -9,6 +9,8 @@ interface Props {
 export function useFavorited({ anime }: Props) {
   const toast = useToast();
   const { favorites, add, remove } = useLibralyStore();
+  const bgColor = useToken("colors", "text50" as "amber100");
+  const textColor = useToken("colors", "bg50" as "amber100");
   const favorited = Boolean(favorites?.find(favorite => favorite?.id === anime.id));
 
   const handleFavorite = () => {
@@ -16,10 +18,11 @@ export function useFavorited({ anime }: Props) {
       remove(anime.id!);
 
       toast.show({
-        placement: "bottom",
+        placement: "top",
+        containerStyle: { marginTop: 35 },
         render: ({ toastId }) => (
-          <Toast bgColor="$text100" nativeID={"ToastID" + toastId} action="error" variant="accent">
-            <ToastTitle color="$bg50">Removido dos favoritos</ToastTitle>
+          <Toast bgColor={bgColor} nativeID={"ToastID" + toastId} action="error" variant="accent">
+            <ToastTitle color={textColor}>Removido dos favoritos</ToastTitle>
           </Toast>
         )
       });
@@ -35,10 +38,11 @@ export function useFavorited({ anime }: Props) {
       });
 
       toast.show({
-        placement: "bottom",
+        placement: "top",
+        containerStyle: { marginTop: 35 },
         render: ({ toastId }) => (
-          <Toast bgColor="$text100" nativeID={"ToastID" + toastId} action="success" variant="accent">
-            <ToastTitle color="$bg50">Adicionado aos favoritos</ToastTitle>
+          <Toast bgColor={bgColor} nativeID={"ToastID" + toastId} action="success" variant="accent">
+            <ToastTitle color={textColor}>Adicionado aos favoritos</ToastTitle>
           </Toast>
         )
       });

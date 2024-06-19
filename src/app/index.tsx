@@ -1,15 +1,10 @@
-import {
-  Link,
-  Redirect,
-} from "expo-router";
+import { Link } from "expo-router";
 import { useWindowDimensions } from "react-native";
 import { LogIn, UserRoundPlus } from "lucide-react-native";
 import { Box, Divider, Image, VStack, Button, ButtonIcon, ButtonText, Icon } from "@gluestack-ui/themed";
 
 export default function Start() {
   const { height } = useWindowDimensions();
-
-  return <Redirect href="(tabs)/home" />;
 
   return (
     <Box flex={1}>
