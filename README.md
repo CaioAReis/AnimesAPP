@@ -1,4 +1,4 @@
-# Chat Realtime with React Native and Firebase
+# Animes APP
 
 ## Pré-requisitos
 
