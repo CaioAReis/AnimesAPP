@@ -30,8 +30,8 @@ export default function SelectProfile() {
 
         <VStack space="4xl">
           <ProfileCard name="Caio AReis" accountType={0} />
-          <ProfileCard name="Silvio Santos" accountType={0} />
-          <ProfileCard name="Edson Gomes" accountType={1} />
+          <ProfileCard name="José Santos" accountType={0} />
+          <ProfileCard name="Maria Gomes" accountType={1} />
         </VStack>
       </VStack>
 
